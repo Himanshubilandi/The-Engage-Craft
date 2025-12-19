@@ -1,5 +1,5 @@
 // The Engage Craft - Premium Meme Marketing Agency
-// Simplified JavaScript with only contact options
+// Updated with comma-formatted 100,000,000+ counter
 
 // DOM Elements
 const navbar = document.getElementById('navbar');
@@ -166,7 +166,7 @@ function initScrollAnimations() {
                     
                     // Handle counter animations
                     if (animation === 'counter') {
-                        const counterElement = element.querySelector('.result-number');
+                        const counterElement = element.querySelector('.result-number-comma') || element.querySelector('.result-number');
                         if (counterElement) {
                             const target = parseInt(counterElement.getAttribute('data-count'));
                             animateCounter(counterElement, target);
@@ -212,7 +212,12 @@ function checkScrollAnimations() {
     });
 }
 
-// Animate number counter with personality
+// Format number with commas
+function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Animate number counter with commas
 function animateCounter(element, target) {
     const duration = 2000;
     const frameRate = 1000 / 60;
@@ -225,12 +230,24 @@ function animateCounter(element, target) {
     const counter = setInterval(() => {
         frame++;
         current = Math.min(Math.round(increment * frame), target);
-        element.textContent = current;
+        
+        // Format with commas if it's the large number (100,000,000+)
+        if (target === 100000000) {
+            element.textContent = formatNumberWithCommas(current);
+        } else {
+            element.textContent = current;
+        }
         
         // Add a little bounce effect at the end
         if (frame >= totalFrames) {
             clearInterval(counter);
-            element.textContent = target;
+            
+            // Final formatting with commas for large number
+            if (target === 100000000) {
+                element.textContent = formatNumberWithCommas(target);
+            } else {
+                element.textContent = target;
+            }
             
             // Bounce animation
             element.style.transform = 'scale(1.2)';
