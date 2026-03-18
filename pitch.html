@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Engage Craft — Pitch Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0f0e0d;
+  --paper: #f5f2eb;
+  --paper2: #ede9e0;
+  --paper3: #e4dfd4;
+  --accent: #d4400a;
+  --accent2: #1a6b3c;
+  --accent3: #1e3a8a;
+  --gold: #c8981a;
+  --muted: #7a7569;
+  --border: rgba(15,14,13,0.12);
+  --border-strong: rgba(15,14,13,0.25);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ─── HEADER ─── */
+.cover {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 64px 52px 52px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: 'PITCH';
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 280px;
+  position: absolute;
+  right: -20px; top: -30px;
+  opacity: 0.04;
+  letter-spacing: -8px;
+  line-height: 1;
+  pointer-events: none;
+  color: var(--paper);
+}
+.cover-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cover-eyebrow::before { content: '//'; opacity: 0.5; }
+.cover h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+.cover h1 em { color: var(--accent); font-style: normal; }
+.cover-sub {
+  font-size: 14px;
+  color: rgba(245,242,235,0.55);
+  max-width: 500px;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.cover-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 28px;
+}
+.cover-stat {
+  padding: 0 32px 0 0;
+  margin-right: 32px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.cover-stat:last-child { border-right: none; }
+.stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-l {
+  font-size: 11px;
+  color: rgba(245,242,235,0.45);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── SECTION HEADERS ─── */
+.section {
+  padding: 48px 52px 0;
+}
+.section-head {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--ink);
+}
+.section-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 36px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+.section-desc {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  margin-left: auto;
+  text-align: right;
+}
+
+/* ─── INSIGHT BOX ─── */
+.insight {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 20px 24px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.insight::before {
+  content: '!';
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 60px;
+  position: absolute;
+  right: 20px; top: 0;
+  opacity: 0.07;
+  color: var(--accent);
+}
+.insight-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.insight p { font-size: 13px; color: rgba(245,242,235,0.8); line-height: 1.7; }
+.insight strong { color: var(--paper); font-weight: 600; }
+
+/* ─── RULES GRID ─── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.rule-card {
+  background: var(--paper2);
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+  border-radius: 2px;
+}
+.rule-icon { font-size: 18px; margin-bottom: 8px; }
+.rule-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.rule-body { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+/* ─── PITCH CARDS ─── */
+.pitch-card {
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.pitch-card-head {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.platform-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+.ig { background: #d4400a; color: white; }
+.li { background: #1e3a8a; color: white; }
+.em { background: #1a6b3c; color: white; }
+.pitch-card-meta { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.pitch-card-meta strong { color: var(--ink); }
+.pitch-card-body { padding: 20px; }
+
+/* ─── MESSAGE BOX ─── */
+.msg-box {
+  background: var(--paper3);
+  border-left: 3px solid var(--accent);
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  border-radius: 0 2px 2px 0;
+}
+.msg-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.msg-text {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink);
+  white-space: pre-wrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.msg-text .hi { color: var(--accent); font-weight: 600; }
+.msg-text .bracket { color: var(--accent2); font-weight: 600; font-style: italic; }
+
+/* variation */
+.msg-box.v2 { border-left-color: var(--accent2); }
+.msg-box.v3 { border-left-color: var(--accent3); }
+
+.tip-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0;
+  border-top: 1px dashed var(--border);
+  font-size: 12px; color: var(--muted);
+}
+.tip-row:first-of-type { margin-top: 14px; }
+.tip-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.tip-row strong { color: var(--ink); }
+
+/* ─── FOLLOW-UP TABLE ─── */
+.fu-timeline {
+  display: grid;
+  gap: 0;
+  margin-bottom: 32px;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.fu-row {
+  display: grid;
+  grid-template-columns: 100px 120px 1fr;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.fu-row:last-child { border-bottom: none; }
+.fu-row.header-row {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.fu-cell {
+  padding: 12px 16px;
+  border-right: 1px solid var(--border);
+  font-size: 12px;
+}
+.fu-cell:last-child { border-right: none; }
+.fu-day { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--accent); line-height: 1; }
+.fu-day span { font-size: 11px; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--muted); font-weight: 400; display: block; }
+.fu-action { font-weight: 600; font-size: 12px; }
+.fu-script { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.fu-script em { color: var(--ink); font-style: normal; font-weight: 500; }
+
+/* ─── PORTFOLIO HACK ─── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.port-card {
+  border: 1px solid var(--border-strong);
+  padding: 16px 18px;
+  border-radius: 2px;
+}
+.port-card.featured {
+  background: var(--ink);
+  color: var(--paper);
+  grid-column: 1 / -1;
+}
+.port-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--accent); line-height: 1; }
+.port-label { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+.port-card.featured .port-label { color: rgba(245,242,235,0.45); }
+.port-title { font-weight: 600; font-size: 13px; margin: 8px 0 4px; }
+.port-card.featured .port-title { color: var(--paper); }
+.port-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.port-card.featured .port-body { color: rgba(245,242,235,0.6); }
+
+/* ─── DO/DON'T ─── */
+.dodo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.do-col { border: 1px solid rgba(26,107,60,0.3); border-radius: 2px; overflow: hidden; }
+.dont-col { border: 1px solid rgba(212,64,10,0.3); border-radius: 2px; overflow: hidden; }
+.dodo-head {
+  padding: 10px 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+}
+.do-col .dodo-head { background: rgba(26,107,60,0.1); color: var(--accent2); }
+.dont-col .dodo-head { background: rgba(212,64,10,0.1); color: var(--accent); }
+.dodo-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.dodo-item .dot { font-size: 16px; flex-shrink: 0; margin-top: -1px; }
+
+/* ─── OBJECTION HANDLER ─── */
+.obj-list { margin-bottom: 32px; }
+.obj-item {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.obj-q {
+  background: var(--paper2);
+  padding: 12px 18px;
+  font-weight: 600;
+  font-size: 13px;
+  display: flex; align-items: center; gap: 10px;
+}
+.obj-q::before { content: 'Q'; font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--muted); }
+.obj-a {
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  line-height: 1.65;
+}
+.obj-a strong { color: var(--ink); }
+
+/* ─── CONVERSION TRACKER ─── */
+.tracker {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 28px 32px;
+  border-radius: 2px;
+  margin-bottom: 48px;
+}
+.tracker-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.tracker-cell {
+  padding: 14px 16px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.tracker-cell:last-child { border-right: none; }
+.tracker-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--paper);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tracker-n em { color: var(--accent); font-style: normal; }
+.tracker-l { font-size: 10px; color: rgba(245,242,235,0.35); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+.tracker-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: rgba(255,255,255,0.15);
+  padding: 0 4px;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--paper2);
+  border-top: 2px solid var(--ink);
+  padding: 28px 52px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; }
+.footer-brand em { color: var(--accent); font-style: normal; }
+.footer-note { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+
+/* ─── DIVIDER ─── */
+.divider { height: 1px; background: var(--border); margin: 36px 52px; }
+
+@media (max-width: 640px) {
+  .cover, .section, .footer { padding-left: 20px; padding-right: 20px; }
+  .portfolio-grid, .dodo-grid, .tracker-grid { grid-template-columns: 1fr; }
+  .fu-row { grid-template-columns: 70px 1fr; }
+  .fu-row .fu-cell:nth-child(2) { display: none; }
+  .cover::before { display: none; }
+  .cover-stat { margin-bottom: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover">
+  <div class="cover-eyebrow">The Engage Craft · Pitch Playbook · 2026</div>
+  <h1>How To Get<br>The <em>Reply.</em></h1>
+  <p class="cover-sub">A complete outreach system for Instagram DM, LinkedIn DM, and Cold Email — built for someone with one client and zero fear.</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="stat-n">3</div><div class="stat-l">Pitch Channels</div></div>
+    <div class="cover-stat"><div class="stat-n">9</div><div class="stat-l">Message Templates</div></div>
+    <div class="cover-stat"><div class="stat-n">5</div><div class="stat-l">Follow-up Scripts</div></div>
+    <div class="cover-stat"><div class="stat-n">1</div><div class="stat-l">Goal: Get the Reply</div></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 0: MINDSET ══════════ -->
+<div class="section" style="padding-top: 44px;">
+  <div class="section-head">
+    <div class="section-num">00</div>
+    <div class="section-title">Before You Write A Single Word</div>
+    <div class="section-desc">The Mindset Shift</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">// Core Truth</div>
+    <p>You are not begging for work. You are a <strong>growth partner showing up with a specific idea for their specific problem.</strong> The difference is everything. Brands ignore "we offer marketing services." Brands reply to "I noticed your 600K followers are getting 0.5% engagement — here's why and here's the fix."</p>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-icon">🎯</div>
+      <div class="rule-title">Lead with THEIR problem</div>
+      <div class="rule-body">Never open with who you are. Open with what you noticed about them. They only care about themselves.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">💡</div>
+      <div class="rule-title">Give the idea for free</div>
+      <div class="rule-body">Drop 1 specific viral campaign idea in the first message. If it's good, they'll want to know who you are.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🔬</div>
+      <div class="rule-title">Show you did homework</div>
+      <div class="rule-body">Mention their follower count, a specific post, or a product they just launched. Generic pitches = instant ignore.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">📩</div>
+      <div class="rule-title">One ask only</div>
+      <div class="rule-body">Don't ask for a call AND a proposal AND a meeting. Ask for ONE thing: "Would this be worth exploring?"</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 1: PORTFOLIO FRAMING ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">01</div>
+    <div class="section-title">How To Frame Aarush Bhola As Your Proof</div>
+    <div class="section-desc">No Portfolio? No Problem.</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">// The Reframe</div>
+    <p>You ran content strategy for a creator's fan pages. That is <strong>real work, real results.</strong> You don't need to oversell it — just frame it correctly. Here's how to position it depending on what you can honestly say about results.</p>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="port-card featured">
+      <div class="port-label">// What to say in pitches</div>
+      <div class="port-title">The exact line to use</div>
+      <div class="port-body" style="font-size:13px; margin-top:8px; color: rgba(245,242,235,0.75);">
+        "We recently ran a content campaign for creator Aarush Bhola's fan pages — focused on driving engagement and reach through meme-native formats. Happy to share what worked if you'd like."
+        <br><br>
+        That's it. Simple, honest, creates curiosity. They'll ask — and that's the opening you want.
+      </div>
+    </div>
+    <div class="port-card">
+      <div class="port-label">// If you have numbers</div>
+      <div class="port-title">Use them directly</div>
+      <div class="port-body">If posts got X likes, X shares, X reach — say that. "Campaigns averaged 15K reach per post." Even small numbers are better than none.</div>
+    </div>
+    <div class="port-card">
+      <div class="port-label">// If you don't have numbers</div>
+      <div class="port-title">Sell the process</div>
+      <div class="port-body">"We developed the content calendar, meme formats, and posting strategy for a creator brand over 6 weeks." Process credibility is still credibility.</div>
+    </div>
+    <div class="port-card">
+      <div class="port-label">// Your shortcut</div>
+      <div class="port-title">Show, don't tell</div>
+      <div class="port-body">Build 3 sample memes for the brand you're pitching BEFORE you send the message. Attach them. That's a portfolio of 3 in 2 hours.</div>
+    </div>
+    <div class="port-card">
+      <div class="port-label">// Pro move</div>
+      <div class="port-title">Ask Aarush for a line</div>
+      <div class="port-body">A one-sentence testimonial from Aarush is worth more than 10 bullet points. "The Engage Craft made content that actually got shared." Simple.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 2: INSTAGRAM DM ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">02</div>
+    <div class="section-title">Instagram DM Pitches</div>
+    <div class="section-desc">Best for: D2C brands, music artists, creator brands</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">// Instagram DM Rules</div>
+    <p>Keep it <strong>under 5 lines.</strong> Instagram DMs are read on phones between scrolls. If they need to tap "see more," you've lost them. No paragraphs. No essays. One observation + one idea + one question.</p>
+  </div>
+
+  <!-- Template 1 -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge ig">Instagram</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template IG-01</strong> · Opening DM · For D2C Brands</div>
+        <div class="pitch-card-meta">Tone: Direct, curious, confident</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Message (copy + fill brackets)</div>
+      <div class="msg-box">
+        <div class="msg-text">Hey <span class="bracket">[First Name]</span> 👋
+
+Noticed <span class="bracket">[Brand Name]</span> has <span class="bracket">[X]K</span> followers but the engagement doesn't match — and I think I know exactly why.
+
+Your content is polished but it's not making people <em>stop</em> scrolling. We run meme-native campaigns for brands in your space and the difference in reach is night and day.
+
+We just did this for a creator brand — happy to share what worked.
+
+Worth a quick chat?</div>
+      </div>
+
+      <div class="msg-label" style="margin-top:14px">// Example filled in (for Snitch)</div>
+      <div class="msg-box v2">
+        <div class="msg-text">Hey Siddharth 👋
+
+Noticed Snitch has 600K followers but the engagement doesn't match — and I think I know exactly why.
+
+Your content is polished but it's not making people stop scrolling. We run meme-native campaigns for fashion brands and the difference in reach is night and day.
+
+Idea for you: "Indian Man Dress Code Decoder" — a weekly meme series on confusing dress codes solved by Snitch outfits. Easy to make, insanely shareable.
+
+Worth a quick chat?</div>
+      </div>
+
+      <div class="tip-row"><span class="tip-icon">⏱</span><span><strong>Send time:</strong> Tuesday–Thursday, 11am–1pm or 7pm–9pm. Avoid Mondays and Fridays.</span></div>
+      <div class="tip-row"><span class="tip-icon">📎</span><span><strong>Pro move:</strong> Attach 1 sample meme you made for them. Visual proof > 100 words.</span></div>
+      <div class="tip-row"><span class="tip-icon">🚫</span><span><strong>Don't:</strong> Send a voice note. Don't write more than this. Don't say "I hope this finds you well."</span></div>
+    </div>
+  </div>
+
+  <!-- Template 2: Music Artist -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge ig">Instagram</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template IG-02</strong> · Opening DM · For Music Artists / Labels</div>
+        <div class="pitch-card-meta">Tone: Fan-adjacent, industry-aware</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Message (copy + fill brackets)</div>
+      <div class="msg-box">
+        <div class="msg-text">Hey <span class="bracket">[Name]</span>
+
+"<span class="bracket">[Song Name]</span>" deserves way more streams than it's getting — the problem isn't the music, it's the distribution.
+
+Most artists miss the meme layer. That's where songs actually go viral on Instagram right now.
+
+We build that layer — seeding tracks across meme pages, Reels audio boosts, creator placements. We worked with Aarush Bhola's pages and saw what the right content format does to reach.
+
+If you're open to it, I'd love to show you a quick campaign idea I have for <span class="bracket">[Song Name]</span> specifically. No pitch deck, just an idea.</div>
+      </div>
+
+      <div class="tip-row"><span class="tip-icon">🎯</span><span><strong>Key move:</strong> Name the specific song. Artists will always read a message about their own music.</span></div>
+      <div class="tip-row"><span class="tip-icon">💬</span><span><strong>Ending:</strong> "No pitch deck, just an idea" — removes pressure and sounds human, not salesy.</span></div>
+    </div>
+  </div>
+
+  <!-- Template 3: Follow-up IG -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge ig">Instagram</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template IG-03</strong> · Follow-up DM · If no reply in 4–5 days</div>
+        <div class="pitch-card-meta">Tone: Relaxed, no pressure</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Follow-up message</div>
+      <div class="msg-box v2">
+        <div class="msg-text">Hey <span class="bracket">[Name]</span> — just bumping this up in case it got buried 👆
+
+Made a quick sample meme for <span class="bracket">[Brand]</span> to show what I mean. No strings attached, keep it either way.
+
+[Attach the sample meme here]
+
+Happy to send the full idea if it's useful.</div>
+      </div>
+      <div class="tip-row"><span class="tip-icon">🧠</span><span><strong>Why this works:</strong> You gave them something valuable for free. Now they feel like they owe a reply — even just a "this is cool."</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 3: LINKEDIN DM ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">03</div>
+    <div class="section-title">LinkedIn DM Pitches</div>
+    <div class="section-desc">Best for: Founders, marketing heads, D2C brand decision-makers</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">// LinkedIn DM Rules</div>
+    <p>LinkedIn DMs can be slightly longer — <strong>7–10 lines max.</strong> People on LinkedIn are in "professional mode" so you can lead with a sharper business insight. Connect first with a note, then DM. Always reference something specific from their profile or company page.</p>
+  </div>
+
+  <!-- Template LI-01 -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge li">LinkedIn</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template LI-01</strong> · Connection Request Note</div>
+        <div class="pitch-card-meta">Character limit: 300 · Keep it tight</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Connection note (sent with request)</div>
+      <div class="msg-box">
+        <div class="msg-text">Hi <span class="bracket">[Name]</span> — been following <span class="bracket">[Brand]</span>'s growth closely. I work in meme marketing and viral content for consumer brands — noticed a specific gap in your social strategy I think is costing you real reach. Would love to connect and share a thought.</div>
+      </div>
+      <div class="tip-row"><span class="tip-icon">✅</span><span><strong>Rule:</strong> Never pitch in the connection note. Just create intrigue. The pitch comes after they accept.</span></div>
+    </div>
+  </div>
+
+  <!-- Template LI-02 -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge li">LinkedIn</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template LI-02</strong> · First DM after connection · For Founders</div>
+        <div class="pitch-card-meta">Tone: Strategic, peer-to-peer, no fluff</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Message (copy + fill brackets)</div>
+      <div class="msg-box">
+        <div class="msg-text">Hey <span class="bracket">[Name]</span> — thanks for connecting.
+
+Quick observation: <span class="bracket">[Brand]</span> is spending on ads and influencers but there's a layer missing — meme-native content that makes people share, not just see.
+
+Your <span class="bracket">[X]K</span> followers aren't engaging because the content is beautiful but not culturally sticky. That's a distribution problem, not a product problem.
+
+At The Engage Craft we solve exactly this — we run meme campaigns, viral seeding, and social engagement for D2C brands. We recently worked on content for creator Aarush Bhola's fanbase and the difference in organic reach was significant.
+
+I have a specific campaign idea for <span class="bracket">[Brand]</span> — took me 20 mins to build it, takes you 2 mins to read it. Want me to send it over?</div>
+      </div>
+
+      <div class="msg-label" style="margin-top:14px">// Example filled in (for Pilgrim)</div>
+      <div class="msg-box v2">
+        <div class="msg-text">Hey Anurag — thanks for connecting.
+
+Quick observation: Pilgrim is spending on ads and influencers but there's a layer missing — meme-native content that makes people share, not just see.
+
+Your 430K followers aren't engaging because the content is polished but not culturally sticky. That's a distribution problem, not a product problem.
+
+At The Engage Craft we solve exactly this. I have a specific campaign idea called "Gori twacha ka French connection" — a meme series where Indian skin interviews its international ingredients. Took me 20 mins to build the concept, takes you 2 mins to read it.
+
+Want me to send it over?</div>
+      </div>
+
+      <div class="tip-row"><span class="tip-icon">💼</span><span><strong>Why "2 mins to read it" works:</strong> You're removing the fear of commitment. It's not a meeting or a call — it's just reading. Low friction = high reply rate.</span></div>
+      <div class="tip-row"><span class="tip-icon">📊</span><span><strong>If they're a marketing head (not founder):</strong> Lead with "This could be a quick win you can take to your leadership with actual projected numbers."</span></div>
+    </div>
+  </div>
+
+  <!-- Template LI-03: Marketing Head version -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge li">LinkedIn</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template LI-03</strong> · DM for Marketing Managers (not founders)</div>
+        <div class="pitch-card-meta">Tone: Collaborative, makes them look good internally</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Message</div>
+      <div class="msg-box v3">
+        <div class="msg-text">Hi <span class="bracket">[Name]</span>,
+
+I do meme marketing and viral content for consumer brands — ran a quick audit on <span class="bracket">[Brand]</span>'s socials and spotted a gap that I think is a quick win for your team.
+
+<span class="bracket">[Brand]</span>'s audience is exactly right for meme-native content — but right now the feed is polished without being shareable. I've seen this pattern before and it's usually a 4-week fix.
+
+I built a specific campaign concept for <span class="bracket">[Brand]</span> — not a generic proposal, an actual idea with execution steps. If you'd like to see it, happy to send it over. Takes 2 mins to read, and if it's useful, great — if not, no hard feelings at all.
+
+Would that be helpful?</div>
+      </div>
+      <div class="tip-row"><span class="tip-icon">🎖</span><span><strong>Why this works for managers:</strong> You're making it easy for them to say yes — it's just reading a document. And if they like it, they can bring it to their boss as their own discovery. You're giving them a win.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 4: COLD EMAIL ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">04</div>
+    <div class="section-title">Cold Email Pitches</div>
+    <div class="section-desc">Best for: Brands with public contact info, music labels, event companies</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">// Cold Email Rules</div>
+    <p>Subject line is 80% of your email. If it doesn't open, nothing else matters. <strong>Never say "partnership opportunity" or "collaboration."</strong> Write a subject line that sounds like it was written by a human who noticed something specific. Body: max 150 words. One ask at the end.</p>
+  </div>
+
+  <!-- Email 1 -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge em">Email</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template EM-01</strong> · The "I noticed something" email · D2C Brands</div>
+        <div class="pitch-card-meta">Open rate target: 35%+ with this subject line style</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Subject line options (pick one, fill brackets)</div>
+      <div class="msg-box" style="margin-bottom:8px;">
+        <div class="msg-text">Option A: Quick thought on <span class="bracket">[Brand]</span>'s Instagram
+Option B: <span class="bracket">[Brand]</span> has 600K followers — here's why engagement is low
+Option C: A meme idea for <span class="bracket">[Brand]</span> (took me 20 mins, sharing for free)</div>
+      </div>
+
+      <div class="msg-label">// Email body</div>
+      <div class="msg-box v2">
+        <div class="msg-text">Hi <span class="bracket">[Name]</span>,
+
+I run The Engage Craft — we do meme marketing and viral content for D2C brands.
+
+I spent 10 minutes looking at <span class="bracket">[Brand]</span>'s social pages and noticed your content is well-made but not getting shared. The reason: it's polished, not culturally sticky.
+
+I have a campaign idea called "<span class="bracket">[Your Campaign Idea Name]</span>" — built specifically for <span class="bracket">[Brand]</span>. It's ready to go.
+
+We worked with creator Aarush Bhola on fan-page content — happy to share what worked if useful.
+
+Can I send you the concept? It's a 1-page idea, not a 40-slide deck.
+
+— <span class="bracket">[Your Name]</span>
+The Engage Craft</div>
+      </div>
+
+      <div class="tip-row"><span class="tip-icon">📧</span><span><strong>"1-page idea, not a 40-slide deck"</strong> — this line removes the #1 fear of replying to cold emails (being put through a long sales process).</span></div>
+      <div class="tip-row"><span class="tip-icon">🔍</span><span><strong>Finding emails:</strong> Use Hunter.io (free tier), or LinkedIn → "Contact Info." Format guesses: firstname@brand.com, firstname.lastname@brand.com, hello@brand.com</span></div>
+    </div>
+  </div>
+
+  <!-- Email 2: Music Label -->
+  <div class="pitch-card">
+    <div class="pitch-card-head">
+      <span class="platform-badge em">Email</span>
+      <div>
+        <div class="pitch-card-meta"><strong>Template EM-02</strong> · For Music Labels / Artist Managers</div>
+        <div class="pitch-card-meta">Tone: Industry-savvy, results-focused</div>
+      </div>
+    </div>
+    <div class="pitch-card-body">
+      <div class="msg-label">// Subject line</div>
+      <div class="msg-box" style="margin-bottom:8px;">
+        <div class="msg-text">Option A: Getting <span class="bracket">[Song Name]</span> on 50 meme pages — here's the plan
+Option B: <span class="bracket">[Artist Name]</span>'s streams could be 3x higher. Here's why they aren't.</div>
+      </div>
+
+      <div class="msg-label">// Email body</div>
+      <div class="msg-box v3">
+        <div class="msg-text">Hi <span class="bracket">[Name]</span>,
+
+I work in viral music distribution — specifically the meme and Reels layer that most labels skip.
+
+"<span class="bracket">[Song Name]</span>" has a hook that should be soundtracking thousands of Reels. It isn't, because nobody seeded it into the right meme ecosystem.
+
+Here's what I'd do: identify 40–60 meme and creator pages that match the song's emotion, seed the audio with content hooks, and run a 3-week Reels audio campaign.
+
+We've done content work for creator pages with strong organic reach. Happy to map out the exact strategy for <span class="bracket">[Artist Name]</span> on a quick call.
+
+10 minutes? Happy to work around your calendar.
+
+— <span class="bracket">[Your Name]</span>, The Engage Craft</div>
+      </div>
+      <div class="tip-row"><span class="tip-icon">🎵</span><span><strong>Why "40–60 meme pages" works:</strong> It sounds specific and planned, not vague "we'll promote your music." Specificity = credibility.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 5: FOLLOW-UP SYSTEM ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">05</div>
+    <div class="section-title">The Follow-Up Sequence</div>
+    <div class="section-desc">80% of replies come after follow-up #2</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">// The Rule</div>
+    <p>No reply doesn't mean no interest. It means <strong>they're busy, they forgot, or the timing was wrong.</strong> Follow up exactly 3 times. After that, move on — but stay connected (like their posts, comment genuinely). The deal often comes 3 months later.</p>
+  </div>
+
+  <div class="fu-timeline">
+    <div class="fu-row header-row">
+      <div class="fu-cell">Timing</div>
+      <div class="fu-cell">Action</div>
+      <div class="fu-cell">What to say / send</div>
+    </div>
+    <div class="fu-row">
+      <div class="fu-cell"><div class="fu-day">Day 1<span>First touch</span></div></div>
+      <div class="fu-cell"><div class="fu-action">Send first message</div></div>
+      <div class="fu-cell"><div class="fu-script">Use IG-01, LI-02, or EM-01 templates. Always include the specific campaign idea. <em>Don't send on Monday morning or Friday afternoon.</em></div></div>
+    </div>
+    <div class="fu-row">
+      <div class="fu-cell"><div class="fu-day">Day 5<span>No reply</span></div></div>
+      <div class="fu-cell"><div class="fu-action">Value bump</div></div>
+      <div class="fu-cell"><div class="fu-script"><em>"Hey [Name] — just bumping this. Made a quick sample [meme/concept] for [Brand] while I was thinking about it. Dropping it here — no obligation, keep it either way."</em> → Attach the sample creative.</div></div>
+    </div>
+    <div class="fu-row">
+      <div class="fu-cell"><div class="fu-day">Day 12<span>Still nothing</span></div></div>
+      <div class="fu-cell"><div class="fu-action">Soft close</div></div>
+      <div class="fu-cell"><div class="fu-script"><em>"Hey — last message, I promise. Just wanted to know if now isn't the right time (totally fine) or if my idea missed the mark (useful to know). Either way, keep the sample — it's yours."</em></div></div>
+    </div>
+    <div class="fu-row">
+      <div class="fu-cell"><div class="fu-day">Day 30<span>Optional</span></div></div>
+      <div class="fu-cell"><div class="fu-action">Reconnect hook</div></div>
+      <div class="fu-cell"><div class="fu-script">Comment genuinely on one of their posts. Then 2 days later: <em>"Saw your post about [X] — it's exactly the content moment I was talking about. Still here if the timing works better now."</em></div></div>
+    </div>
+    <div class="fu-row">
+      <div class="fu-cell"><div class="fu-day">Day 60+<span>Long game</span></div></div>
+      <div class="fu-cell"><div class="fu-action">Stay warm</div></div>
+      <div class="fu-cell"><div class="fu-script">Don't pitch. Like posts. Share their content with a genuine comment. When they launch something new, send: <em>"Congrats on [launch] — I had an idea for exactly this moment. Can I share it quickly?"</em></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 6: OBJECTION HANDLER ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">06</div>
+    <div class="section-title">When They Reply With An Objection</div>
+    <div class="section-desc">The 5 most common blocks — handled</div>
+  </div>
+
+  <div class="obj-list">
+    <div class="obj-item">
+      <div class="obj-q">"We already have a team handling social."</div>
+      <div class="obj-a"><strong>Say:</strong> "Totally makes sense — we're not here to replace them. We work alongside in-house teams to add the meme and viral distribution layer that most agencies don't specialise in. Happy to share what that looks like in practice?"</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-q">"Can you share your portfolio / past work?"</div>
+      <div class="obj-a"><strong>Say:</strong> "Of course — we worked with creator Aarush Bhola's fan pages on content strategy and meme-native formats. I also built [3 sample memes for YOUR brand] — I'll send those right now. They'll tell you more than any case study doc." → Then send the samples immediately.</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-q">"What are your prices / rates?"</div>
+      <div class="obj-a"><strong>Say:</strong> "Depends on scope — we do everything from single campaign concepts to full monthly retainers. Before we talk numbers, let me quickly show you the campaign idea I built for you. Once you see it, pricing will make much more sense in context." → Redirect to the idea, not the invoice.</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-q">"Not right now, maybe later."</div>
+      <div class="obj-a"><strong>Say:</strong> "No pressure at all. Can I ask — is it timing or is my idea not quite the right fit? That'll help me know whether to follow up in a month or go back to the drawing board." → Their answer tells you exactly what to do next.</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-q">"How are you different from other agencies?"</div>
+      <div class="obj-a"><strong>Say:</strong> "Most agencies post content. We build cultural moments — meme-native campaigns, viral seeding, engagement that compounds. The difference is whether your posts get seen or shared. I'd rather show you than explain it — give me 5 minutes to walk you through the idea I built for [Brand]?"</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 7: DO'S AND DONT'S ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">07</div>
+    <div class="section-title">The Hard Rules</div>
+    <div class="section-desc">Things that kill pitches vs. things that close them</div>
+  </div>
+
+  <div class="dodo-grid">
+    <div class="do-col">
+      <div class="dodo-head">✓ Always Do</div>
+      <div class="dodo-item"><span class="dot">→</span><span>Name a specific post, product, or number from their brand to show you actually looked</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Lead with their problem before you mention yourself or your agency</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Include 1 ready campaign idea — named, specific, with a format description</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Make your one ask crystal clear at the end of every message</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Follow up exactly 3 times then let it breathe</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Attach or offer sample creative — this is your fastest credibility shortcut</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Send Tuesday–Thursday, late morning or early evening</span></div>
+    </div>
+    <div class="dont-col">
+      <div class="dodo-head">✗ Never Do</div>
+      <div class="dodo-item"><span class="dot">→</span><span>Open with "I hope this message finds you well" or "My name is X and I am..."</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Send a wall of text — if it needs scrolling, they won't read it</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Use words like "synergy," "leverage," "growth hacking," "innovative solutions"</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Ask for a call before you've given them anything of value first</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Send the same generic pitch to every brand — they can feel it</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Follow up more than 3 times in the first month — it kills trust</span></div>
+      <div class="dodo-item"><span class="dot">→</span><span>Apologize for reaching out or say "sorry to bother you"</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 8: YOUR DAILY TARGET ══════════ -->
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">08</div>
+    <div class="section-title">Your Weekly Outreach Target</div>
+    <div class="section-desc">The numbers that get you to your first paid client</div>
+  </div>
+
+  <div class="tracker">
+    <div class="tracker-title">// The Math That Works</div>
+    <div class="tracker-grid">
+      <div class="tracker-cell">
+        <div class="tracker-n"><em>50</em></div>
+        <div class="tracker-l">Pitches / week</div>
+      </div>
+      <div class="tracker-cell">
+        <div class="tracker-n"><em>8–12</em></div>
+        <div class="tracker-l">Replies expected</div>
+      </div>
+      <div class="tracker-cell">
+        <div class="tracker-n"><em>2–4</em></div>
+        <div class="tracker-l">Real conversations</div>
+      </div>
+      <div class="tracker-cell">
+        <div class="tracker-n"><em>1</em></div>
+        <div class="tracker-l">Client / month</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color: rgba(245,242,235,0.4); margin-top:16px; font-family: 'JetBrains Mono', monospace;">
+      // 10 pitches/day · 5 days/week · 3 channels (IG + LI + Email) · 4 weeks = first paid client
+      <br>// The only variable is consistency. Volume beats perfection every time.
+    </p>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-icon">📅</div>
+      <div class="rule-title">Mon: Research Day</div>
+      <div class="rule-body">Find 15 brands, get their contact info, note 1 specific insight per brand. Build your sample memes.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">📤</div>
+      <div class="rule-title">Tue–Thu: Send Days</div>
+      <div class="rule-body">Send 15–20 pitches per day. IG DMs in the morning, LinkedIn in afternoon, emails before 6pm.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">↩️</div>
+      <div class="rule-title">Fri: Reply & Follow-Up</div>
+      <div class="rule-body">Respond to everyone who replied. Send follow-ups to Day 5 no-replies. Track everything in a simple spreadsheet.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">📊</div>
+      <div class="rule-title">Track These 3 Numbers</div>
+      <div class="rule-body">Sent → Replied → Conversation started. Your reply rate below 10%? Change the subject line or opening line.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<div style="padding-bottom: 48px;"></div>
+<div class="footer">
+  <div>
+    <div class="footer-brand">The <em>Engage</em> Craft</div>
+    <div style="font-size:11px; color: var(--muted); margin-top:4px; font-family: 'JetBrains Mono', monospace;">Pitch Playbook · Internal Use Only · March 2026</div>
+  </div>
+  <div class="footer-note">
+    Templates are starting points — always personalize with a specific insight about the brand before sending. The idea in the pitch matters more than the format.
+  </div>
+</div>
+
+</body>
+</html>

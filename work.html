@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Engage Craft — Brand Scout Report 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --surface: #111114;
+    --surface2: #18181d;
+    --accent: #e8ff47;
+    --accent2: #ff6b35;
+    --accent3: #7c5cfc;
+    --text: #f0f0f2;
+    --muted: #6b6b7a;
+    --border: rgba(255,255,255,0.07);
+    --tag-bg: rgba(232,255,71,0.08);
+    --tag-text: #e8ff47;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 60px 48px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,92,252,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 200px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(232,255,71,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(232,255,71,0.3);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .header h1 span { color: var(--accent); }
+  .header-sub {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 32px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .meta-val { font-size: 14px; font-weight: 500; color: var(--text); }
+
+  /* FILTERS / LEGEND */
+  .legend {
+    padding: 20px 48px;
+    display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .legend-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .pill {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    padding: 4px 10px;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+  .pill-d2c { border-color: rgba(232,255,71,0.4); color: #e8ff47; background: rgba(232,255,71,0.06); }
+  .pill-music { border-color: rgba(124,92,252,0.5); color: #b49fff; background: rgba(124,92,252,0.08); }
+  .pill-film { border-color: rgba(255,107,53,0.5); color: #ff9166; background: rgba(255,107,53,0.08); }
+  .pill-creator { border-color: rgba(64,220,180,0.5); color: #40dcb4; background: rgba(64,220,180,0.08); }
+  .pill-saas { border-color: rgba(255,200,60,0.5); color: #ffc83c; background: rgba(255,200,60,0.08); }
+  .pill-global { border-color: rgba(180,180,180,0.3); color: #aaa; background: rgba(180,180,180,0.05); }
+
+  /* GRID */
+  .cards-grid {
+    padding: 40px 48px;
+    display: grid;
+    gap: 24px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(255,255,255,0.14); }
+
+  .card-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 20px;
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.12);
+    min-width: 36px;
+    line-height: 1;
+    margin-top: 4px;
+  }
+  .card-title-block { flex: 1; }
+  .card-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .card-founder { font-size: 11px; color: var(--muted); }
+  .card-founder span { color: rgba(255,255,255,0.5); }
+  .card-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .priority-badge {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .priority-hot { background: rgba(255,107,53,0.15); color: #ff9166; border: 1px solid rgba(255,107,53,0.3); }
+  .priority-high { background: rgba(232,255,71,0.1); color: #e8ff47; border: 1px solid rgba(232,255,71,0.25); }
+  .priority-med { background: rgba(124,92,252,0.12); color: #b49fff; border: 1px solid rgba(124,92,252,0.3); }
+
+  .card-body {
+    padding: 20px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 700px) { .card-body { grid-template-columns: 1fr; } }
+
+  .card-col { padding: 0 12px 0 0; }
+  .card-col + .card-col { padding: 0 0 0 12px; border-left: 1px solid var(--border); }
+
+  .field { margin-bottom: 14px; }
+  .field-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .field-val { font-size: 12px; color: var(--text); line-height: 1.5; }
+  .field-val a { color: rgba(232,255,71,0.7); text-decoration: none; }
+  .field-val a:hover { color: var(--accent); }
+
+  .engagement-bar {
+    display: flex; align-items: center; gap: 8px; margin-top: 4px;
+  }
+  .bar-track {
+    flex: 1; height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%; border-radius: 2px;
+    background: var(--accent2);
+  }
+  .bar-fill.low { background: #ff4d4d; width: 18%; }
+  .bar-fill.mid { background: #ffc83c; width: 38%; }
+  .bar-fill.ok { background: #40dcb4; width: 55%; }
+  .bar-label { font-size: 10px; color: var(--muted); min-width: 48px; }
+
+  /* GAP CALLOUT */
+  .gap-box {
+    margin: 0 28px;
+    padding: 12px 16px;
+    background: rgba(255,107,53,0.06);
+    border: 1px solid rgba(255,107,53,0.15);
+    border-radius: 3px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+  .gap-box strong { color: #ff9166; font-weight: 500; }
+
+  /* VIRAL IDEA */
+  .viral-box {
+    margin: 16px 28px 24px;
+    padding: 14px 18px;
+    background: rgba(124,92,252,0.07);
+    border: 1px solid rgba(124,92,252,0.2);
+    border-radius: 3px;
+    position: relative;
+  }
+  .viral-label {
+    position: absolute;
+    top: -10px; left: 14px;
+    background: var(--accent3);
+    color: #fff;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .viral-box p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    margin-top: 4px;
+  }
+  .viral-box p strong { color: #b49fff; font-weight: 500; }
+
+  /* CONTACT ROW */
+  .contact-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 12px 28px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .contact-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+  .contact-chip {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .chip-ig { background: rgba(220,55,170,0.12); color: #e060c0; border: 1px solid rgba(220,55,170,0.25); }
+  .chip-li { background: rgba(10,102,194,0.15); color: #5aabf0; border: 1px solid rgba(10,102,194,0.25); }
+  .chip-em { background: rgba(232,255,71,0.08); color: #b0c030; border: 1px solid rgba(232,255,71,0.2); }
+  .chip-tw { background: rgba(100,200,255,0.08); color: #60c8f0; border: 1px solid rgba(100,200,255,0.2); }
+  .contact-info { font-size: 11px; color: rgba(255,255,255,0.45); margin-left: auto; }
+
+  /* DIVIDER */
+  .section-divider {
+    padding: 16px 48px 8px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-divider::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-brand { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; }
+  .footer-brand span { color: var(--accent); }
+  .footer-note { font-size: 11px; color: var(--muted); max-width: 400px; }
+
+  @media (max-width: 600px) {
+    .header, .cards-grid, .legend, .footer { padding-left: 20px; padding-right: 20px; }
+    .card-header { grid-template-columns: auto 1fr; }
+    .card-badges { flex-direction: row; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">Confidential · Growth Strategy Report · March 2026</div>
+  <h1>Brand Scout<br><span>Intelligence Report</span></h1>
+  <p class="header-sub">20 high-potential brands primed for meme marketing, viral distribution & social engagement — curated for The Engage Craft agency.</p>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-label">Prepared For</span><span class="meta-val">The Engage Craft</span></div>
+    <div class="meta-item"><span class="meta-label">Brands Scouted</span><span class="meta-val">20 Targets</span></div>
+    <div class="meta-item"><span class="meta-label">Market Focus</span><span class="meta-val">India (+ 3 Global)</span></div>
+    <div class="meta-item"><span class="meta-label">Priority Score</span><span class="meta-val">HOT / HIGH / MED</span></div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="legend-label">Industry Tags:</span>
+  <span class="pill pill-d2c">D2C</span>
+  <span class="pill pill-music">Music</span>
+  <span class="pill pill-film">Film/OTT</span>
+  <span class="pill pill-creator">Creator Brand</span>
+  <span class="pill pill-saas">SaaS/App</span>
+  <span class="pill pill-global">Global</span>
+</div>
+
+<!-- ==================== SECTION 1: D2C BRANDS ==================== -->
+<div class="section-divider">D2C &amp; Consumer Brands</div>
+<div class="cards-grid">
+
+  <!-- CARD 1: Pilgrim -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">01</div>
+      <div class="card-title-block">
+        <div class="card-name">Pilgrim</div>
+        <div class="card-founder">Founders: <span>Anurag Kedia &amp; Gagandeep Makker</span> · Mkt Head: Search LinkedIn</div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Beauty</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Fresh ₹200 Cr Series C raise (March 2025); pushing international beauty formulations for Indian skin. Scaling aggressively into new SKUs.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @bepilgrim (~430K followers)<br>YouTube: 50K+ | LinkedIn active</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.4% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Strong product posts but few thumb-stopping moments. Comments are generic. Zero meme presence despite highly "meme-able" product category (French ingredients for Indian skin).</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">They're spending big (₹200 Cr round) but content looks identical to every other beauty brand. Compete with Minimalist (acquired by HUL), Mamaearth, Plum — all with bigger noise. The "Korean &amp; French beauty, made for India" angle is extremely meme-able. Nobody is cracking jokes about French sunscreen for Indian summers yet.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/bepilgrim</a> · <a href="#">linkedin.com/company/pilgrim-india</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn (Marketing team) + Instagram DM</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Pilgrim has budget and product but zero culture. Their competitors are being memed organically — Pilgrim isn't even in the conversation. Fresh funding = fresh marketing budget. Strike now.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Gori twacha ka French connection"</strong> — A meme series where Indian skin "interviews" international skincare ingredients (a French peptide speaking with an accent, a Korean glass-skin serum vs. our desi oiliness). Relatable, funny, and product-forward. Pitch a 4-week Reels series targeting 18–28F.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">marketing@pilgrimindia.com (general) · Search "Pilgrim India marketing" on LinkedIn</span>
+    </div>
+  </div>
+
+  <!-- CARD 2: Slurrp Farm -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">02</div>
+      <div class="card-title-block">
+        <div class="card-name">Slurrp Farm</div>
+        <div class="card-founder">Founders: <span>Meghana Narayan &amp; Shauravi Malik</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Kids Food</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Post-Series C ($18.1M total raised); expanding millet-based foods for kids. New cereals &amp; snack range launch. Strong Nykaa &amp; Amazon presence.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @slurrpfarm (~110K) · Facebook: 80K · YouTube: minimal</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.5% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Parenting content is earnest but boring. No humor, no chaos. Millennial Indian parents are PRIME meme consumers but brand isn't speaking their language.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Indian millennial parents — their exact TG — live on meme pages. The "getting your toddler to eat healthy" struggle is one of the most universally relatable parenting topics. Competitors like Munchkin &amp; Nestle are bland. An authentic meme campaign about picky eaters vs. millet dosas could go massively viral.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/slurrpfarm</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn · Email</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Their founders are articulate, well-spoken women with great origin stories — but the brand's voice is too safe. No memes. No relatable chaos. Parenting pages with 2M followers would share their content if it was funny — they're not even trying.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Bacche ne khaya toh medal milega"</strong> — A meme campaign series showing the Olympian-level effort Indian parents go through to feed their kids vegetables. Slurrp Farm = the cheat code. Partner with 15 parenting meme pages + micro influencers. UGC challenge: show your picky eater's reaction.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-em">Email</span>
+      <span class="contact-info">hello@slurrpfarm.com · Meghana Narayan on LinkedIn</span>
+    </div>
+  </div>
+
+  <!-- CARD 3: The Pant Project -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">03</div>
+      <div class="card-title-block">
+        <div class="card-name">The Pant Project</div>
+        <div class="card-founder">Founder: <span>Dhruv Toshniwal</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Fashion</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Custom-fit trousers D2C, tapping India's $4B bottomwear market. Featured in FAST42 2025 list. Expanding SKUs &amp; offline pop-ups.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @thepantproject (~85K) · Low YouTube presence</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.6% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Posts look like a lookbook. No relatable content about the universal Indian trouser struggle — ill-fitting pants, tailor disappointment, wedding season panic.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Every Indian man has suffered a tailor. "Kuch dho lo, kuch chalega" is the national tailoring motto. This brand SOLVES that problem — but nobody knows it yet. Office-going urban men aged 22–35 are chronically online. The meme potential is enormous and completely untapped.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/thepantproject</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Instagram DM</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Their product has a genuinely funny problem statement — Indian men and their trouser trauma — but their content is serious lookbook aesthetic. They're missing an entire universe of relatable, shareable humor.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Darzi teri maar"</strong> — Meme series recreating the universal tailor trauma: "3 din mein milega" (never arrives), the mystery measurements, the 5cm waist mistake. The Pant Project = the hero. Collaborate with office humor pages and LinkedIn meme creators. One viral reel here could 10x awareness.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">Dhruv Toshniwal on LinkedIn · DM @thepantproject</span>
+    </div>
+  </div>
+
+  <!-- CARD 4: Neeman's -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">04</div>
+      <div class="card-title-block">
+        <div class="card-name">Neeman's Shoes</div>
+        <div class="card-founder">Founders: <span>Taran Chhabra &amp; Taran Prabhakar</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Footwear</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">India's first merino wool &amp; recycled material shoes. Expanding product range. Currently running performance ads but no viral traction.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @neemanshoes (~120K) · Decent YouTube presence</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~1.1% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">Gets some traction on unboxing content but no shareable, laugh-out-loud moments. The sustainability angle is underutilized from a cultural humor POV.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Sustainability content in India is either preachy or boring — this brand needs to make eco-footwear cool and funny. The "merino wool shoes in Indian heat" paradox is incredibly meme-able. India's GenZ audience mocks fast fashion but doesn't know alternatives — Neeman's could own that conversation.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/neemanshoes</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Instagram</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Every eco-brand talks about saving the planet. Nobody makes it funny. Neeman's has an inherently Indian tension — premium wool shoes in a country of 45°C summers — that's begging to be memed.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Jab bheja fry ho, toh paon cool rakho"</strong> — Meme campaign contrasting India's brutal summer chaos (traffic, power cuts, wedding season) with Neeman's breathable comfort. Deploy on Twitter/X, meme pages, and LinkedIn with a "rate your shoe misery" UGC thread. Collaboration with sustainability creators for Reel series.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">contact@neemanshoes.com · Taran Chhabra on LinkedIn</span>
+    </div>
+  </div>
+
+  <!-- CARD 5: SleepyCat -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">05</div>
+      <div class="card-title-block">
+        <div class="card-name">SleepyCat</div>
+        <div class="card-founder">Founder: <span>Kabir Siddiq</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Sleep/Home</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">"The Slap in the Face We All Need" campaign — #SleepSolvesEverything anti-hustle positioning. New mattress variants &amp; sleep accessories launching.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @sleepycatindia (~95K) · Active YouTube</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~1.3% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">Good intent but campaign didn't go viral. Has a pro-sleep, anti-hustle narrative that is PERFECTLY aligned with Indian internet culture (nap memes, productivity guilt) — not maximizing it.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">India's most shareable content is about sleep deprivation — Monday morning memes, 3AM Twitter/X culture, "just 5 more minutes" energy. SleepyCat literally sells the solution but hasn't cracked the meme code. Wakefit does it well. SleepyCat has the better brand voice but lower meme game.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/sleepycatindia</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn · Instagram DM</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> They launched a solid campaign concept but it fizzled because distribution was weak. They need a meme amplification layer. 100 meme pages sharing the same anti-hustle content = viral moment.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Nap-o-nomics"</strong> — Meme series calculating the "ROI of sleep" using desi humor — "1 hour nap = 3 chai savings + zero ibuprofen." Partner with finance meme creators (Sharan Hegde, CA Rachana Ranade's audience) for a crossover that nobody sees coming. SleepyCat = the most rational productivity investment.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">Kabir Siddiq on LinkedIn · @sleepycatindia DM</span>
+    </div>
+  </div>
+
+  <!-- CARD 6: House of EM5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">06</div>
+      <div class="card-title-block">
+        <div class="card-name">House of EM5</div>
+        <div class="card-founder">Founder: <span>Shashank Chourey</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Fragrance</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Did a Suryakumar Yadav x Kachra Seth (Phir Hera Pheri) campaign — showed creative instinct. Expanding fragrance range. One of India's most talked-about D2C fragrance brands in 2025.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @houseofe.m5 (~290K) · Growing fast</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~1.8% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">The SKY-Kachra Seth idea was genius but a one-off. No consistent meme or pop culture integration. The fragrance category is exploding (30+ brands) — they need to own the humor in it before competitors do.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">They've already proven they understand meme culture — they just need a consistent engine. India's perfume market is flooded and confusing to consumers. The brand that makes "smelling good vs. smelling like effort" funny wins Gen Z forever. EM5 is positioned to do this but needs a steady meme strategy, not a one-campaign flash.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/houseofe.m5</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">Instagram + LinkedIn</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> They have meme instinct but no meme system. One Suryakumar SKY campaign ≠ meme marketing strategy. They need a 3-month meme calendar that keeps them in pop culture weekly.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Bollywood characters, EM5 scents"</strong> — A meme series assigning EM5 fragrances to iconic Bollywood characters. Gabbar = smoky oud, Poo from K3G = flowery amber, Circuit from Munna Bhai = earthy musk. Deeply shareable, drives product discovery through humor. Run as a weekly Instagram series with audience voting.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-info">Shashank Chourey on LinkedIn · DM @houseofe.m5</span>
+    </div>
+  </div>
+
+  <!-- CARD 7: Zingavita -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">07</div>
+      <div class="card-title-block">
+        <div class="card-name">Zingavita</div>
+        <div class="card-founder">Founders: <span>Sachin Goel &amp; Dheeraj Nagpal</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Nutraceuticals</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Ayurvedic supplements solving India's micronutrient deficiency. FAST42 2025 list. Launching new kids &amp; adult supplement range for FY26.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @zingavitaofficial (~55K) · Underpowered for their category</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.7% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Content is educational but dry. No humor, no relatability. The "Indian diet is secretly deficient" angle is wildly meme-able — every desi knows the irony of eating dal-chawal but being iron deficient.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Indian health anxiety content is one of the most-watched categories. Everyone shares "signs you're deficient in X" posts. Zingavita can own that conversation. Right now they're invisible while competitors like Setu, Wellbeing Nutrition dominate with better content marketing. Budget + FAST42 momentum = good entry point.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/zingavitaofficial</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Nutraceuticals is the most searched and least trusted category in India. Humor + transparency = trust. The Whole Truth proved this with Rohan Joshi's campaign. Zingavita has the same opportunity.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Kitna khaoge toh thak nahi"</strong> — A meme series on the great Indian energy paradox — eating 3 rotis but still exhausted by 2 PM. Position Zingavita as the missing piece using relatable Indian daily life scenarios (office energy crash, mom exhaustion, gym plateau). Partner with Indian workplace humor pages.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-em">Email</span>
+      <span class="contact-info">Sachin Goel on LinkedIn · hello@zingavita.com</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 2: MUSIC ==================== -->
+<div class="section-divider">Music &amp; Artist Brands</div>
+<div class="cards-grid">
+
+  <!-- CARD 8: Azadi Records -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">08</div>
+      <div class="card-title-block">
+        <div class="card-name">Azadi Records</div>
+        <div class="card-founder">Founders: <span>Uday Kapur &amp; Mo Joshi</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-music">Indie Hip-Hop Label</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">New artist signings &amp; releases in 2025-26. Artists like Prabhdeep, Slow Cheeta, Prabh Deep. Politically conscious hip-hop in a market that doesn't know how to market political art.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @azadirecords (~220K) · Loyal but niche fanbase</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~2.1% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">Good for a label but could be much higher. Their content is mostly release announcements. No meme/viral content that brings non-hip-hop fans into the fold.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Hip-hop is India's most culturally online genre — its fans are the most meme-literate. But Azadi stays serious while competitors like 0% Fraud and local rap scenes create viral moments. New song drops need a viral distribution layer. They need memes that make non-hip-hop fans curious.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/azadirecords</a> · <a href="#">twitter.com/azadirecords</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">Instagram DM + Email</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Azadi has cultural credibility but limited mainstream reach. A single viral meme campaign around one song release could 10x streams and bring in listeners who'd never clicked on "desi hip-hop" before.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Lyrics ki rasoi"</strong> — Take the most hard-hitting bars from Azadi artists and repackage them as absurdly mundane Indian life scenarios (a bar about resistance becomes commentary on an auto-rickshaw refusing to go by meter). Meme format meets music discovery — shareable even if you've never heard the songs. Release 1 meme per new track drop.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-chip chip-em">Email</span>
+      <span class="contact-info">azadirecords@gmail.com · DM @azadirecords</span>
+    </div>
+  </div>
+
+  <!-- CARD 9: GINI (Artist) -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">09</div>
+      <div class="card-title-block">
+        <div class="card-name">GINI (Artist Brand)</div>
+        <div class="card-founder">Artist: <span>Dehradun-born Indie Pop Rising Star</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-music">I-Pop · Artist Brand</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">2025 tracks "Aashiyan" &amp; "Naadaani" · YouTube Fanfest India performer · UK Tour completed · Lollapalooza 2026 debut confirmed · Collab with Tsumyoki "Don't Even Text" — Gen Z anthem of 2025.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: ~180K (growing fast) · Spotify: rising streams</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~2.8% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">Good for an independent artist but not at the level needed for Lollapalooza momentum. No viral meme moment despite deeply relatable music. "Don't Even Text" should be ALL OVER breakup meme pages — it isn't.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">She's pre-Lollapalooza 2026 — this is the window. Gen Z music fans discover new artists entirely through memes and Reels. "Don't Even Text" is a song that SHOULD be soundtracking 10,000 breakup memes right now. Viral song placement before the festival debut could make her a household name by January 2026.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/giniofficial_</a> · Spotify artist page</div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">Instagram DM (artist/manager)</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Artist is genuinely talented and on the cusp of mainstream — but pre-Lollapalooza timing is critical. Without a viral push, she'll be the "who?" at the festival. With one, she'll be the one everyone was already listening to.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Don't Even Text" Meme Takeover</strong> — License the hook/instrumental for a 30-day meme campaign across 50 meme pages. Every "leaving someone on read," "double-text regret," and "situationship" meme gets GINI's song. Target Instagram Reels audio boost. Aim for 500K+ audio uses before Lollapalooza 2026.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-chip chip-em">Email (Manager)</span>
+      <span class="contact-info">DM @giniofficial_ · Search artist management via Spotify artist page</span>
+    </div>
+  </div>
+
+  <!-- CARD 10: IncInk Records -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">10</div>
+      <div class="card-title-block">
+        <div class="card-name">IncInk Records</div>
+        <div class="card-founder">Founders: <span>Navzar Eranee &amp; Ranveer (Divine)</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-music">Hip-Hop Label</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Post-Gully Boy boom label now needing to prove relevance in 2025-26. Artists: Kaam Bhaari, SlowCheeta, Spitfire. New album/EP releases planned. The label is credible but losing cultural moment.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @incink (~130K) · Low relative to DIVINE's own fanbase</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.9% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Riding Gully Boy legacy but not creating new cultural moments. Artist signings are strong but distribution of excitement is weak. Their label page feels like an afterthought.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Gully Boy built Indian hip-hop's mainstream moment in 2019. That moment needs reinvention in 2026. IncInk has artists with real stories from real streets — those stories need meme-native content formats. A Kaam Bhaari viral moment could relaunch the whole label narrative.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/incink</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">Instagram DM + LinkedIn</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> The label is coasting on legacy. New music needs new distribution playbooks. Their artists have massive meme potential but the label doesn't deploy it systematically.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Gully to global" documeme series</strong> — Short-form behind-the-scenes of IncInk artists styled as meme-native content: raw, funny, honest moments from the recording process. Pair each episode with a lyric meme drop. Build FOMO around upcoming releases through authenticity — not hype.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-info">DM @incink · Navzar Eranee on LinkedIn</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 3: ENTERTAINMENT / FILM ==================== -->
+<div class="section-divider">Film, OTT &amp; Entertainment</div>
+<div class="cards-grid">
+
+  <!-- CARD 11: Only Much Louder (OML) -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">11</div>
+      <div class="card-title-block">
+        <div class="card-name">Only Much Louder (OML)</div>
+        <div class="card-founder">Founder: <span>Jay Mehta</span> · CEO: <span>Gunjan Bhavnani</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-film">Live Entertainment</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">NH7 Weekender 2026 multi-city edition coming up. Bacardi partnerships. Managing international artist India tours. Pre-event ticket sales &amp; lineup reveals are key moments.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @omlive (~410K) · YouTube: 200K+ · Twitter active</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~1.4% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">Good reach but festival hype should be creating MORE conversation than it does. Lineup reveals are huge moments being announced with static posts. Zero meme/viral pre-festival content.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Every major global festival (Coachella, Glastonbury) generates massive organic meme culture. NH7 Weekender is India's equivalent — but nobody is making "who do you go as?" or "festival type" memes for it. Pre-event meme campaigns can sell out tickets faster and build a community that feels like they're "in" before it starts.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/omlive</a> · <a href="#">twitter.com/oml</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</span><div class="field-val">LinkedIn + Email</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> OML manages massive events but treats social like a PR bulletin board. Lineup reveals that should spark 48-hour Twitter trends are dying after 200 comments. They need a meme-first announcement strategy.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"NH7 Personality Test"</strong> — A viral quiz/meme format: "which NH7 Weekender stage are you?" tied to personality archetypes. Each answer reveals a secret lineup hint. Share to see your result. Create FOMO and lineup anticipation simultaneously. Deploy on Instagram Stories + dedicated microsite 6 weeks before event.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-em">Email</span>
+      <span class="contact-info">info@oml.in · Gunjan Bhavnani on LinkedIn</span>
+    </div>
+  </div>
+
+  <!-- CARD 12: Maan Panu (Artist) -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">12</div>
+      <div class="card-title-block">
+        <div class="card-name">Maan Panu</div>
+        <div class="card-founder">Artist: <span>Uttarakhand · I-Pop Breakout</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-music">I-Pop · Creator Artist</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Breakout via I-Popstar show with "I'm Done." Multiple 2025 releases including "AGAR" with Nimit Music Project &amp; "Tu Hain Jahan." Rising fast on Spotify India charts.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: ~95K (explosive growth phase) · Spotify streams accelerating</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~3.2% · Mid-High</span></div>
+          <div class="field-val" style="margin-top:6px">Higher than most but not proportional to his music quality or I-Popstar moment. "I'm Done" deserves to be a breakup anthem used in 50K Reels — it's at maybe 2K. Massive missed opportunity.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">He's in the "breakout window" — 6-12 months after a TV show moment where sustained meme/viral push can convert fleeting fame into lasting fanbase. Aditya Rikhari (Sahiba, 11 weeks #1 Spotify) showed what happens when I-Pop gets viral distribution. Maan Panu has the same quality — needs the engine.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/maanpanu</a> (verify handle) · Spotify artist page</div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">Instagram DM</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> I-Popstar gave him exposure but no one built the meme infrastructure to capitalize on it. His songs are ready-made for Reels but nobody is deploying them systematically across heartbreak/emotion pages.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"I'm Done" Reel Audit</strong> — A meme-native campaign where every "I'm done with this" moment (traffic, deadlines, situationships, relatives) gets soundtracked by Maan Panu's hook. Seed with 20 creators across lifestyle, humor, and relatable content niches. Track audio uses and boost the top-performing Reels. Target 100K audio uses in 4 weeks.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-chip chip-em">Email (Manager)</span>
+      <span class="contact-info">DM @maanpanu · via Spotify for Artists contact</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 4: CREATOR & SAAS BRANDS ==================== -->
+<div class="section-divider">Creator Brands, SaaS &amp; EdTech</div>
+<div class="cards-grid">
+
+  <!-- CARD 13: Flexnest -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">13</div>
+      <div class="card-title-block">
+        <div class="card-name">Flexnest</div>
+        <div class="card-founder">Founders: <span>Rhea Singh Anand &amp; Raunaq Singh Anand</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · FitTech</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">At-home workout ecosystem: smart fitness equipment + app. Gurugram-based. Running performance ads. Targeting post-pandemic home fitness boom continuation in 2025-26.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @flexnestindia (~65K) · Growing but flat engagement</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.8% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Fitness content that looks like every other fitness brand. No humor around the Indian home workout reality — the jugaad gym, the family interruptions, the AC vs. sweat dilemma.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">India's home fitness content is dominated by either serious fitness influencers or Bollywood dance. The REAL Indian home workout — in a small apartment, with relatives walking in, equipment doubling as clothes hangers — is perfectly meme-able. Flexnest solves this and should own the narrative.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/flexnestindia</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Instagram</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Home gym equipment in India is aspirational but also deeply comic — the equipment that becomes a saree rack, the husband who bought it "for exercise" and uses it twice. Flexnest isn't touching any of this relatable gold.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Equipment ki durgati"</strong> — A meme series documenting the lifecycle of Indian home gym equipment: Day 1 (motivation), Week 2 (occasional use), Month 3 (clothes hanger). Flexnest = the equipment that actually stays useful. UGC challenge: show your "most creative non-fitness use" of old gym gear. Massive relatability.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">Rhea Singh Anand on LinkedIn · hello@flexnest.in</span>
+    </div>
+  </div>
+
+  <!-- CARD 14: Chaayos -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">14</div>
+      <div class="card-title-block">
+        <div class="card-name">Chaayos</div>
+        <div class="card-founder">Founders: <span>Nitin Saluja &amp; Raghav Verma</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">QSR · Chai Brand</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">80,000+ chai combinations. Expanding retail footprint nationally. App-first ordering. Building chai culture identity beyond "just a tea shop." Looking to compete with Starbucks' cultural cache among GenZ.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @chaayos (~390K) · Twitter: decent · YouTube: low</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~1.2% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">Product posts perform but there's no cultural conversation. "Meri wali chai" is India's most quoted emotion — Chaayos barely touches meme culture despite being the obvious brand to own it.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Chai is India's most emotionally charged beverage — breakups over chai, chai as therapy, office chai politics, chai vs. coffee discourse. Chaayos is the most obvious beneficiary of desi chai culture memes but they're not deploying it. Meanwhile, smaller chai cafes in Mumbai get more organic UGC. Massive gap at the brand with 390K followers.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/chaayos</a> · <a href="#">twitter.com/chaayos</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Email</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Chai is India's most viral topic but Chaayos isn't owning it. Their 390K followers should be generating 100K+ comments per viral post. Instead they're getting ~500. The gap between brand size and engagement is embarrassing.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Chai personality test"</strong> — A viral format where your chai order (elaichi, ginger, no sugar, double milk) reveals your personality. "No sugar chahiye = passive aggressive," "extra adrak = has opinions on everything." Deploy as Instagram Stories poll + meme posts. The Indian chai identity is something every single person has a strong opinion about — guaranteed engagement.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-em">Email</span>
+      <span class="contact-info">contact@chaayos.com · Nitin Saluja on LinkedIn</span>
+    </div>
+  </div>
+
+  <!-- CARD 15: Rage Coffee -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">15</div>
+      <div class="card-title-block">
+        <div class="card-name">Rage Coffee</div>
+        <div class="card-founder">Founder: <span>Bharat Sethi</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Functional Bev</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Targeting ₹500 Cr revenue by end 2025. New cold coffee variants + 2,500+ offline locations. Omnichannel push. Endorsed by Virat Kohli. Strong D2C website with 35% repeat purchase rate.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @ragecoffee (~220K) · Decent but underperforming given celebrity endorsement</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.9% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Has Virat Kohli but doesn't leverage him in meme culture at all. Kohli is India's most meme-d celebrity — yet Rage Coffee's content is serious product photography. Criminal underutilization.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Virat Kohli endorsing a coffee brand is inherently funny and interesting. But Rage Coffee's content team treats it like any other celebrity post. The brand name "Rage" is a gift — coffee + rage + the Indian office experience = perfect meme territory that nobody is exploiting. The brand literally has "rage" in the name and is producing polite content.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/ragecoffee</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Instagram</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> "Rage" + Virat Kohli + Indian office culture = three of the most meme-fertile ingredients in India. They're making polished ads instead of cultural moments. A single well-placed "Monday rage" meme series could do what ₹50L in ads can't.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Rage Level Meter"</strong> — A weekly meme series rating everyday Indian situations on a "Rage Level" scale (1-10). Traffic = 7, boss CC'ing your manager = 9, no Rage Coffee in the office = 10. Deploy across corporate humor pages, LinkedIn meme ecosystem, and Mumbai/Delhi city pages. The brand name does half the creative work.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">Bharat Sethi on LinkedIn · hello@ragecoffee.in</span>
+    </div>
+  </div>
+
+  <!-- CARD 16: Bombay Shaving Company -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">16</div>
+      <div class="card-title-block">
+        <div class="card-name">Bombay Shaving Company</div>
+        <div class="card-founder">Founder: <span>Shantanu Deshpande</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Men's Grooming</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">₹177 Cr revenue FY23 (69% YoY growth). Expanding women's range. New skincare for men line. Competing with Beardo, Ustraa, and The Man Company in saturated men's grooming.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @bombayshavingcompany (~305K) · YouTube: active</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill mid"></div></div><span class="bar-label">~1.1% · Mid</span></div>
+          <div class="field-val" style="margin-top:6px">Grooming tips do well but no humor content despite shaving being comedy gold (first shave disasters, beard identity crises, girlfriend stealing their razors). The category is ready for meme domination.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Indian men's grooming anxiety and humor is massively underserved in content marketing. "The beard is a personality" meme ecosystem is huge. Competitor Beardo owns the "beard bro" identity; BSC should own the smarter, funnier, more self-aware version of Indian men's grooming. Their audience is online and meme-literate.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/bombayshavingcompany</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Instagram</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> The men's grooming space is saturated and most brands sound identical. BSC's best differentiator is wit and intelligence — but their social is playing it straight. Humor could carve them a clear lane away from Beardo's "masculine bro" territory.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Beard Diplomacy"</strong> — A meme series on how Indian men's beard decisions affect every relationship: office interview (keep/shave?), meeting girlfriend's parents (trim!), Holi (bad idea). BSC products = the solution to each social crisis. Shareable format with clear product integration. Partner with Indian LinkedIn/office humor creators.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">Shantanu Deshpande on LinkedIn (very active) · contact@bombayshavingcompany.com</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 5: GLOBAL PICKS ==================== -->
+<div class="section-divider">Global High-Relevance Targets</div>
+<div class="cards-grid">
+
+  <!-- CARD 17: Haus Labs (Lady Gaga) -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">17</div>
+      <div class="card-title-block">
+        <div class="card-name">Haus Labs (Lady Gaga)</div>
+        <div class="card-founder">Founder: <span>Lady Gaga</span> · CMO: <span>Ben Jones</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Celebrity Beauty</span>
+        <span class="pill pill-global">Global</span>
+        <span class="priority-badge priority-med">◆ MED</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Chromatica Ball-era resurgence. New foundation line with flexible coverage. Expanding into India/APAC via Sephora. Lady Gaga's Joker 2 press &amp; Grammy campaign overlap creates a content moment.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @hauslabs (~1.4M) · Strong in the US, weak in Indian/APAC markets</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.6% · Low for size</span></div>
+          <div class="field-val" style="margin-top:6px">Celebrity beauty brand with a massive fanbase but low cultural penetration in India. Lady Gaga's Little Monsters are intensely online and meme-native — but the brand doesn't speak their language.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Lady Gaga is one of the most meme-d humans alive ("applause.gif," meat dress, Oscar crying face). Haus Labs should be riding this wave. Instead it's styled like a luxury beauty brand. The gap between Gaga's internet omnipresence and Haus Labs' boring content strategy is a major business opportunity for The Engage Craft's India/global outreach.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/hauslabs</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn (Marketing team) + Email</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> The brand's parent celebrity generates more organic memes in a day than the brand has generated all year. That's an asset completely untapped. Niche pitch: approach as India/APAC launch meme distribution strategy.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Gaga Era Makeup"</strong> — Assign Haus Labs products to iconic Gaga eras (meat dress era = bold red, Poker Face era = smoky eye, Chromatica = pink everything). Indian Little Monsters + global Gaga fans + genuine product discovery. Pitch as a "cultural drop" campaign tied to her upcoming activity. Enormous organic amplification potential.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-em">Email</span>
+      <span class="contact-info">press@hauslabs.com · Marketing VP on LinkedIn</span>
+    </div>
+  </div>
+
+  <!-- CARD 18: Snitch -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">18</div>
+      <div class="card-title-block">
+        <div class="card-name">Snitch</div>
+        <div class="card-founder">Founder: <span>Siddharth Dungarwal</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Men's Fashion</span>
+        <span class="priority-badge priority-hot">🔥 HOT</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">2.4% market share in India's men's fashion e-commerce. Competing with Zara &amp; H&M. New seasonal drops, offline expansion. Rapidly scaling on social but engagement not catching up to follower growth.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @snitch.co.in (~600K) · One of the fastest growing men's fashion accounts</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.5% · Low for size</span></div>
+          <div class="field-val" style="margin-top:6px">600K followers but comments are mostly "🔥🔥🔥" bots. Real engagement is weak. Their drops create no cultural moment — they could be creating something like Supreme's "drop culture" hype but aren't.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Snitch targets urban Indian men 20-30 who are intensely online. Their fashion sense is aspirational but the brand has no personality beyond "stylish." Indian men's fashion anxiety — what to wear to a "smart casual" wedding, how to not look like your dad at a date — is primo meme territory that Snitch isn't touching.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/snitch.co.in</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">Instagram DM + LinkedIn</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> 600K followers and 0.5% engagement is a red flag. It means their audience is there but not invested. Meme content that gives the brand a real personality could convert followers into a fanbase. Drop culture memes (countdown, sold out) could manufacture hype.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Indian Man Dress Code Decoder"</strong> — Meme series decoding confusing Indian dress codes: "smart casual" (what even is this), "ethnic wear" (which ethnic?), "beachwear" (for which beach, Juhu or Malibu?). Each problem solved with a specific Snitch outfit. Highly shareable among 22-30M target. Partner with Indian men's lifestyle creators.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-info">Siddharth Dungarwal on LinkedIn · hello@snitch.co.in</span>
+    </div>
+  </div>
+
+  <!-- CARD 19: Dot & Key -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">19</div>
+      <div class="card-title-block">
+        <div class="card-name">Dot &amp; Key</div>
+        <div class="card-founder">Founders: <span>Suyash Saraf &amp; Anisha Saraf</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Skincare</span>
+        <span class="priority-badge priority-high">⚡ HIGH</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">Watermelon, cica, and barrier-repair skincare line. Featured in Smytten sampling campaigns. Competing with Minimalist (now HUL) &amp; Plum in ingredient-led skincare. Nykaa top seller.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @dotandkey (~610K) · Strong following but heavily product-post driven</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.7% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Pretty pastel aesthetic but zero humor. Skincare girlies are EXTREMELY meme-active — the "skin barrier crying" and "SPF is not optional" meme ecosystem is massive. Dot &amp; Key is invisible in it.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">The skincare meme community on Instagram and Twitter is one of the most engaged in India. "My skin barrier when I tried 5 actives at once" content goes viral daily. Dot &amp; Key's products (especially barrier repair and sunscreens) are the solution to every problem these memes describe — but they're not in those conversations at all.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/dotandkey</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Instagram</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> They're Nykaa's top seller — which means they're winning at SEO and retail but losing at culture. Indian skincare Twitter/Instagram is the exact audience they need, and it's built on memes. They're not even lurking, let alone participating.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Your Skin's Group Chat"</strong> — A meme series where different skin issues (dehydration, breakouts, pigmentation, barrier damage) are characters in a WhatsApp group, arguing about what the person is doing wrong. Dot &amp; Key products = the mutual friend who sorts everything out. Deeply shareable among skincare-obsessed Indian women 20-32.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">Suyash Saraf on LinkedIn · hello@dotandkey.com</span>
+    </div>
+  </div>
+
+  <!-- CARD 20: Haus & Kinder -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">20</div>
+      <div class="card-title-block">
+        <div class="card-name">Haus &amp; Kinder</div>
+        <div class="card-founder">Founder: <span>Tapanjana R.</span></div>
+      </div>
+      <div class="card-badges">
+        <span class="pill pill-d2c">D2C · Home Textiles</span>
+        <span class="priority-badge priority-med">◆ MED</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-col">
+        <div class="field"><div class="field-label">Currently Promoting</div><div class="field-val">FAST42 2025 list. Fashion-forward bedsheets, curtains, towels for young Indian families. Disrupting home textiles for millennial homeowners who want aesthetics, not just utility.</div></div>
+        <div class="field"><div class="field-label">Social Presence</div><div class="field-val">Instagram: @hausandkinder (~75K) · Pinterest active · Low for growth stage</div></div>
+        <div class="field"><div class="field-label">Engagement Signal</div>
+          <div class="engagement-bar"><div class="bar-track"><div class="bar-fill low"></div></div><span class="bar-label">~0.8% · Low</span></div>
+          <div class="field-val" style="margin-top:6px">Beautiful product photography but no personality. The millennial homeowner experience in India is extremely meme-worthy — the rental apartment, the IKEA dreams on a budget, the MIL's opinion on bedsheets. None of it is being used.</div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="field"><div class="field-label">Why They NEED Meme Marketing</div><div class="field-val">Their TG — millennial Indians in their first owned/rented home — are extremely online and deeply relate to "adulting" meme culture. The "first home" experience (EMIs, furniture budgets, making it look like the Pinterest board) is a massive meme territory. Haus &amp; Kinder could become THE brand of Indian millennial home aesthetic anxiety.</div></div>
+        <div class="field"><div class="field-label">Social Links</div><div class="field-val"><a href="#">instagram.com/hausandkinder</a></div></div>
+        <div class="field"><div class="field-label">Best Contact Platform</div><div class="field-val">LinkedIn + Instagram DM</div></div>
+      </div>
+    </div>
+    <div class="gap-box"><strong>Gap:</strong> Home decor content that goes viral in India is almost always about aspiration vs. reality ("Pinterest vs. actual ghar"). Haus &amp; Kinder could bridge that gap — showing real homes that actually look like Pinterest — but only if they get culturally playful.</div>
+    <div class="viral-box">
+      <span class="viral-label">💡 Viral Pitch Idea</span>
+      <p><strong>"Adulting ke sapne"</strong> — A meme/Reel series about the millennial Indian home journey: "Pinterest board vs. what we could afford," "MIL's bedsheet opinions," "First EMI vs. home decor budget." Haus &amp; Kinder = the brand that makes the real home look like the dream. UGC component: share your before &amp; after. Targets the aspirational homeowner perfectly.</p>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Best Contact</span>
+      <span class="contact-chip chip-li">LinkedIn</span>
+      <span class="contact-chip chip-ig">Instagram</span>
+      <span class="contact-info">Tapanjana R. on LinkedIn · contact@hausandkinder.com</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">The <span>Engage</span> Craft</div>
+    <div style="font-size:11px; color: var(--muted); margin-top:4px;">Meme Marketing · Viral Distribution · Song &amp; Movie Promos</div>
+  </div>
+  <div class="footer-note">
+    Report compiled March 2026. Contact information is publicly sourced — verify before outreach. Priority scores reflect marketing gap analysis, not revenue potential alone. All viral campaign concepts are original IP of The Engage Craft.
+  </div>
+</div>
+
+</body>
+</html>
