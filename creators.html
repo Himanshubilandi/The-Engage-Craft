@@ -3,651 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Engage Craft — AI & Tech Creator Roster</title>
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>The Engage Craft — AI and Tech Creator Roster</title>
+<link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.instagram.com/embed.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07070a;
-  --surface:#0f0f14;
-  --surface2:#16161e;
-  --surface3:#1c1c26;
-  --accent:#6c63ff;
-  --accent2:#00d4aa;
-  --accent3:#ff6b6b;
-  --gold:#f5c542;
-  --text:#f0eff8;
-  --muted:#7b7a8e;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
+  --bg:#07070a;--surface:#0f0f14;--surface2:#16161e;--surface3:#1c1c26;
+  --accent:#6c63ff;--accent2:#00d4aa;--gold:#f5c542;
+  --text:#f0eff8;--muted:#7b7a8e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
 }
-
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.6;overflow-x:hidden}
+.grad{background:linear-gradient(135deg,#6c63ff,#00d4aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 48px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'Satoshi',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.01em}
-.nav-logo span{color:var(--accent)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 48px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:700;font-size:16px}.nav-logo span{color:var(--accent)}
 .nav-links{display:flex;gap:28px;align-items:center}
-.nav-link{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
-.nav-link:hover{color:var(--text)}
-.nav-cta{background:var(--accent);color:#fff;padding:8px 18px;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;letter-spacing:.02em}
+.nav-link{font-size:13px;color:var(--muted);text-decoration:none}.nav-link:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff;padding:8px 18px;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none}
 
-/* ─── HERO ─── */
+/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 48px 80px;position:relative;overflow:hidden}
-.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(108,99,255,.18) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,170,.1) 0%,transparent 70%);top:20%;right:10%;pointer-events:none}
-.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);border:1px solid rgba(0,212,170,.25);padding:5px 16px;border-radius:20px;margin-bottom:24px;display:inline-block}
-.hero h1{font-family:'Satoshi',sans-serif;font-size:clamp(40px,6vw,80px);font-weight:700;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px;max-width:900px}
-.hero h1 .grad{background:linear-gradient(135deg,#6c63ff,#00d4aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:17px;color:var(--muted);max-width:560px;margin:0 auto 40px;font-weight:300;line-height:1.7}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(108,99,255,.14) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);border:1px solid rgba(0,212,170,.25);padding:5px 16px;border-radius:20px;margin-bottom:24px;display:inline-block}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:700;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px;max-width:860px}
+.hero-sub{font-size:16px;color:var(--muted);max-width:540px;margin:0 auto 40px;font-weight:300;line-height:1.7}
 .hero-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
-.hero-stat{text-align:center}
-.hero-stat-n{font-family:'Satoshi',sans-serif;font-size:36px;font-weight:700;letter-spacing:-.02em;line-height:1}
-.hero-stat-n .grad{background:linear-gradient(135deg,#6c63ff,#00d4aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-stat-l{font-size:12px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+.hs-n{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.hs-l{font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.01em;transition:opacity .2s}
-.btn-primary:hover{opacity:.88}
-.btn-secondary{background:transparent;color:var(--text);padding:14px 32px;border-radius:8px;font-weight:500;font-size:14px;text-decoration:none;border:1px solid var(--border2);transition:border-color .2s}
-.btn-secondary:hover{border-color:var(--accent)}
-.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--muted));animation:scrollAnim 1.8s ease-in-out infinite}
-@keyframes scrollAnim{0%,100%{opacity:.3;transform:scaleY(0.5)}50%{opacity:1;transform:scaleY(1)}}
+.btn-p{background:var(--accent);color:#fff;padding:14px 32px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none}
+.btn-s{background:transparent;color:var(--text);padding:14px 32px;border-radius:8px;font-weight:500;font-size:14px;text-decoration:none;border:1px solid var(--border2)}
 
-/* ─── SECTION WRAPPER ─── */
-.section{padding:80px 48px}
-.sec-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.sec-title{font-family:'Satoshi',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
-.sec-sub{font-size:15px;color:var(--muted);max-width:560px;margin-bottom:48px;font-weight:300;line-height:1.7}
+/* TOTALS */
+.totals{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 32px;display:flex;gap:32px;flex-wrap:wrap;align-items:center;margin:0 48px 48px}
+.t-item{display:flex;flex-direction:column;gap:2px}
+.t-n{font-weight:700;font-size:24px;letter-spacing:-.02em;line-height:1}
+.t-n.pu{background:linear-gradient(135deg,#6c63ff,#a09aff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.t-n.gr{background:linear-gradient(135deg,#00d4aa,#00ffcc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.t-n.go{background:linear-gradient(135deg,#f5c542,#ffdb6e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.t-l{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+.t-div{width:1px;height:36px;background:var(--border);align-self:center}
 
-/* ─── TIER TABS ─── */
-.tier-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
-.tier-tab{font-family:'JetBrains Mono',monospace;font-size:11px;padding:7px 16px;border-radius:20px;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;background:transparent}
-.tier-tab.active,.tier-tab:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-.tier-tab.all.active{background:linear-gradient(135deg,#6c63ff,#00d4aa);border:none}
+/* SECTION */
+.sec{padding:60px 48px}
+.sec-ey{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sec-ti{font-size:clamp(24px,4vw,38px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+.sec-su{font-size:14px;color:var(--muted);max-width:500px;margin-bottom:32px;font-weight:300}
 
-/* ─── CREATOR GRID ─── */
-.creators-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-
-/* ─── CREATOR CARD ─── */
-.creator-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
-.creator-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(108,99,255,.04),transparent);opacity:0;transition:opacity .25s}
-.creator-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.creator-card:hover::before{opacity:1}
-.creator-card.featured{border-color:rgba(108,99,255,.4);background:linear-gradient(135deg,rgba(108,99,255,.08),var(--surface))}
-.creator-card.featured::after{content:'FEATURED';position:absolute;top:12px;right:12px;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;padding:3px 8px;background:var(--accent);color:#fff;border-radius:20px}
-.cc-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.cc-avatar{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;flex-shrink:0;font-family:'Satoshi',sans-serif}
-.cc-name{font-weight:600;font-size:15px;margin-bottom:2px;letter-spacing:-.01em}
-.cc-handle{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
-.cc-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.cc-stat{background:var(--surface2);border-radius:8px;padding:8px 10px}
-.cc-stat-n{font-family:'Satoshi',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.01em;line-height:1;margin-bottom:2px}
-.cc-stat-l{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
-.cc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
-.cc-tag{font-size:10px;padding:3px 8px;border-radius:20px;font-family:'JetBrains Mono',monospace}
-.tag-ai{background:rgba(108,99,255,.12);color:#a09aff;border:1px solid rgba(108,99,255,.2)}
-.tag-tech{background:rgba(0,212,170,.1);color:#00d4aa;border:1px solid rgba(0,212,170,.2)}
-.tag-macro{background:rgba(245,197,66,.1);color:#f5c542;border:1px solid rgba(245,197,66,.2)}
-.tag-mid{background:rgba(255,107,107,.1);color:#ff9a9a;border:1px solid rgba(255,107,107,.2)}
-.tag-micro{background:rgba(160,154,255,.1);color:#c4c0ff;border:1px solid rgba(160,154,255,.2)}
-.tag-nano{background:rgba(150,150,180,.1);color:#aaa;border:1px solid rgba(150,150,180,.2)}
-.cc-footer{display:flex;align-items:center;justify-content:space-between}
-.cc-ig-link{font-size:11px;color:var(--accent);text-decoration:none;font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:4px}
-.cc-ig-link:hover{color:var(--accent2)}
-.cc-pitch-btn{font-size:11px;font-weight:600;padding:5px 12px;background:var(--accent);color:#fff;border-radius:6px;border:none;cursor:pointer;transition:opacity .2s;font-family:'Satoshi',sans-serif}
-.cc-pitch-btn:hover{opacity:.85}
-
-/* ─── MODAL ─── */
-.modal-overlay{position:fixed;inset:0;background:rgba(7,7,10,.92);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
-.modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:var(--surface);border:1px solid var(--border2);border-radius:16px;width:100%;max-width:800px;max-height:90vh;overflow-y:auto;position:relative}
-.modal-close{position:sticky;top:0;display:flex;justify-content:flex-end;padding:16px 20px 0;background:var(--surface);z-index:1}
-.modal-close-btn{background:var(--surface3);border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.modal-close-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-.modal-body{padding:0 28px 32px}
-
-/* PITCH DECK INSIDE MODAL */
-.pitch-hero{background:linear-gradient(135deg,#1a1040,#0d2a2a);border-radius:12px;padding:36px;margin-bottom:24px;position:relative;overflow:hidden}
-.pitch-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(108,99,255,.3),transparent 70%)}
-.pitch-hero-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
-.pitch-hero-name{font-family:'Satoshi',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin-bottom:12px}
-.pitch-hero-name .grad{background:linear-gradient(135deg,#6c63ff,#00d4aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.pitch-hero-bio{font-size:13px;color:rgba(240,239,248,.65);line-height:1.7;max-width:520px;margin-bottom:20px;font-weight:300}
-.pitch-niche-pills{display:flex;gap:6px;flex-wrap:wrap}
-.pitch-niche{font-size:10px;padding:4px 10px;border-radius:20px;font-family:'JetBrains Mono',monospace;border:1px solid rgba(108,99,255,.3);color:#a09aff;background:rgba(108,99,255,.1)}
-
-.pitch-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
-@media(max-width:600px){.pitch-metrics{grid-template-columns:1fr 1fr}}
-.pm-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
-.pm-n{font-family:'Satoshi',sans-serif;font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1;margin-bottom:4px}
-.pm-n.green{color:var(--accent2)}
-.pm-n.purple{color:#a09aff}
-.pm-n.gold{color:var(--gold)}
-.pm-l{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
-
-.pitch-section-title{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:12px;margin-top:24px}
-.pitch-content-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-@media(max-width:500px){.pitch-content-grid{grid-template-columns:1fr}}
-.pc-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
-.pc-icon{font-size:18px;margin-bottom:8px}
-.pc-title{font-size:13px;font-weight:600;margin-bottom:4px}
-.pc-body{font-size:12px;color:var(--muted);line-height:1.55}
-
-.pitch-audience{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:24px}
-.aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
-@media(max-width:500px){.aud-grid{grid-template-columns:1fr 1fr}}
-.aud-item{text-align:center}
-.aud-n{font-family:'Satoshi',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em;color:var(--accent2)}
-.aud-l{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
-
-.pitch-rate-table{width:100%;border-collapse:collapse;margin-bottom:24px}
-.pitch-rate-table th{background:var(--surface3);padding:10px 14px;text-align:left;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;color:var(--muted);font-weight:500}
-.pitch-rate-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:13px}
-.pitch-rate-table tr:last-child td{border-bottom:none}
-.rate-val{font-weight:700;color:var(--accent2);font-family:'Satoshi',sans-serif}
-.rate-your{font-weight:700;color:var(--gold)}
-
-.pitch-cta{background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(0,212,170,.08));border:1px solid rgba(108,99,255,.25);border-radius:12px;padding:24px;text-align:center;margin-bottom:8px}
-.pitch-cta-title{font-size:18px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
-.pitch-cta-sub{font-size:13px;color:var(--muted);margin-bottom:16px}
-.pitch-cta-contacts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.pitch-contact-chip{font-size:12px;padding:8px 16px;border-radius:8px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px}
-.chip-wa{background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25)}
-.chip-em{background:rgba(108,99,255,.12);color:#a09aff;border:1px solid rgba(108,99,255,.25)}
-.chip-web{background:rgba(0,212,170,.1);color:var(--accent2);border:1px solid rgba(0,212,170,.2)}
-
-/* ─── TOTALS BAR ─── */
-.totals-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 36px;display:flex;gap:40px;flex-wrap:wrap;align-items:center;margin-bottom:48px}
-.total-item{display:flex;flex-direction:column;gap:3px}
-.total-n{font-family:'Satoshi',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.02em;line-height:1}
-.total-n.purple{background:linear-gradient(135deg,#6c63ff,#a09aff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.total-n.green{background:linear-gradient(135deg,#00d4aa,#00ffcc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.total-n.gold{background:linear-gradient(135deg,#f5c542,#ffdb6e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.total-l{font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
-.totals-divider{width:1px;height:40px;background:var(--border);align-self:center}
-
-/* ─── ABOUT SECTION ─── */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-@media(max-width:700px){.about-grid{grid-template-columns:1fr}}
-.about-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:14px}
-.about-card-icon{font-size:24px;margin-bottom:10px}
-.about-card-title{font-size:15px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
-.about-card-body{font-size:13px;color:var(--muted);line-height:1.65}
-
-/* ─── FOOTER ─── */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-brand{font-weight:700;font-size:18px;letter-spacing:-.01em}
-.footer-brand span{color:var(--accent)}
-.footer-links{display:flex;gap:20px}
-.footer-link{font-size:12px;color:var(--muted);text-decoration:none;font-family:'JetBrains Mono',monospace}
-.footer-link:hover{color:var(--text)}
-.footer-contact{font-size:12px;color:var(--muted);text-align:right}
-.footer-contact a{color:var(--accent2);text-decoration:none}
-
-/* ─── SEARCH ─── */
-.search-wrap{position:relative;max-width:380px;margin-bottom:24px}
-.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px 12px 40px;color:var(--text);font-size:13px;font-family:'Satoshi',sans-serif;outline:none;transition:border-color .2s}
+/* SEARCH */
+.search-wrap{position:relative;max-width:360px;margin-bottom:18px}
+.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 16px 11px 38px;color:var(--text);font-size:13px;font-family:'Satoshi',sans-serif;outline:none}
 .search-input:focus{border-color:var(--accent)}
 .search-input::placeholder{color:var(--muted)}
-.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.s-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}
 
-/* ─── RESPONSIVE ─── */
+/* TABS */
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:28px}
+.tab{font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 14px;border-radius:20px;border:1px solid var(--border);color:var(--muted);cursor:pointer;background:transparent;transition:all .2s}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab:hover:not(.on){border-color:var(--accent2);color:var(--accent2)}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(276px,1fr));gap:14px}
+
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;cursor:default}
+.card:hover{border-color:rgba(108,99,255,.5);transform:translateY(-2px)}
+.card.feat{border-color:rgba(108,99,255,.35);background:linear-gradient(135deg,rgba(108,99,255,.06),var(--surface))}
+.feat-b{position:absolute;top:11px;right:11px;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;padding:3px 8px;background:var(--accent);color:#fff;border-radius:20px}
+.c-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+.c-av{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;flex-shrink:0}
+.c-nm{font-weight:600;font-size:14px;margin-bottom:1px;letter-spacing:-.01em}
+.c-hd{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
+.c-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+.c-st{background:var(--surface2);border-radius:7px;padding:7px 9px}
+.c-sn{font-weight:700;font-size:15px;letter-spacing:-.01em;line-height:1;margin-bottom:1px}
+.c-sl{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+.c-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.ctag{font-size:9px;padding:2px 7px;border-radius:20px;font-family:'JetBrains Mono',monospace}
+.tai{background:rgba(108,99,255,.12);color:#a09aff;border:1px solid rgba(108,99,255,.2)}
+.tte{background:rgba(0,212,170,.1);color:#00d4aa;border:1px solid rgba(0,212,170,.2)}
+.tma{background:rgba(245,197,66,.1);color:#f5c542;border:1px solid rgba(245,197,66,.2)}
+.tmi{background:rgba(255,107,107,.1);color:#ff9a9a;border:1px solid rgba(255,107,107,.2)}
+.tmc{background:rgba(160,154,255,.1);color:#c4c0ff;border:1px solid rgba(160,154,255,.2)}
+.tna{background:rgba(150,150,180,.1);color:#aaa;border:1px solid rgba(150,150,180,.2)}
+.c-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.c-ig{font-size:11px;color:var(--accent);text-decoration:none;font-family:'JetBrains Mono',monospace}
+.c-ig:hover{color:var(--accent2)}
+.c-btn{font-size:12px;font-weight:600;padding:7px 14px;background:var(--accent);color:#fff;border-radius:6px;border:none;cursor:pointer;font-family:'Satoshi',sans-serif;flex-shrink:0}
+.c-btn:hover{background:#5a52e0}
+.c-btn:active{transform:scale(0.97)}
+
+/* MODAL */
+.ov{position:fixed;inset:0;background:rgba(7,7,10,.93);backdrop-filter:blur(10px);z-index:999;display:flex;align-items:center;justify-content:center;padding:16px}
+.ov.off{display:none}
+.mb{background:var(--surface);border:1px solid var(--border2);border-radius:16px;width:100%;max-width:780px;max-height:92vh;overflow-y:auto}
+.mx-row{position:sticky;top:0;display:flex;justify-content:flex-end;padding:12px 16px 0;background:var(--surface);z-index:2}
+.mx{background:var(--surface3);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;line-height:1}
+.mx:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.mi{padding:0 24px 28px}
+
+/* PITCH STYLES */
+.ph{background:linear-gradient(135deg,#1a1040,#0d2a2a);border-radius:12px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden}
+.pt{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:9px}
+.pn{font-size:clamp(24px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin-bottom:9px}
+.pb{font-size:12px;color:rgba(240,239,248,.6);line-height:1.7;max-width:500px;margin-bottom:16px;font-weight:300}
+.pp{display:flex;gap:6px;flex-wrap:wrap}
+.pi{font-size:10px;padding:3px 9px;border-radius:20px;font-family:'JetBrains Mono',monospace;border:1px solid rgba(108,99,255,.3);color:#a09aff;background:rgba(108,99,255,.1)}
+.ps{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;color:var(--muted);margin:18px 0 9px}
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:18px}
+.mc{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:11px 13px}
+.mn{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1;margin-bottom:2px}
+.mn.gr{color:var(--accent2)}.mn.pu{color:#a09aff}.mn.go{color:var(--gold)}
+.ml{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+.ag{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:18px}
+.agr{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:9px;text-align:center}
+.an{font-weight:700;font-size:17px;color:var(--accent2)}
+.al{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
+.cc{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:11px 13px}
+.ci{font-size:15px;margin-bottom:5px}.ct{font-size:12px;font-weight:600;margin-bottom:3px}
+.cb{font-size:11px;color:var(--muted);line-height:1.5}
+.ncb{background:linear-gradient(135deg,rgba(245,197,66,.06),rgba(0,212,170,.04));border:1px solid rgba(245,197,66,.2);border-radius:9px;padding:14px 16px;margin-bottom:14px}
+.nct{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:5px}
+.ncx{font-size:11px;color:rgba(240,239,248,.65);line-height:1.65}
+.ncx strong{color:var(--text)}
+.ncc{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.ncr{font-size:10px;padding:3px 9px;border-radius:20px;background:rgba(255,107,107,.08);color:#ff9a9a;border:1px solid rgba(255,107,107,.2);font-family:'JetBrains Mono',monospace}
+.ncg{font-size:10px;padding:3px 9px;border-radius:20px;background:rgba(0,212,170,.08);color:var(--accent2);border:1px solid rgba(0,212,170,.2);font-family:'JetBrains Mono',monospace}
+.vg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.vs{background:var(--surface2);border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.vl{font-size:10px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:9px 11px 0;display:flex;align-items:center;gap:5px}
+.vd{width:6px;height:6px;border-radius:50%;display:inline-block}
+.rt{width:100%;border-collapse:collapse;margin-bottom:18px}
+.rt th{background:var(--surface3);padding:8px 11px;text-align:left;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;color:var(--muted)}
+.rt td{padding:10px 11px;border-bottom:1px solid var(--border);font-size:12px}
+.rt tr:last-child td{border-bottom:none}
+.rv{font-weight:700;color:var(--accent2)}.ry{font-weight:700;color:var(--gold)}
+.ctab{background:linear-gradient(135deg,rgba(108,99,255,.11),rgba(0,212,170,.06));border:1px solid rgba(108,99,255,.2);border-radius:11px;padding:20px;text-align:center;margin-top:6px}
+.ctat{font-size:16px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.ctas{font-size:12px;color:var(--muted);margin-bottom:13px}
+.ctac{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chip{font-size:12px;padding:7px 14px;border-radius:8px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.cwa{background:rgba(37,211,102,.1);color:#25d366;border:1px solid rgba(37,211,102,.2)}
+.cwb{background:rgba(0,212,170,.08);color:var(--accent2);border:1px solid rgba(0,212,170,.18)}
+
+/* ABOUT */
+.ag2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.ac{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.ai{font-size:20px;margin-bottom:7px}.at{font-size:13px;font-weight:600;margin-bottom:4px}
+.ab{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.fb{font-weight:700;font-size:16px}.fb span{color:var(--accent)}
+.fl{display:flex;gap:16px}
+.fli{font-size:12px;color:var(--muted);text-decoration:none;font-family:'JetBrains Mono',monospace}
+.fli:hover{color:var(--text)}
+.fc{font-size:12px;color:var(--muted);text-align:right;line-height:1.8}
+.fc a{color:var(--accent2);text-decoration:none}
+
+/* RESPONSIVE */
 @media(max-width:768px){
-  nav{padding:14px 20px}
-  .nav-links{display:none}
-  .hero{padding:100px 20px 60px}
-  .section{padding:60px 20px}
-  .hero-stats{gap:28px}
-  .creators-grid{grid-template-columns:1fr 1fr}
-  footer{padding:28px 20px;flex-direction:column;text-align:center}
-  .footer-contact{text-align:center}
-  .totals-bar{padding:20px}
+  nav{padding:14px 20px}.nav-links{display:none}
+  .hero{padding:96px 20px 56px}
+  .sec{padding:44px 20px}
+  .totals{margin:0 20px 32px;padding:16px 18px;gap:20px}
+  .grid{grid-template-columns:1fr 1fr}
+  footer{padding:22px 20px;flex-direction:column;text-align:center}.fc{text-align:center}
+  .mg{grid-template-columns:1fr 1fr}.agr{grid-template-columns:1fr 1fr}
+  .ag2{grid-template-columns:1fr}.vg{grid-template-columns:1fr}
 }
-@media(max-width:480px){
-  .creators-grid{grid-template-columns:1fr}
-}
+@media(max-width:460px){.grid{grid-template-columns:1fr}.cg{grid-template-columns:1fr}.mg{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">The <span>Engage</span> Craft</div>
   <div class="nav-links">
     <a href="#roster" class="nav-link">Creator Roster</a>
     <a href="#about" class="nav-link">About Us</a>
-    <a href="mailto:biing@theengagecraft.com" class="nav-cta">Get a Deal →</a>
+    <a href="#contact" class="nav-cta">Get a Deal</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-tag">India's AI & Tech Creator Network</div>
+  <div class="hero-tag">India's AI and Tech Creator Network</div>
   <h1>Where Brands Meet<br><span class="grad">India's Best AI Creators</span></h1>
-  <p class="hero-sub">The Engage Craft represents 60+ AI and tech creators on Instagram — from 10K to 1.6M followers — ready to bring your brand to the most engaged tech audience in India.</p>
+  <p class="hero-sub">The Engage Craft represents 34 AI and tech creators on Instagram — from 6K to 1.2M followers — ready to put your brand in front of India's most engaged tech audience.</p>
   <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-n"><span class="grad">60+</span></div>
-      <div class="hero-stat-l">AI/Tech Creators</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-n"><span class="grad">12M+</span></div>
-      <div class="hero-stat-l">Combined Reach</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-n"><span class="grad">18–34</span></div>
-      <div class="hero-stat-l">Core Audience Age</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-n"><span class="grad">85%</span></div>
-      <div class="hero-stat-l">India Based</div>
-    </div>
+    <div><div class="hs-n"><span class="grad">34+</span></div><div class="hs-l">AI and Tech Creators</div></div>
+    <div><div class="hs-n"><span class="grad">5M+</span></div><div class="hs-l">Combined Reach</div></div>
+    <div><div class="hs-n"><span class="grad">18-34</span></div><div class="hs-l">Core Audience Age</div></div>
+    <div><div class="hs-n"><span class="grad">85%</span></div><div class="hs-l">India Based</div></div>
   </div>
   <div class="hero-btns">
-    <a href="#roster" class="btn-primary">View Creator Roster</a>
-    <a href="mailto:biing@theengagecraft.com" class="btn-secondary">Partner With Us</a>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+    <a href="#roster" class="btn-p">View Creator Roster</a>
+    <a href="#contact" class="btn-s">Partner With Us</a>
   </div>
 </section>
 
-<!-- TOTALS -->
-<section class="section" style="padding-top:0;padding-bottom:0">
-  <div class="totals-bar">
-    <div class="total-item"><div class="total-n purple">60+</div><div class="total-l">Active Creators</div></div>
-    <div class="totals-divider"></div>
-    <div class="total-item"><div class="total-n green">12M+</div><div class="total-l">Combined Followers</div></div>
-    <div class="totals-divider"></div>
-    <div class="total-item"><div class="total-n gold">3</div><div class="total-l">Macro Creators (1M+)</div></div>
-    <div class="totals-divider"></div>
-    <div class="total-item"><div class="total-n purple">7</div><div class="total-l">Mid-Tier (200K–1M)</div></div>
-    <div class="totals-divider"></div>
-    <div class="total-item"><div class="total-n green">AI / Tech / EdTech</div><div class="total-l">Primary Niches</div></div>
-  </div>
-</section>
-
-<!-- ROSTER -->
-<section class="section" id="roster">
-  <div class="sec-eyebrow">// Our Creator Network</div>
-  <div class="sec-title">The Roster</div>
-  <p class="sec-sub">60+ verified AI and tech creators across India. Click any creator to view their full pitch deck.</p>
-
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" class="search-input" id="searchInput" placeholder="Search creators by name or handle..." onkeyup="filterCreators()">
-  </div>
-
-  <div class="tier-tabs">
-    <button class="tier-tab all active" onclick="filterTier('all', this)">All Creators</button>
-    <button class="tier-tab" onclick="filterTier('macro', this)">🏆 Macro (500K+)</button>
-    <button class="tier-tab" onclick="filterTier('mid', this)">⚡ Mid-Tier (100K–500K)</button>
-    <button class="tier-tab" onclick="filterTier('micro', this)">📈 Micro (30K–100K)</button>
-    <button class="tier-tab" onclick="filterTier('nano', this)">🌱 Nano (Under 30K)</button>
-  </div>
-
-  <div class="creators-grid" id="creatorsGrid"></div>
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="sec-eyebrow">// Why The Engage Craft</div>
-  <div class="sec-title">The Craft Behind the Hype</div>
-  <p class="sec-sub">We don't just connect brands to creators. We build campaigns that convert.</p>
-  <div class="about-grid">
-    <div>
-      <div class="about-card">
-        <div class="about-card-icon">🎯</div>
-        <div class="about-card-title">Niche-First Network</div>
-        <div class="about-card-body">Every creator in our roster specialises in AI tools, tech reviews, or tech education — making audience targeting precise and conversion rates high. No generic lifestyle creators. Pure tech audience.</div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">📊</div>
-        <div class="about-card-title">Full-Service Deal Management</div>
-        <div class="about-card-body">We handle everything: creator selection, rate negotiation, brief creation, content review, and post-campaign reporting. Your team just approves. We execute.</div>
-      </div>
-    </div>
-    <div>
-      <div class="about-card">
-        <div class="about-card-icon">🚀</div>
-        <div class="about-card-title">Rapid Deployment</div>
-        <div class="about-card-body">With 60+ creators on retainer, we can go live with a campaign in under 7 days. No lengthy onboarding. No wasted weeks. Brief us today, live next week.</div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">🇮🇳</div>
-        <div class="about-card-title">India-First, Tier 1 Reach</div>
-        <div class="about-card-body">Our creators reach young urban Indians in Tier 1 and Tier 2 cities — the exact demo for SaaS, edtech, fintech, gadgets, and AI tools. 85%+ India-based audience across the network.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">The <span>Engage</span> Craft</div>
-  <div class="footer-links">
-    <a href="#roster" class="footer-link">Roster</a>
-    <a href="#about" class="footer-link">About</a>
-    <a href="mailto:biing@theengagecraft.com" class="footer-link">Contact</a>
-  </div>
-  <div class="footer-contact">
-    <a href="mailto:biing@theengagecraft.com">biing@theengagecraft.com</a><br>
-    <a href="tel:+919828022182">+91 98280-22182</a><br>
-    <a href="https://www.theengagecraft.com" target="_blank">theengagecraft.com</a>
-  </div>
-</footer>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-  <div class="modal" id="modalContent">
-    <div class="modal-close">
-      <button class="modal-close-btn" onclick="closeModal()">✕</button>
-    </div>
-    <div class="modal-body" id="modalBody"></div>
-  </div>
+<div class="totals">
+  <div class="t-item"><div class="t-n pu">34+</div><div class="t-l">Active Creators</div></div>
+  <div class="t-div"></div>
+  <div class="t-item"><div class="t-n gr">5M+</div><div class="t-l">Combined Followers</div></div>
+  <div class="t-div"></div>
+  <div class="t-item"><div class="t-n go">3</div><div class="t-l">Macro 1M+</div></div>
+  <div class="t-div"></div>
+  <div class="t-item"><div class="t-n pu">15+</div><div class="t-l">Mid-Tier 100K-500K</div></div>
+  <div class="t-div"></div>
+  <div class="t-item"><div class="t-n gr">AI and Tech</div><div class="t-l">Primary Niches</div></div>
 </div>
 
+<section class="sec" id="roster">
+  <div class="sec-ey">// Our Creator Network</div>
+  <div class="sec-ti">The Roster</div>
+  <p class="sec-su">60+ verified AI and tech creators. Click any creator to view their full pitch deck.</p>
+  <div class="search-wrap">
+    <span class="s-icon">&#128269;</span>
+    <input type="text" class="search-input" id="si" placeholder="Search by name or handle...">
+  </div>
+  <div class="tabs">
+    <button class="tab on" data-tier="all">All Creators</button>
+    <button class="tab" data-tier="macro">Macro 500K+</button>
+    <button class="tab" data-tier="mid">Mid-Tier 100K-500K</button>
+    <button class="tab" data-tier="micro">Micro 30K-100K</button>
+    <button class="tab" data-tier="nano">Nano Under 30K</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="sec" id="about" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="sec-ey">// Why The Engage Craft</div>
+  <div class="sec-ti">The Craft Behind the Hype</div>
+  <p class="sec-su">We build campaigns that convert — not just connect brands to creators.</p>
+  <div class="ag2">
+    <div>
+      <div class="ac"><div class="ai">&#127919;</div><div class="at">Niche-First Network</div><div class="ab">Every creator specialises in AI tools, tech reviews, or tech education. No generic lifestyle creators. Pure tech audience with high purchase intent.</div></div>
+      <div class="ac"><div class="ai">&#128202;</div><div class="at">Full-Service Deal Management</div><div class="ab">We handle creator selection, rate negotiation, brief creation, content review, and reporting. Your team just approves. We execute.</div></div>
+    </div>
+    <div>
+      <div class="ac"><div class="ai">&#128640;</div><div class="at">Rapid Deployment</div><div class="ab">With 60+ creators on retainer, we can go live with a campaign in under 7 days. Brief us today, live next week.</div></div>
+      <div class="ac"><div class="ai">&#127470;&#127475;</div><div class="at">India-First Tier 1 Reach</div><div class="ab">Our creators reach young urban Indians in Tier 1 and 2 cities — the exact demo for SaaS, edtech, fintech, gadgets, and AI tools.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="sec-ey">// Get In Touch</div>
+  <div class="sec-ti">Let's Build a Campaign</div>
+  <p class="sec-su">Tell us your brand, budget, and goal. We'll match you with the right creators and handle everything else.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <a href="https://wa.me/919828022182" class="btn-p">WhatsApp Us</a>
+    <a href="https://www.theengagecraft.com" target="_blank" class="btn-s">Our Website</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">The <span>Engage</span> Craft</div>
+  <div class="fl"><a href="#roster" class="fli">Roster</a><a href="#about" class="fli">About</a><a href="#contact" class="fli">Contact</a></div>
+  <div class="fc"><a href="https://wa.me/919828022182">+91 98280-22182</a><br>biing[at]theengagecraft.com<br><a href="https://www.theengagecraft.com" target="_blank">theengagecraft.com</a></div>
+</footer>
+
+<!-- no modal needed - WhatsApp redirect handles everything -->
+
 <script>
-// ── CREATOR DATA ──
-const creators = [
-  // MACRO 1M+
-  {handle:'officialpwnkumar',name:'PW Neeraj Kumar',followers:'1.6M',tier:'macro',tags:['tech','macro'],niche:'Tech Education & AI',bio:'One of India\'s leading tech educators with 1.6M followers. Covers coding, AI tools, and career growth for students and developers.',ig:'https://instagram.com/officialpwnkumar',featured:false},
-  {handle:'vaibhavsisinty',name:'Vaibhav Sisinty',followers:'1.5M',tier:'macro',tags:['ai','macro'],niche:'AI & Growth Hacking',bio:'Top AI + growth creator in India. Covers ChatGPT, productivity AI tools, and building with AI. Strong entrepreneurial audience.',ig:'https://instagram.com/vaibhavsisinty',featured:false},
-  {handle:'khushalsky',name:'Khushal Sky',followers:'1.2M',tier:'macro',tags:['tech','macro'],niche:'Tech & Lifestyle',bio:'Massive tech creator with dual followings. 1.2M on main account plus growing nano presence. Broad tech and gadget audience.',ig:'https://instagram.com/khushalsky',featured:false},
-  // LARGE MID
-  {handle:'sanidhya.ai',name:'Sanidhya AI',followers:'945K',tier:'mid',tags:['ai','mid'],niche:'AI Tools & Automation',bio:'Leading AI-focused creator in India. Nearly 1M followers built on practical AI tool tutorials. High-intent tech-forward audience.',ig:'https://instagram.com/sanidhya.ai',featured:false},
-  {handle:'ayushman.pandita',name:'Ayushman Pandita',followers:'687K',tier:'mid',tags:['tech','mid'],niche:'Tech News & Reviews',bio:'687K followers covering the latest in tech news, product launches, and gadget reviews. Strong Tier 1 city audience.',ig:'https://instagram.com/ayushman.pandita',featured:false},
-  {handle:'dhanajay_tech',name:'Dhanajay Tech',followers:'672K',tier:'mid',tags:['tech','mid'],niche:'Tech Education',bio:'Tech education creator with 672K followers. Covers smartphone tech, apps, and digital tools for everyday users.',ig:'https://instagram.com/dhanajay_tech',featured:false},
-  // FEATURED - MANIK AI
-  {handle:'manikk.ai',name:'Manik AI',followers:'54.7K',tier:'micro',tags:['ai','micro'],niche:'Non-Technical AI Education',bio:'Ex-Bain & Company strategy consultant turned AI creator. 0 to 50K in 27 days. 75 Days, 75 Tools, Zero Code series. 4.2M views. 7% average engagement rate. The fastest growing AI creator account in India.',ig:'https://instagram.com/manikk.ai',featured:true,
-    hasFullDeck:true,
-    metrics:{followers:'54.7K',views:'4.2M+',engagement:'7%',growth:'0→50K in 27 days'},
-    audience:{india:'80%+',age1824:'40%',age2534:'40%',male:'91.8%'},
-    series:'75 Days. 75 Tools. Zero Code.',
-    rates:{reel:'₹35K–₹55K',story:'₹12K–₹18K',bundle:'₹65K–₹90K'}
-  },
+var C=[
+  {h:'officialpwnkumar',n:'PW Neeraj Kumar',f:'1.6M',t:'macro',tags:['tech','macro'],ni:'Tech Education and AI',bi:'One of India\'s leading tech educators with 1.6M followers. Covers coding, AI tools, and career growth for students and developers.',ig:'https://www.instagram.com/officialpwnkumar'},
+  {h:'vaibhavsisinty',n:'Vaibhav Sisinty',f:'1.5M',t:'macro',tags:['ai','macro'],ni:'AI and Growth Hacking',bi:'Top AI and growth creator in India. Covers ChatGPT, productivity tools, and building with AI. Strong entrepreneurial audience.',ig:'https://www.instagram.com/vaibhavsisinty'},
+  {h:'khushalsky',n:'Khushal Sky',f:'1.2M',t:'macro',tags:['tech','macro'],ni:'Tech and Lifestyle',bi:'1.2M tech creator. Broad tech and gadget audience with strong reach across India.',ig:'https://www.instagram.com/khushalsky'},
   // MID TIER
-  {handle:'creator.co.ai_',name:'Creator Co AI',followers:'405K',tier:'mid',tags:['ai','mid'],niche:'AI Tools & Creator Economy',bio:'405K AI-focused creator covering tools, productivity, and the future of work. Fast-growing mid-tier account.',ig:'https://instagram.com/creator.co.ai_',featured:false},
-  {handle:'tech_saheli',name:'Tech Saheli',followers:'429K',tier:'mid',tags:['tech','mid'],niche:'Tech for Women',bio:'429K followers. India\'s top female tech creator. Covers smartphones, apps, and digital tools. Unique female audience in tech space.',ig:'https://instagram.com/tech_saheli',featured:false},
-  {handle:'techwithparvez',name:'Tech with Parvez',followers:'410K',tier:'mid',tags:['tech','mid'],niche:'Tech Reviews & Tutorials',bio:'410K strong tech review and tutorial creator. Deep dives into apps, tools, and gadgets. Strong North India audience.',ig:'https://instagram.com/techwithparvez',featured:false},
-  {handle:'misstech07',name:'Miss Tech 07',followers:'509K',tier:'mid',tags:['tech','mid'],niche:'Tech Lifestyle',bio:'509K tech lifestyle creator. Covers smartphones, productivity tools, and tech for everyday users. Strong female audience.',ig:'https://instagram.com/misstech07',featured:false},
-  {handle:'amarraghutech',name:'Amar Raghu Tech',followers:'468K',tier:'mid',tags:['tech','mid'],niche:'Tech Reviews',bio:'Tech review powerhouse at 468K. Covers gadgets, apps, and tech tutorials. Known for honest, thorough reviews.',ig:'https://instagram.com/amarraghutech',featured:false},
-  {handle:'udaysharmaaaaa',name:'Uday Sharma',followers:'357K',tier:'mid',tags:['tech','mid'],niche:'Tech & AI News',bio:'Tech and AI news creator with 357K followers. Covers trending tech stories and AI developments in a digestible format.',ig:'https://instagram.com/udaysharmaaaaa',featured:false},
-  {handle:'swati_tech455',name:'Swati Tech',followers:'329K',tier:'mid',tags:['tech','mid'],niche:'Tech Education',bio:'329K tech education creator. Clean, simple explanations of complex tech topics. Strong student and professional audience.',ig:'https://instagram.com/swati_tech455',featured:false},
-  {handle:'winkguys',name:'Wink Guys',followers:'327K',tier:'mid',tags:['tech','mid'],niche:'Tech & Entertainment',bio:'327K creator mixing tech content with entertainment. High virality potential. Unique format that makes tech fun.',ig:'https://instagram.com/winkguys',featured:false},
-  {handle:'itech_deepak',name:'itech Deepak',followers:'353K',tier:'mid',tags:['tech','mid'],niche:'Tech Education',bio:'353K tech educator covering smartphones, apps, and emerging technology. Strong Hindi-speaking audience across India.',ig:'https://instagram.com/itech_deepak',featured:false},
-  {handle:'radhika.shares',name:'Radhika Shares',followers:'320K',tier:'mid',tags:['ai','mid'],niche:'AI & Productivity',bio:'320K followers. AI productivity creator focusing on tools for professionals and students. Growing rapidly.',ig:'https://instagram.com/radhika.shares',featured:false},
-  {handle:'techymuzaffar',name:'Techy Muzaffar',followers:'370K',tier:'mid',tags:['tech','mid'],niche:'Tech Reviews & Unboxing',bio:'370K tech reviewer known for unboxings and gadget comparisons. High engagement from aspirational tech buyers.',ig:'https://instagram.com/techymuzaffar',featured:false},
-  {handle:'teche.rimo',name:'Teche Rimo',followers:'332K',tier:'mid',tags:['tech','mid'],niche:'Tech Reviews',bio:'332K strong tech reviewer. Covers the latest in smartphones, accessories, and digital tools for Indian consumers.',ig:'https://instagram.com/teche.rimo',featured:false},
-  {handle:'vaibhavkadnar.talks',name:'Vaibhav Kadnar',followers:'259K',tier:'mid',tags:['tech','mid'],niche:'Tech & Startup',bio:'259K followers. Covers tech, startups, and entrepreneurship. Strong professional and founder audience on Instagram.',ig:'https://instagram.com/vaibhavkadnar.talks',featured:false},
-  {handle:'techonfreak',name:'Tech On Freak',followers:'269K',tier:'mid',tags:['tech','mid'],niche:'Tech News',bio:'Tech news and commentary creator at 269K. Known for quick, engaging breakdowns of trending tech stories.',ig:'https://instagram.com/techonfreak',featured:false},
-  {handle:'tharunnaik.0',name:'Tharun Naik',followers:'261K',tier:'mid',tags:['tech','mid'],niche:'Tech & AI Tools',bio:'261K tech and AI tools creator. South India-based with strong Tier 1 city tech audience.',ig:'https://instagram.com/tharunnaik.0',featured:false},
-  {handle:'hbaservices',name:'HBA Services',followers:'236K',tier:'mid',tags:['tech','mid'],niche:'Tech Services & Tools',bio:'236K following. Covers practical digital tools, apps, and services. High-intent audience looking for tech solutions.',ig:'https://instagram.com/hbaservices',featured:false},
-  {handle:'technicalstree',name:'Technical Stree',followers:'209K',tier:'mid',tags:['tech','mid'],niche:'Tech for Women',bio:'Female tech creator at 209K. Covers phones, apps, and digital tools tailored for Indian women. Unique and underserved niche.',ig:'https://instagram.com/technicalstree',featured:false},
-  {handle:'ratinray1',name:'Ratin Ray',followers:'198K',tier:'mid',tags:['tech','mid'],niche:'Tech Reviews',bio:'198K tech reviewer and content creator. Known for clean, relatable tech content that resonates with Indian youth.',ig:'https://instagram.com/ratinray1',featured:false},
-  {handle:'devtalksbusiness',name:'Dev Talks Business',followers:'183K',tier:'mid',tags:['tech','mid'],niche:'Tech & Business',bio:'183K followers at the intersection of tech and business. Great for SaaS, fintech, and B2B tool sponsorships.',ig:'https://instagram.com/devtalksbusiness',featured:false},
-  {handle:'techanixx',name:'Techanixx',followers:'183K',tier:'mid',tags:['tech','mid'],niche:'Tech Tutorials',bio:'183K tech tutorial creator. Step-by-step format makes product demos natural and converting for the audience.',ig:'https://instagram.com/techanixx',featured:false},
-  {handle:'tech_sena02',name:'Tech Sena',followers:'160K',tier:'mid',tags:['tech','mid'],niche:'Tech News',bio:'160K tech news creator covering Indian and global tech developments. Engaged community of tech enthusiasts.',ig:'https://instagram.com/tech_sena02',featured:false},
-  {handle:'tech_liciouss',name:'Tech Licious',followers:'151K',tier:'mid',tags:['tech','mid'],niche:'Tech Lifestyle',bio:'150K+ tech lifestyle creator. Makes tech aspirational and fun. Strong audience of young urban professionals.',ig:'https://instagram.com/tech_liciouss',featured:false},
-  {handle:'techluckyy',name:'Tech Lucky',followers:'149K',tier:'mid',tags:['tech','mid'],niche:'Tech Deals & Reviews',bio:'149K creator focusing on tech deals, reviews, and comparisons. Purchase-intent audience ideal for product launches.',ig:'https://instagram.com/techluckyy',featured:false},
-  {handle:'techpocket',name:'Tech Pocket',followers:'147K',tier:'mid',tags:['tech','mid'],niche:'Tech Education',bio:'147K tech education creator. Accessible tech content for mainstream Indian audience new to digital tools.',ig:'https://instagram.com/techpocket',featured:false},
-  {handle:'tech_minds.ai',name:'Tech Minds AI',followers:'122K',tier:'mid',tags:['ai','mid'],niche:'AI Education',bio:'122K AI-focused educator. Covers AI tools, machine learning basics, and future of tech for non-technical audience.',ig:'https://instagram.com/tech_minds.ai',featured:false},
-  {handle:'technova_47',name:'Technovaa 47',followers:'112K',tier:'mid',tags:['tech','mid'],niche:'Tech Reviews',bio:'112K tech reviewer. Product-focused content with high purchase-intent audience. Good for tech brand integrations.',ig:'https://instagram.com/technova_47',featured:false},
-  {handle:'tazotech07',name:'Tazo Tech',followers:'106K',tier:'mid',tags:['tech','mid'],niche:'Tech & AI Tools',bio:'106K creator covering tech and AI tools. Rapidly growing account with a highly engaged young audience.',ig:'https://instagram.com/tazotech07',featured:false},
-  {handle:'exploredee_tech',name:'Explore Dee Tech',followers:'109K',tier:'mid',tags:['tech','mid'],niche:'Tech Exploration',bio:'109K tech explorer. Covers interesting tech discoveries, AI tools, and digital life hacks. Curiosity-driven audience.',ig:'https://instagram.com/exploredee_tech',featured:false},
+  {h:'khushalsky',n:'Khushal Sky',f:'1.2M',t:'macro',tags:['tech','macro'],ni:'Tech and Lifestyle',bi:'1.2M tech creator. Broad tech and gadget audience with strong reach across India.',ig:'https://www.instagram.com/khushalsky'},
+  {h:'misstech07',n:'Miss Tech 07',f:'509K',t:'mid',tags:['tech','mid'],ni:'Tech Lifestyle',bi:'509K tech lifestyle creator. Strong female audience covering smartphones, productivity tools, and everyday tech.',ig:'https://www.instagram.com/misstech07'},
+  {h:'tech_saheli',n:'Tech Saheli',f:'429K',t:'mid',tags:['tech','mid'],ni:'Tech for Women',bi:'India\'s top female tech creator at 429K. Covers smartphones, apps, and digital tools with a unique female audience.',ig:'https://www.instagram.com/tech_saheli'},
+  {h:'techwithparvez',n:'Tech with Parvez',f:'410K',t:'mid',tags:['tech','mid'],ni:'Tech Reviews and Tutorials',bi:'410K tech review and tutorial creator with deep dives into apps, tools, and gadgets. Strong North India audience.',ig:'https://www.instagram.com/techwithparvez'},
+  {h:'creator.co.ai_',n:'Creator Co AI',f:'405K',t:'mid',tags:['ai','mid'],ni:'AI Tools and Creator Economy',bi:'405K AI-focused creator covering tools, productivity, and the future of work.',ig:'https://www.instagram.com/creator.co.ai_'},
+  {h:'techymuzaffar',n:'Techy Muzaffar',f:'370K',t:'mid',tags:['tech','mid'],ni:'Tech Reviews and Unboxing',bi:'370K tech reviewer known for unboxings and gadget comparisons. High engagement from aspirational tech buyers.',ig:'https://www.instagram.com/techymuzaffar'},
+  {h:'teche.rimo',n:'Teche Rimo',f:'332K',t:'mid',tags:['tech','mid'],ni:'Tech Reviews',bi:'332K tech reviewer covering smartphones, accessories, and digital tools for Indian consumers.',ig:'https://www.instagram.com/teche.rimo'},
+  {h:'winkguys',n:'Wink Guys',f:'327K',t:'mid',tags:['tech','mid'],ni:'Tech and Entertainment',bi:'327K creator mixing tech with entertainment. High virality potential and unique format.',ig:'https://www.instagram.com/winkguys'},
+  {h:'hbaservices',n:'HBA Services',f:'236K',t:'mid',tags:['tech','mid'],ni:'Tech Services and Tools',bi:'236K creator covering practical digital tools, apps, and services for high-intent tech audience.',ig:'https://www.instagram.com/hbaservices'},
+  {h:'technicalstree',n:'Technical Stree',f:'209K',t:'mid',tags:['tech','mid'],ni:'Tech for Women',bi:'Female tech creator at 209K covering phones, apps, and digital tools for Indian women.',ig:'https://www.instagram.com/technicalstree'},
+  {h:'ratinray1',n:'Ratin Ray',f:'198K',t:'mid',tags:['tech','mid'],ni:'Tech Reviews',bi:'198K tech reviewer known for clean relatable tech content that resonates with Indian youth.',ig:'https://www.instagram.com/ratinray1'},
+  {h:'devtalksbusiness',n:'Dev Talks Business',f:'183K',t:'mid',tags:['tech','mid'],ni:'Tech and Business',bi:'183K creator at the intersection of tech and business. Great for SaaS, fintech, and B2B tools.',ig:'https://www.instagram.com/devtalksbusiness'},
+  {h:'techanixx',n:'Techanixx',f:'183K',t:'mid',tags:['tech','mid'],ni:'Tech Tutorials',bi:'183K tech tutorial creator. Step-by-step format makes product demos natural and converting.',ig:'https://www.instagram.com/techanixx'},
+  {h:'techpocket',n:'Tech Pocket',f:'147K',t:'mid',tags:['tech','mid'],ni:'Tech Education',bi:'147K tech education creator with accessible content for mainstream Indian audience.',ig:'https://www.instagram.com/techpocket'},
+  {h:'10xtech_',n:'10X Tech',f:'134K',t:'mid',tags:['tech','mid'],ni:'Tech Productivity',bi:'134K creator focused on 10xing productivity using tech and AI tools. Perfect for SaaS and productivity brands.',ig:'https://www.instagram.com/10xtech_'},
+  {h:'tech_minds.ai',n:'Tech Minds AI',f:'122K',t:'mid',tags:['ai','mid'],ni:'AI Education',bi:'122K AI-focused educator covering AI tools, ML basics, and future of tech for non-technical audience.',ig:'https://www.instagram.com/tech_minds.ai'},
+  {h:'technova_47',n:'Technovaa 47',f:'112K',t:'mid',tags:['tech','mid'],ni:'Tech Reviews',bi:'112K tech reviewer with product-focused content and high purchase-intent audience.',ig:'https://www.instagram.com/technova_47'},
+  {h:'exploredee_tech',n:'Explore Dee Tech',f:'109K',t:'mid',tags:['tech','mid'],ni:'Tech Exploration',bi:'109K tech explorer covering AI tools, tech discoveries, and digital life hacks.',ig:'https://www.instagram.com/exploredee_tech'},
+  {h:'tazotech07',n:'Tazo Tech',f:'106K',t:'mid',tags:['tech','mid'],ni:'Tech and AI Tools',bi:'106K rapidly growing creator covering tech and AI tools with highly engaged young audience.',ig:'https://www.instagram.com/tazotech07'},
+  // FEATURED MANIK AI
+  {h:'manikk.ai',n:'Manik AI',f:'54.7K',t:'micro',feat:true,isManik:true,tags:['ai','micro'],ni:'Non-Technical AI Education',
+   bi:'Ex-Bain and Company strategy consultant turned AI creator. 0 to 50K followers in 27 days. Running 75 Days 75 Tools Zero Code series. 4.2M total views. 7% average engagement rate.',
+   ig:'https://www.instagram.com/manikk.ai',
+   mt:{f:'54.7K',v:'4.2M+',e:'7%',g:'0 to 50K in 27 days'},
+   au:{i:'80%+',a1:'40%',a2:'40%',m:'91.8%'},
+   sr:'75 Days. 75 Tools. Zero Code.',
+   r1:'https://www.instagram.com/reel/DVOeRydCT1j/',
+   r2:'https://www.instagram.com/reel/DUtCRXMCSGu/',
+   ra:{rl:'Rs 35K-55K',st:'Rs 12K-18K',bu:'Rs 65K-90K'}
+  },
   // MICRO
-  {handle:'10xtech_',name:'10X Tech',followers:'134K',tier:'micro',tags:['tech','micro'],niche:'Tech Productivity',bio:'134K creator focused on 10xing productivity using tech and AI tools. Perfect for SaaS, AI tool, and productivity brand sponsors.',ig:'https://instagram.com/10xtech_',featured:false},
-  {handle:'ashishbuilds',name:'Ashish Builds',followers:'95.6K',tier:'micro',tags:['tech','micro'],niche:'Tech Building & Startups',bio:'95.6K creator at the intersection of building products and tech. Developer and founder audience. Great for dev tools and SaaS.',ig:'https://instagram.com/ashishbuilds',featured:false},
-  {handle:'techno4646',name:'Techno 4646',followers:'87.2K',tier:'micro',tags:['tech','micro'],niche:'Tech Education',bio:'87.2K tech education creator. Clear, educational content for Indian students learning about tech and digital careers.',ig:'https://instagram.com/techno4646',featured:false},
-  {handle:'tech.with.rishabh',name:'Tech with Rishabh',followers:'85.2K',tier:'micro',tags:['tech','micro'],niche:'Tech Tutorials',bio:'85K tech tutorial creator. Step-by-step how-to content with strong tutorial-seeking audience. High conversion potential.',ig:'https://instagram.com/tech.with.rishabh',featured:false},
-  {handle:'khushalsky',name:'Khushal Sky (Nano)',followers:'70K',tier:'micro',tags:['tech','micro'],niche:'Tech Content',bio:'Growing tech creator at 70K, separate from the 1.2M account. Early-stage momentum with high engagement rates.',ig:'https://instagram.com/khushalsky',featured:false},
-  {handle:'subratx.ai',name:'Subrat X AI',followers:'68.7K',tier:'micro',tags:['ai','micro'],niche:'AI Tools & Automation',bio:'68.7K AI tools creator. Covers automation, productivity AI, and emerging tools. Strong early-adopter tech audience.',ig:'https://instagram.com/subratx.ai',featured:false},
-  {handle:'Shudh.content',name:'Shudh Content',followers:'56.9K',tier:'micro',tags:['tech','micro'],niche:'Clean Tech Content',bio:'56.9K creator with clean, minimal tech content format. Strong aesthetic appeal with engaged, quality-focused audience.',ig:'https://instagram.com/Shudh.content',featured:false},
-  {handle:'theharshit25',name:'The Harshit',followers:'45.3K',tier:'micro',tags:['tech','micro'],niche:'Tech & AI',bio:'45.3K creator covering tech and AI. Young, growing creator with high engagement rates and dedicated follower base.',ig:'https://instagram.com/theharshit25',featured:false},
-  {handle:'techbro_36',name:'Tech Bro 36',followers:'40.5K',tier:'micro',tags:['tech','micro'],niche:'Tech Bro Culture',bio:'40.5K creator covering tech culture, gadgets, and digital lifestyle. Resonates strongly with 18-28 male tech audience.',ig:'https://instagram.com/techbro_36',featured:false},
-  {handle:'josephbadiger',name:'Joseph Badiger',followers:'35.5K',tier:'micro',tags:['tech','micro'],niche:'Tech Education',bio:'35.5K tech educator. Focused on making technology accessible to first-generation digital users in India.',ig:'https://instagram.com/josephbadiger',featured:false},
-  {handle:'tech_with_gaurav',name:'Tech with Gaurav',followers:'33K',tier:'micro',tags:['tech','micro'],niche:'Tech Reviews',bio:'33K tech reviewer. Honest, straightforward product reviews for the budget-conscious Indian consumer.',ig:'https://instagram.com/tech_with_gaurav',featured:false},
-  {handle:'sarthack.sharma',name:'Sarthak Sharma',followers:'39.9K',tier:'micro',tags:['tech','micro'],niche:'Tech & Hacks',bio:'39.9K creator covering tech hacks and productivity tips. High-engagement format with loyal follower community.',ig:'https://instagram.com/sarthack.sharma',featured:false},
-  {handle:'rohitkhatri.ai',name:'Rohit Khatri AI',followers:'46.7K',tier:'micro',tags:['ai','micro'],niche:'AI Tools',bio:'46.7K pure AI tools creator. Tutorials on ChatGPT, Midjourney and emerging AI. Fast-growing, high-engagement account.',ig:'https://instagram.com/rohitkhatri.ai',featured:false},
+  {h:'ashishbuilds',n:'Ashish Builds',f:'95.6K',t:'micro',tags:['tech','micro'],ni:'Tech Building and Startups',bi:'95.6K creator at the intersection of building products and tech. Developer and founder audience for dev tools and SaaS.',ig:'https://www.instagram.com/ashishbuilds'},
+  {h:'tech.with.rishabh',n:'Tech with Rishabh',f:'85.2K',t:'micro',tags:['tech','micro'],ni:'Tech Tutorials',bi:'85K tech tutorial creator with step-by-step how-to content and strong tutorial-seeking audience.',ig:'https://www.instagram.com/tech.with.rishabh'},
+  {h:'theharshit25',n:'The Harshit',f:'45.3K',t:'micro',tags:['tech','micro'],ni:'Tech and AI',bi:'45.3K creator covering tech and AI with high engagement rates and dedicated follower base.',ig:'https://www.instagram.com/theharshit25'},
+  {h:'techbro_36',n:'Tech Bro 36',f:'40.5K',t:'micro',tags:['tech','micro'],ni:'Tech Culture',bi:'40.5K creator covering tech culture, gadgets, and digital lifestyle for 18-28 male tech audience.',ig:'https://www.instagram.com/techbro_36'},
+  {h:'sarthack.sharma',n:'Sarthak Sharma',f:'39.9K',t:'micro',tags:['tech','micro'],ni:'Tech and Hacks',bi:'39.9K creator covering tech hacks and productivity tips with loyal follower community.',ig:'https://www.instagram.com/sarthack.sharma'},
   // NANO
-  {handle:'techymohit_',name:'Techy Mohit',followers:'20.9K',tier:'nano',tags:['tech','nano'],niche:'Tech Tutorials',bio:'20.9K growing tech creator. Tutorial-focused content with loyal nano following. Highly authentic with strong community trust.',ig:'https://instagram.com/techymohit_',featured:false},
-  {handle:'uv_tech',name:'UV Tech',followers:'20.5K',tier:'nano',tags:['tech','nano'],niche:'Tech Reviews',bio:'20.5K nano creator with strong engagement. Early-stage growth with authentic audience. Great for first-to-market brand placements.',ig:'https://instagram.com/uv_tech',featured:false},
-  {handle:'sandeshhbs',name:'Sandesh HBS',followers:'26.8K',tier:'nano',tags:['tech','nano'],niche:'Tech & Business',bio:'26.8K creator at the intersection of tech and business. Quality over quantity — high engagement rates typical of nano tier.',ig:'https://instagram.com/sandeshhbs',featured:false},
-  {handle:'techdude02',name:'Tech Dude 02',followers:'22.7K',tier:'nano',tags:['tech','nano'],niche:'Tech Content',bio:'22.7K growing tech content creator. Relatable format with strong Gen Z tech audience. High organic reach per post.',ig:'https://instagram.com/techdude02',featured:false},
-  {handle:'factastiic',name:'Factastiic',followers:'29.8K',tier:'nano',tags:['tech','nano'],niche:'Tech Facts & News',bio:'29.8K creator covering interesting tech facts and news. Viral-format content ideal for reach and brand awareness.',ig:'https://instagram.com/factastiic',featured:false},
-  {handle:'the_formal_tech',name:'The Formal Tech',followers:'17.9K',tier:'nano',tags:['tech','nano'],niche:'Professional Tech',bio:'17.9K creator focusing on professional tech use. LinkedIn-adjacent audience of working professionals.',ig:'https://instagram.com/the_formal_tech',featured:false},
-  {handle:'techh_with_ajay',name:'Tech with Ajay',followers:'9K',tier:'nano',tags:['tech','nano'],niche:'Tech Education',bio:'9K early-stage creator. Ground floor opportunity for brands wanting authentic, intimate tech creator partnerships.',ig:'https://instagram.com/techh_with_ajay',featured:false},
-  {handle:'globitz1',name:'Globitz',followers:'25.2K',tier:'nano',tags:['tech','nano'],niche:'Global Tech',bio:'25.2K creator covering global tech news and trends. International perspective on tech for Indian audience.',ig:'https://instagram.com/globitz1',featured:false},
-  {handle:'rahul.caeers',name:'Rahul Careers',followers:'9.9K',tier:'nano',tags:['tech','nano'],niche:'Tech Careers',bio:'9.9K career-focused tech creator. Covers getting into tech, skill development, and career paths. Strong student audience.',ig:'https://instagram.com/rahul.caeers',featured:false},
-  {handle:'techhkey',name:'TechhKey',followers:'6.2K',tier:'nano',tags:['tech','nano'],niche:'Tech',bio:'6.2K early-stage tech creator. Fresh voice in the tech space with authentic engagement from early community.',ig:'https://instagram.com/techhkey',featured:false},
+  {h:'factastiic',n:'Factastiic',f:'29.8K',t:'nano',tags:['tech','nano'],ni:'Tech Facts and News',bi:'29.8K creator covering interesting tech facts and news with viral-format content.',ig:'https://www.instagram.com/factastiic'},
+  {h:'globitz1',n:'Globitz',f:'25.2K',t:'nano',tags:['tech','nano'],ni:'Global Tech',bi:'25.2K creator covering global tech news and trends for Indian audience.',ig:'https://www.instagram.com/globitz1'},
+  {h:'techymohit_',n:'Techy Mohit',f:'20.9K',t:'nano',tags:['tech','nano'],ni:'Tech Tutorials',bi:'20.9K growing tech creator with tutorial-focused content and loyal nano following.',ig:'https://www.instagram.com/techymohit_'},
+  {h:'uv_tech',n:'UV Tech',f:'20.5K',t:'nano',tags:['tech','nano'],ni:'Tech Reviews',bi:'20.5K nano creator with strong engagement. Great for first-to-market brand placements.',ig:'https://www.instagram.com/uv_tech'},
+  {h:'techh_with_ajay',n:'Tech with Ajay',f:'9K',t:'nano',tags:['tech','nano'],ni:'Tech Education',bi:'9K early-stage creator. Ground floor opportunity for brands wanting authentic creator partnerships.',ig:'https://www.instagram.com/techh_with_ajay'},
+  {h:'techhkey',n:'TechhKey',f:'6.2K',t:'nano',tags:['tech','nano'],ni:'Tech',bi:'6.2K early-stage tech creator with authentic engagement from early community.',ig:'https://www.instagram.com/techhkey'}
 ];
 
-// ── TIER HELPERS ──
-function getTierLabel(tier){
-  return {macro:'Macro 1M+',mid:'Mid-Tier',micro:'Micro',nano:'Nano'}[tier]||tier;
-}
-function getTierClass(tier){
-  return {macro:'tag-macro',mid:'tag-mid',micro:'tag-micro',nano:'tag-nano'}[tier]||'tag-nano';
-}
-function getAvatarColor(handle){
-  const colors=[['#6c63ff','#a09aff'],['#00d4aa','#00ffcc'],['#ff6b6b','#ffa07a'],['#f5c542','#ffe066'],['#845ef7','#cc5de8']];
-  let h=0; for(let c of handle) h=(h+c.charCodeAt(0))%colors.length;
-  return colors[h];
-}
-function getInitials(name){
-  return name.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-}
-function formatFollowers(f){
-  return f;
+var COLS=[['#6c63ff','#a09aff'],['#00d4aa','#00e6bb'],['#ff6b6b','#ffa07a'],['#f5c542','#ffe066'],['#845ef7','#cc5de8'],['#20c997','#63e6be']];
+function acol(h){var n=0;for(var i=0;i<h.length;i++)n=(n+h.charCodeAt(i))%COLS.length;return COLS[n];}
+function ini(s){return s.split(' ').slice(0,2).map(function(w){return w[0];}).join('').toUpperCase();}
+function tl(t){return {macro:'Macro 1M+',mid:'Mid-Tier',micro:'Micro',nano:'Nano'}[t]||t;}
+function tc(t){return {macro:'tma',mid:'tmi',micro:'tmc',nano:'tna'}[t]||'tna';}
+function rates(t){
+  if(t==='macro')return{rl:'Rs 1.5L to 4L',st:'Rs 40K to 80K',bu:'Rs 2L to 5L'};
+  if(t==='mid')return{rl:'Rs 35K to 1.5L',st:'Rs 15K to 40K',bu:'Rs 50K to 2L'};
+  if(t==='micro')return{rl:'Rs 20K to 60K',st:'Rs 8K to 20K',bu:'Rs 28K to 80K'};
+  return{rl:'Rs 5K to 18K',st:'Rs 2K to 6K',bu:'Rs 8K to 22K'};
 }
 
-// ── RENDER CARDS ──
-function renderCreators(list){
-  const grid=document.getElementById('creatorsGrid');
-  grid.innerHTML='';
-  list.forEach((c,i)=>{
-    const [c1,c2]=getAvatarColor(c.handle);
-    const card=document.createElement('div');
-    card.className='creator-card'+(c.featured?' featured':'');
-    card.dataset.tier=c.tier;
-    card.dataset.handle=c.handle.toLowerCase();
-    card.dataset.name=c.name.toLowerCase();
-    card.innerHTML=`
-      <div class="cc-top">
-        <div class="cc-avatar" style="background:linear-gradient(135deg,${c1},${c2})">${getInitials(c.name)}</div>
-        <div>
-          <div class="cc-name">${c.name}</div>
-          <div class="cc-handle">@${c.handle}</div>
-        </div>
-      </div>
-      <div class="cc-stats">
-        <div class="cc-stat">
-          <div class="cc-stat-n" style="color:${c1}">${c.followers}</div>
-          <div class="cc-stat-l">Followers</div>
-        </div>
-        <div class="cc-stat">
-          <div class="cc-stat-n" style="color:${c2}">${getTierLabel(c.tier)}</div>
-          <div class="cc-stat-l">Creator Tier</div>
-        </div>
-      </div>
-      <div class="cc-tags">
-        ${c.tags.map(t=>`<span class="cc-tag tag-${t}">${t.toUpperCase()}</span>`).join('')}
-        <span class="cc-tag ${getTierClass(c.tier)}">${getTierLabel(c.tier)}</span>
-        ${c.featured?'<span class="cc-tag" style="background:rgba(245,197,66,.1);color:#f5c542;border:1px solid rgba(245,197,66,.2)">PITCH READY</span>':''}
-      </div>
-      <div class="cc-footer">
-        <a href="${c.ig}" target="_blank" class="cc-ig-link">📱 Instagram →</a>
-        <button class="cc-pitch-btn" onclick="openPitch(${i})">View Pitch</button>
-      </div>
-    `;
-    grid.appendChild(card);
+function render(list){
+  var g=document.getElementById('grid');
+  g.innerHTML='';
+  if(!list.length){g.innerHTML='<p style="color:var(--muted);padding:20px">No creators found.</p>';return;}
+  list.forEach(function(c){
+    var cl=acol(c.h);
+    var d=document.createElement('div');
+    d.className='card'+(c.feat?' feat':'');
+    var tgs=c.tags.map(function(t){return '<span class="ctag tai">'+t.toUpperCase()+'</span>';}).join('');
+    d.innerHTML=
+      (c.feat?'<div class="feat-b">FEATURED</div>':'')+
+      '<div class="c-top">'+
+        '<div class="c-av" style="background:linear-gradient(135deg,'+cl[0]+','+cl[1]+')" aria-hidden="true">'+ini(c.n)+'</div>'+
+        '<div><div class="c-nm">'+c.n+'</div><div class="c-hd">@'+c.h+'</div></div>'+
+      '</div>'+
+      '<div class="c-stats">'+
+        '<div class="c-st"><div class="c-sn" style="color:'+cl[0]+'">'+c.f+'</div><div class="c-sl">Followers</div></div>'+
+        '<div class="c-st"><div class="c-sn" style="color:'+cl[1]+'">'+tl(c.t)+'</div><div class="c-sl">Tier</div></div>'+
+      '</div>'+
+      '<div class="c-tags">'+tgs+'<span class="ctag '+tc(c.t)+'">'+tl(c.t)+'</span>'+(c.feat?'<span class="ctag" style="background:rgba(245,197,66,.1);color:#f5c542;border:1px solid rgba(245,197,66,.2)">PITCH READY</span>':'')+'</div>'+
+      '<div class="c-foot">'+
+        '<a href="'+c.ig+'" target="_blank" class="c-ig">View Instagram</a>'+
+        '<button class="c-btn" data-h="'+c.h+'">&#128172; Get Pitch</button>'+
+      '</div>';
+    g.appendChild(d);
   });
 }
 
-// ── FILTER LOGIC ──
-let currentTier='all';
-let currentSearch='';
-function filterCreators(){
-  currentSearch=document.getElementById('searchInput').value.toLowerCase();
-  applyFilters();
-}
-function filterTier(tier,btn){
-  currentTier=tier;
-  document.querySelectorAll('.tier-tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  applyFilters();
-}
-function applyFilters(){
-  let list=creators;
-  if(currentTier!=='all') list=list.filter(c=>c.tier===currentTier);
-  if(currentSearch) list=list.filter(c=>c.handle.includes(currentSearch)||c.name.toLowerCase().includes(currentSearch)||c.niche.toLowerCase().includes(currentSearch));
-  renderCreators(list);
+var curT='all',curS='';
+function fil(){
+  render(C.filter(function(c){
+    return(curT==='all'||c.t===curT)&&(!curS||c.h.toLowerCase().indexOf(curS)>-1||c.n.toLowerCase().indexOf(curS)>-1||c.ni.toLowerCase().indexOf(curS)>-1);
+  }));
 }
 
-// ── MODAL ──
-function openPitch(idx){
-  const c=creators[idx];
-  const [c1,c2]=getAvatarColor(c.handle);
-  let inner='';
+document.getElementById('si').addEventListener('input',function(){curS=this.value.toLowerCase();fil();});
+document.querySelectorAll('.tab').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');curT=b.getAttribute('data-tier');fil();
+  });
+});
 
-  if(c.hasFullDeck){
-    // FULL MANIK AI PITCH
-    inner=`
-    <div class="pitch-hero">
-      <div class="pitch-hero-tag">// Creator Pitch Deck · The Engage Craft</div>
-      <div class="pitch-hero-name"><span class="grad">${c.name}</span></div>
-      <div class="pitch-hero-bio">${c.bio}</div>
-      <div class="pitch-niche-pills">
-        <span class="pitch-niche">Strategy Consulting Background</span>
-        <span class="pitch-niche">Non-Technical AI</span>
-        <span class="pitch-niche">Bain & Company Alumni</span>
-        <span class="pitch-niche">Zero Code AI</span>
-      </div>
-    </div>
+// EVENT DELEGATION
+document.getElementById('grid').addEventListener('click',function(e){
+  var btn=e.target;
+  if(!btn.classList.contains('c-btn'))return;
+  var handle=btn.getAttribute('data-h');
+  var creator=null;
+  for(var i=0;i<C.length;i++){if(C[i].h===handle){creator=C[i];break;}}
+  if(!creator)return;
+  var msg='Hi! I found The Engage Craft creator roster and I want to know more about *'+creator.n+'* (@'+creator.h+') — '+creator.f+' followers, '+creator.ni+'. Can you share their pitch deck and rates?';
+  var url='https://wa.me/919828022182?text='+encodeURIComponent(msg);
+  window.open(url,'_blank');
+});
 
-    <div class="pitch-section-title">// Key Metrics</div>
-    <div class="pitch-metrics">
-      <div class="pm-card"><div class="pm-n green">${c.metrics.followers}</div><div class="pm-l">Instagram Followers</div></div>
-      <div class="pm-card"><div class="pm-n purple">${c.metrics.views}</div><div class="pm-l">Total Views</div></div>
-      <div class="pm-card"><div class="pm-n gold">${c.metrics.engagement}</div><div class="pm-l">Avg Engagement Rate</div></div>
-      <div class="pm-card"><div class="pm-n green" style="font-size:16px">${c.metrics.growth}</div><div class="pm-l">Growth Velocity</div></div>
-    </div>
-
-    <div class="pitch-section-title">// Audience Breakdown</div>
-    <div class="pitch-audience">
-      <div style="font-size:13px;color:var(--muted)">Instagram · Primary Platform</div>
-      <div class="aud-grid">
-        <div class="aud-item"><div class="aud-n">${c.audience.india}</div><div class="aud-l">India</div></div>
-        <div class="aud-item"><div class="aud-n">${c.audience.age1824}</div><div class="aud-l">18–24 Age</div></div>
-        <div class="aud-item"><div class="aud-n">${c.audience.age2534}</div><div class="aud-l">25–34 Age</div></div>
-        <div class="aud-item"><div class="aud-n">${c.audience.male}</div><div class="aud-l">Male</div></div>
-      </div>
-    </div>
-
-    <div class="pitch-section-title">// The Series · ${c.series}</div>
-    <div class="pitch-content-grid">
-      <div class="pc-card"><div class="pc-icon">🎬</div><div class="pc-title">Daily Reel Format</div><div class="pc-body">Hinglish hook + live screen recording demo + English CTA. 60–90 second format optimised for Explore page virality. 7% average engagement rate per post.</div></div>
-      <div class="pc-card"><div class="pc-icon">💬</div><div class="pc-title">ManyChat DM Automation</div><div class="pc-body">Comment a keyword → get a branded PDF guide instantly. Every sponsorship gets a dedicated automated lead capture flow built in.</div></div>
-      <div class="pc-card"><div class="pc-icon">🎯</div><div class="pc-title">Brand Integration</div><div class="pc-body">Your product becomes the AI tool of the day. Seamless demo integration — not an ad, but a genuine tool recommendation with real screen recording.</div></div>
-      <div class="pc-card"><div class="pc-icon">📈</div><div class="pc-title">Trending Hook Strategy</div><div class="pc-body">Every reel rides a cultural or news moment — cricket, Bollywood, big brand launches — paired with a universal AI use case for maximum virality.</div></div>
-    </div>
-
-    <div class="pitch-section-title">// Most Viewed Content</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
-      <div class="pm-card" style="text-align:center"><div class="pm-n green">2M+</div><div class="pm-l">Views · Nikhil Kamath Hook Reel</div></div>
-      <div class="pm-card" style="text-align:center"><div class="pm-n purple">1.2M+</div><div class="pm-l">Views · Google AI Feature Reel</div></div>
-    </div>
-
-    <div class="pitch-section-title">// Sponsorship Rates</div>
-    <table class="pitch-rate-table">
-      <thead><tr><th>Deliverable</th><th>Rate</th><th>Your 10% (if via TEC)</th></tr></thead>
-      <tbody>
-        <tr><td>Dedicated Instagram Reel (60–90s)</td><td><span class="rate-val">${c.rates.reel}</span></td><td><span class="rate-your">₹3.5K–₹5.5K</span></td></tr>
-        <tr><td>Instagram Story Pack (3 stories + CTA)</td><td><span class="rate-val">${c.rates.story}</span></td><td><span class="rate-your">₹1.2K–₹1.8K</span></td></tr>
-        <tr><td>Reel + Story Bundle</td><td><span class="rate-val">${c.rates.bundle}</span></td><td><span class="rate-your">₹6.5K–₹9K</span></td></tr>
-        <tr><td>ManyChat Lead Capture Integration</td><td><span class="rate-val">₹15K–₹25K add-on</span></td><td><span class="rate-your">₹1.5K–₹2.5K</span></td></tr>
-      </tbody>
-    </table>
-    `;
-  } else {
-    // STANDARD PITCH
-    inner=`
-    <div class="pitch-hero">
-      <div class="pitch-hero-tag">// Creator Pitch · The Engage Craft Network</div>
-      <div class="pitch-hero-name"><span class="grad">@${c.handle}</span></div>
-      <div class="pitch-hero-bio">${c.bio}</div>
-      <div class="pitch-niche-pills">
-        <span class="pitch-niche">${c.niche}</span>
-        <span class="pitch-niche">${getTierLabel(c.tier)} Creator</span>
-        <span class="pitch-niche">India Audience</span>
-      </div>
-    </div>
-    <div class="pitch-metrics">
-      <div class="pm-card"><div class="pm-n green">${c.followers}</div><div class="pm-l">Instagram Followers</div></div>
-      <div class="pm-card"><div class="pm-n purple">${c.tier==='macro'?'3–5%':c.tier==='mid'?'4–7%':'5–9%'}</div><div class="pm-l">Est. Engagement Rate</div></div>
-      <div class="pm-card"><div class="pm-n gold">80%+</div><div class="pm-l">India Based Audience</div></div>
-      <div class="pm-card"><div class="pm-n green">18–34</div><div class="pm-l">Core Age Group</div></div>
-    </div>
-    <div class="pitch-section-title">// Sponsorship Rates</div>
-    <table class="pitch-rate-table">
-      <thead><tr><th>Deliverable</th><th>Estimated Rate</th></tr></thead>
-      <tbody>
-        ${c.tier==='macro'?`
-        <tr><td>Dedicated Reel (60s integration)</td><td><span class="rate-val">₹1.5L – ₹4L</span></td></tr>
-        <tr><td>Story Pack (3 stories)</td><td><span class="rate-val">₹40K – ₹80K</span></td></tr>
-        <tr><td>Reel + Story Bundle</td><td><span class="rate-val">₹2L – ₹5L</span></td></tr>
-        `:c.tier==='mid'?`
-        <tr><td>Dedicated Reel (60s integration)</td><td><span class="rate-val">₹35K – ₹1.5L</span></td></tr>
-        <tr><td>Story Pack (3 stories)</td><td><span class="rate-val">₹15K – ₹40K</span></td></tr>
-        <tr><td>Reel + Story Bundle</td><td><span class="rate-val">₹50K – ₹2L</span></td></tr>
-        `:c.tier==='micro'?`
-        <tr><td>Dedicated Reel (60s integration)</td><td><span class="rate-val">₹20K – ₹60K</span></td></tr>
-        <tr><td>Story Pack (3 stories)</td><td><span class="rate-val">₹8K – ₹20K</span></td></tr>
-        <tr><td>Reel + Story Bundle</td><td><span class="rate-val">₹28K – ₹80K</span></td></tr>
-        `:`
-        <tr><td>Dedicated Reel (60s integration)</td><td><span class="rate-val">₹5K – ₹18K</span></td></tr>
-        <tr><td>Story Pack (3 stories)</td><td><span class="rate-val">₹2K – ₹6K</span></td></tr>
-        <tr><td>Reel + Story Bundle</td><td><span class="rate-val">₹8K – ₹22K</span></td></tr>
-        `}
-      </tbody>
-    </table>
-    `;
-  }
-
-  // CTA always at the bottom
-  inner+=`
-  <div class="pitch-cta">
-    <div class="pitch-cta-title">Interested in ${c.name}?</div>
-    <div class="pitch-cta-sub">Contact The Engage Craft to discuss rates, availability, and campaign fit.</div>
-    <div class="pitch-cta-contacts">
-      <a href="https://wa.me/919828022182" class="pitch-contact-chip chip-wa">📱 WhatsApp Us</a>
-      <a href="mailto:biing@theengagecraft.com" class="pitch-contact-chip chip-em">✉️ Email Us</a>
-      <a href="https://www.theengagecraft.com" target="_blank" class="pitch-contact-chip chip-web">🌐 theengagecraft.com</a>
-    </div>
-  </div>`;
-
-  document.getElementById('modalBody').innerHTML=inner;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
-function closeModalOutside(e){
-  if(e.target===document.getElementById('modalOverlay')) closeModal();
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
-
-// ── INIT ──
-renderCreators(creators);
+render(C);
 </script>
 </body>
 </html>
