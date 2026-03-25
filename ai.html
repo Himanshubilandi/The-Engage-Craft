@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engage Craft — Influencer Outreach CRM</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e28;
+    --bg4: #212636;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #f0f2f7;
+    --text2: #8a90a0;
+    --text3: #555c70;
+    --accent: #6c63ff;
+    --accent2: #9b94ff;
+    --green: #2ecc8a;
+    --amber: #f0a23a;
+    --red: #ff6b6b;
+    --teal: #38bdf8;
+    --pink: #f472b6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark {
+    width: 32px; height: 32px; background: var(--accent);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif; font-size: 16px; color: #fff;
+  }
+  .logo-text { font-size: 15px; font-weight: 600; letter-spacing: -0.3px; }
+  .logo-sub { font-size: 11px; color: var(--text3); margin-top: 1px; }
+  .header-right { display: flex; align-items: center; gap: 1rem; }
+  .header-stat { text-align: right; }
+  .header-stat strong { font-size: 18px; font-weight: 600; color: var(--accent2); }
+  .header-stat span { display: block; font-size: 11px; color: var(--text3); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1.2; color: var(--text); }
+  .hero h1 em { color: var(--accent2); font-style: italic; }
+  .hero p { font-size: 15px; color: var(--text2); margin-top: 0.75rem; max-width: 600px; line-height: 1.7; }
+  .hero-stats { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+  .hstat { display: flex; flex-direction: column; }
+  .hstat strong { font-size: 28px; font-weight: 600; color: var(--text); }
+  .hstat span { font-size: 12px; color: var(--text3); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* ── APPROACH GUIDE ── */
+  .guide-section { padding: 2rem; border-bottom: 1px solid var(--border); }
+  .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 1.25rem; }
+  .approach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .approach-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .approach-card:hover { border-color: var(--border2); }
+  .approach-card .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; margin-bottom: 0.75rem;
+  }
+  .approach-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 0.4rem; }
+  .approach-card p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .approach-card .tip {
+    margin-top: 0.75rem; padding: 0.5rem 0.75rem;
+    background: var(--bg4); border-radius: 6px;
+    font-size: 12px; color: var(--text2);
+    border-left: 2px solid var(--accent);
+  }
+  .step1 .step-num { background: rgba(108,99,255,0.2); color: var(--accent2); }
+  .step2 .step-num { background: rgba(46,204,138,0.2); color: var(--green); }
+  .step3 .step-num { background: rgba(240,162,58,0.2); color: var(--amber); }
+  .step4 .step-num { background: rgba(56,189,248,0.2); color: var(--teal); }
+  .step5 .step-num { background: rgba(244,114,182,0.2); color: var(--pink); }
+
+  /* ── EMAIL TEMPLATES ── */
+  .templates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+  .template-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .template-header {
+    padding: 1rem 1.25rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .template-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 15px;
+  }
+  .template-header h3 { font-size: 13px; font-weight: 600; }
+  .template-header span { font-size: 11px; color: var(--text3); }
+  .template-body { padding: 1rem 1.25rem; font-size: 12px; color: var(--text2); line-height: 1.8; }
+  .template-body .subject { font-size: 11px; color: var(--text3); margin-bottom: 0.5rem; }
+  .template-body .subject strong { color: var(--accent2); }
+  .copy-btn {
+    margin: 0 1.25rem 1rem; padding: 0.5rem 1rem;
+    background: var(--bg4); border: 1px solid var(--border2);
+    border-radius: 6px; color: var(--text2); font-size: 12px;
+    cursor: pointer; transition: all 0.2s; width: calc(100% - 2.5rem);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .copy-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* ── CONTROLS ── */
+  .controls-bar {
+    padding: 1.25rem 2rem;
+    background: var(--bg2); border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    position: sticky; top: 60px; z-index: 90;
+  }
+  .search-wrap { position: relative; flex: 1; min-width: 200px; }
+  .search-wrap input {
+    width: 100%; padding: 8px 12px 8px 34px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 13px;
+    font-family: 'DM Sans', sans-serif; outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); }
+  .search-wrap input::placeholder { color: var(--text3); }
+  .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 14px; }
+  select {
+    padding: 8px 12px; background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 13px;
+    font-family: 'DM Sans', sans-serif; outline: none; cursor: pointer;
+  }
+  select:focus { border-color: var(--accent); }
+  .count-pill {
+    padding: 4px 12px; background: var(--bg4); border-radius: 20px;
+    font-size: 12px; color: var(--text3);
+  }
+  .count-pill strong { color: var(--accent2); }
+
+  /* ── TABLE ── */
+  .table-section { padding: 1.5rem 2rem 3rem; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    background: var(--bg3); padding: 10px 14px;
+    text-align: left; font-size: 11px; font-weight: 500;
+    color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--bg3); }
+  tbody td { padding: 12px 14px; color: var(--text); vertical-align: top; }
+  .company-name { font-weight: 600; font-size: 13px; }
+  .company-web { font-size: 11px; color: var(--accent2); text-decoration: none; margin-top: 2px; display: block; }
+  .company-web:hover { text-decoration: underline; }
+
+  /* Badges */
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 20px;
+    font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .b-ai { background: rgba(108,99,255,0.15); color: var(--accent2); border: 1px solid rgba(108,99,255,0.3); }
+  .b-saas { background: rgba(56,189,248,0.12); color: var(--teal); border: 1px solid rgba(56,189,248,0.25); }
+  .b-hw { background: rgba(46,204,138,0.12); color: var(--green); border: 1px solid rgba(46,204,138,0.25); }
+  .b-boot { background: rgba(138,144,160,0.12); color: var(--text2); border: 1px solid var(--border); }
+  .b-seed { background: rgba(240,162,58,0.12); color: var(--amber); border: 1px solid rgba(240,162,58,0.25); }
+  .b-sa { background: rgba(46,204,138,0.12); color: var(--green); border: 1px solid rgba(46,204,138,0.25); }
+  .b-sb { background: rgba(244,114,182,0.12); color: var(--pink); border: 1px solid rgba(244,114,182,0.25); }
+
+  /* Priority */
+  .p-high { color: var(--green); font-weight: 600; font-size: 12px; }
+  .p-med { color: var(--amber); font-weight: 600; font-size: 12px; }
+  .p-low { color: var(--text3); font-size: 12px; }
+
+  /* Approach method */
+  .method { font-size: 11px; color: var(--text2); line-height: 1.5; }
+  .method-tag {
+    display: inline-block; padding: 1px 6px; border-radius: 4px;
+    font-size: 10px; font-weight: 600; margin-bottom: 3px;
+    background: rgba(108,99,255,0.15); color: var(--accent2);
+  }
+  .fit { font-size: 11px; color: var(--text2); line-height: 1.6; max-width: 240px; }
+
+  /* No results */
+  .no-results { text-align: center; padding: 4rem 2rem; color: var(--text3); }
+  .no-results h3 { font-size: 18px; margin-bottom: 0.5rem; color: var(--text2); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 26px; }
+    .hero-stats { gap: 1.25rem; }
+    .controls-bar { top: 60px; }
+    td, th { padding: 10px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">E</div>
+    <div>
+      <div class="logo-text">Engage Craft</div>
+      <div class="logo-sub">Influencer Outreach CRM</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-stat">
+      <strong>100</strong>
+      <span>Companies</span>
+    </div>
+    <div class="header-stat">
+      <strong>100+</strong>
+      <span>Creators</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Your <em>outreach playbook</em> for<br>tech & AI companies</h1>
+  <p>A curated CRM of 100 AI startups, SaaS tools & hardware brands — each with a personalized approach strategy so you can close deals for your creator network.</p>
+  <div class="hero-stats">
+    <div class="hstat"><strong>42</strong><span>AI Startups</span></div>
+    <div class="hstat"><strong>38</strong><span>SaaS Tools</span></div>
+    <div class="hstat"><strong>20</strong><span>Hardware</span></div>
+    <div class="hstat"><strong>47</strong><span>High Priority</span></div>
+    <div class="hstat"><strong>3</strong><span>Approach Methods</span></div>
+  </div>
+</section>
+
+<!-- APPROACH GUIDE -->
+<section class="guide-section">
+  <div class="section-title">How to approach — 5 step playbook</div>
+  <div class="approach-grid">
+    <div class="approach-card step1">
+      <div class="step-num">1</div>
+      <h3>Build your media kit first</h3>
+      <p>Before reaching out to anyone, create a one-page PDF showing your creator network stats — total reach, niches covered, avg engagement rate, past brand deals.</p>
+      <div class="tip">💡 Mention "100+ tech & AI creators" prominently. Numbers open doors.</div>
+    </div>
+    <div class="approach-card step2">
+      <div class="step-num">2</div>
+      <h3>Find the right contact</h3>
+      <p>For startups: email the founder or Head of Marketing directly. Use LinkedIn to find them. For Series B+ companies: look for "Influencer Marketing Manager" or "Brand Partnerships".</p>
+      <div class="tip">💡 Tools: Apollo.io, Hunter.io, LinkedIn Sales Navigator for finding emails free.</div>
+    </div>
+    <div class="approach-card step3">
+      <div class="step-num">3</div>
+      <h3>Send a warm cold email</h3>
+      <p>Keep it under 100 words. Lead with their pain point, not your pitch. Show you understand their product. Offer a pilot campaign with 2–3 creators at a startup-friendly rate.</p>
+      <div class="tip">💡 Subject line formula: "100 tech creators + [CompanyName] = ?" gets high open rates.</div>
+    </div>
+    <div class="approach-card step4">
+      <div class="step-num">4</div>
+      <h3>Follow up on LinkedIn</h3>
+      <p>Connect with their marketing team on LinkedIn the same day you email. Comment on their posts, engage with their content for 3–5 days before following up on email.</p>
+      <div class="tip">💡 Warmth before follow-up = 3x reply rate. Don't be a stranger when you follow up.</div>
+    </div>
+    <div class="approach-card step5">
+      <div class="step-num">5</div>
+      <h3>Propose a pilot, not a contract</h3>
+      <p>Close with a low-risk pilot: 2–3 creators, 30-day campaign, performance-based pricing. Remove all friction. Once they see results, upsell the full network.</p>
+      <div class="tip">💡 Say "pilot" not "contract". Startups hate commitment but love testing.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL TEMPLATES -->
+<section class="guide-section">
+  <div class="section-title">Copy-paste email templates by company type</div>
+  <div class="templates-grid">
+
+    <div class="template-card">
+      <div class="template-header">
+        <div class="template-icon" style="background:rgba(108,99,255,0.15);">🤖</div>
+        <div>
+          <h3>For AI Startups (Seed/Series A)</h3>
+          <span>Founder-direct outreach</span>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="subject">Subject: <strong>100 AI creators × [Company Name] — pilot idea?</strong></div>
+        Hi [Name],<br><br>
+        I run Engage Craft — we represent 100+ tech and AI content creators across YouTube, Twitter/X, and LinkedIn.<br><br>
+        Noticed [Company Name] is growing fast in the [AI tool/feature] space. Our creators make exactly the kind of content your ideal users watch before signing up.<br><br>
+        We've helped similar tools go from 0 to thousands of sign-ups through creator-led demos.<br><br>
+        Would you be open to a quick 15-min call to explore a small pilot? No long contracts — just results.<br><br>
+        Best,<br>[Your Name] | Engage Craft
+      </div>
+      <button class="copy-btn" onclick="copyTemplate(this)">Copy this email</button>
+    </div>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div class="template-icon" style="background:rgba(56,189,248,0.15);">⚡</div>
+        <div>
+          <h3>For SaaS Tools (Series B+)</h3>
+          <span>Marketing team outreach</span>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="subject">Subject: <strong>Influencer partnership proposal — [Company Name] × 100+ tech creators</strong></div>
+        Hi [Name],<br><br>
+        I'm [Your Name] from Engage Craft. We manage influencer campaigns for tech and AI brands, working with 100+ creators in the productivity, dev-tools, and SaaS space.<br><br>
+        [Company Name]'s product is a perfect fit for our creator network — your users and our audience overlap almost completely.<br><br>
+        We offer performance-tracked campaigns starting with a small pilot. I'd love to share our creator roster and past campaign results.<br><br>
+        Are you the right person to connect with, or should I reach someone else on your team?<br><br>
+        Thanks,<br>[Your Name] | Engage Craft
+      </div>
+      <button class="copy-btn" onclick="copyTemplate(this)">Copy this email</button>
+    </div>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div class="template-icon" style="background:rgba(46,204,138,0.15);">🔧</div>
+        <div>
+          <h3>For Hardware Brands</h3>
+          <span>Review + unboxing pitch</span>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="subject">Subject: <strong>Tech creators who'd love to review [Product Name]</strong></div>
+        Hi [Name],<br><br>
+        I'm reaching out from Engage Craft — we represent 100+ tech creators who specialise in hardware reviews, unboxings, and long-form product comparisons.<br><br>
+        [Company/Product] is exactly the kind of product our creators and their audiences are excited about. We can arrange honest, high-quality reviews across YouTube and short-form platforms.<br><br>
+        We work with gifting + paid hybrid models and can move fast. Want me to send over 5 creator profiles that match your target audience?<br><br>
+        Let me know!<br>[Your Name] | Engage Craft
+      </div>
+      <button class="copy-btn" onclick="copyTemplate(this)">Copy this email</button>
+    </div>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div class="template-icon" style="background:rgba(240,162,58,0.15);">🌱</div>
+        <div>
+          <h3>For Bootstrapped / Small Teams</h3>
+          <span>Value-first approach</span>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="subject">Subject: <strong>Free pilot idea for [Company Name]</strong></div>
+        Hi [Name],<br><br>
+        Love what you're building at [Company Name]. I run Engage Craft — a startup like you — and I manage 100+ tech creators.<br><br>
+        I'd like to offer you a free 1-creator pilot to show you what influencer-driven growth can look like for your product. Zero risk, zero upfront cost.<br><br>
+        If the results look good, we can talk about a paid campaign. If not, you lose nothing.<br><br>
+        Interested? I can set it up this week.<br><br>
+        [Your Name] | Engage Craft
+      </div>
+      <button class="copy-btn" onclick="copyTemplate(this)">Copy this email</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="Search company, focus, approach..." oninput="render()">
+  </div>
+  <select id="type-f" onchange="render()">
+    <option value="">All types</option>
+    <option value="AI Startup">AI startups</option>
+    <option value="SaaS">SaaS tools</option>
+    <option value="Hardware">Hardware</option>
+  </select>
+  <select id="stage-f" onchange="render()">
+    <option value="">All stages</option>
+    <option value="Bootstrapped">Bootstrapped</option>
+    <option value="Seed">Seed</option>
+    <option value="Series A">Series A</option>
+    <option value="Series B+">Series B+</option>
+  </select>
+  <select id="priority-f" onchange="render()">
+    <option value="">All priorities</option>
+    <option value="High">High priority</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+  <select id="method-f" onchange="render()">
+    <option value="">All methods</option>
+    <option value="Cold Email">Cold email</option>
+    <option value="LinkedIn DM">LinkedIn DM</option>
+    <option value="Twitter/X DM">Twitter/X DM</option>
+    <option value="Affiliate Portal">Affiliate portal</option>
+  </select>
+  <div class="count-pill">Showing <strong id="count">100</strong> companies</div>
+</div>
+
+<!-- TABLE -->
+<section class="table-section">
+  <div class="table-wrap" id="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Company</th>
+          <th>Type</th>
+          <th>Stage</th>
+          <th>Why they fit Engage Craft</th>
+          <th>Best approach method</th>
+          <th>Contact target</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <div id="no-results" class="no-results" style="display:none">
+    <h3>No companies found</h3>
+    <p>Try adjusting your filters</p>
+  </div>
+</section>
+
+<script>
+const data = [
+  {name:"Pika Labs",web:"pika.art",type:"AI Startup",stage:"Series A",fit:"Viral AI video tool — creators can generate stunning demo clips. Tutorial content drives massive sign-ups. Product is made for visual storytelling.",method:"Cold Email",contact:"CEO / Head of Growth",priority:"High"},
+  {name:"Runway ML",web:"runwayml.com",type:"AI Startup",stage:"Series B+",fit:"Industry-leading AI creative suite. Creators already use it — you just need to formalise the relationship. High affiliate conversion.",method:"Affiliate Portal",contact:"Influencer Partnerships Team",priority:"High"},
+  {name:"ElevenLabs",web:"elevenlabs.io",type:"AI Startup",stage:"Series B+",fit:"AI voice tool loved by podcasters, YouTubers & educators. Creators demonstrate it live — best marketing possible.",method:"Cold Email",contact:"Head of Marketing",priority:"High"},
+  {name:"Perplexity AI",web:"perplexity.ai",type:"AI Startup",stage:"Series B+",fit:"Replacing Google for tech-savvy users. Creators compare it vs ChatGPT/Google in viral videos. Huge awareness play.",method:"LinkedIn DM",contact:"Growth Team",priority:"High"},
+  {name:"Notion AI",web:"notion.so",type:"SaaS",stage:"Series B+",fit:"Productivity creators are their biggest evangelists. Tutorial templates + AI features = endless content. Already has affiliate program.",method:"Affiliate Portal",contact:"Creator Partnerships",priority:"High"},
+  {name:"Descript",web:"descript.com",type:"SaaS",stage:"Series B+",fit:"Built FOR creators. Every podcaster & video creator is a potential user. Your network IS their target market.",method:"Affiliate Portal",contact:"Head of Creator Growth",priority:"High"},
+  {name:"Typeface",web:"typeface.ai",type:"AI Startup",stage:"Series A",fit:"B2B AI content tool growing fast. Needs SaaS & marketing creators to explain value to decision-makers.",method:"Cold Email",contact:"CMO / Marketing Director",priority:"High"},
+  {name:"Synthesia",web:"synthesia.io",type:"AI Startup",stage:"Series B+",fit:"AI avatar video platform for training & marketing. B2B demo content by creators drives enterprise pipeline.",method:"LinkedIn DM",contact:"Partner Marketing Manager",priority:"High"},
+  {name:"Copy.ai",web:"copy.ai",type:"AI Startup",stage:"Series B+",fit:"Active affiliate program pays well. Marketing & copywriting creators can embed it into workflow content naturally.",method:"Affiliate Portal",contact:"Affiliate Manager",priority:"High"},
+  {name:"Jasper AI",web:"jasper.ai",type:"AI Startup",stage:"Series B+",fit:"One of the best affiliate programs in AI SaaS (up to 30% recurring). Marketing creators do dedicated reviews.",method:"Affiliate Portal",contact:"Affiliate Team",priority:"High"},
+  {name:"Otter.ai",web:"otter.ai",type:"SaaS",stage:"Series B+",fit:"Meeting productivity tool — remote work & business creators use it. Easy to demo in workflow videos.",method:"Cold Email",contact:"Head of Partnerships",priority:"High"},
+  {name:"Luma AI",web:"lumalabs.ai",type:"AI Startup",stage:"Series A",fit:"Groundbreaking 3D & video AI — visually stunning demos go viral instantly. Visual creators can showcase it uniquely.",method:"Twitter/X DM",contact:"Founder / Co-founder",priority:"High"},
+  {name:"Gamma",web:"gamma.app",type:"SaaS",stage:"Series A",fit:"Creators showing PowerPoint alternatives get massive engagement. Product is inherently visual — perfect for demos.",method:"Cold Email",contact:"Growth / Marketing Lead",priority:"High"},
+  {name:"Framer AI",web:"framer.com",type:"SaaS",stage:"Series B+",fit:"No-code & design creator community is huge. Framer has invested in creator ecosystem — looking for partners.",method:"Affiliate Portal",contact:"Creator Program Team",priority:"High"},
+  {name:"Mem.ai",web:"mem.ai",type:"AI Startup",stage:"Seed",fit:"AI-first notes app — PKM & productivity creators are the exact audience. Early-stage means founders are easy to reach.",method:"Twitter/X DM",contact:"Co-founder directly",priority:"High"},
+  {name:"Replit",web:"replit.com",type:"SaaS",stage:"Series B+",fit:"Coding platform loved by learning-to-code creators. Tutorials & build-in-public content drives their core growth.",method:"Cold Email",contact:"Developer Relations",priority:"High"},
+  {name:"Codeium",web:"codeium.com",type:"AI Startup",stage:"Series B+",fit:"GitHub Copilot alternative — dev creators do comparison videos. Actively seeking influencer partners.",method:"LinkedIn DM",contact:"Developer Marketing",priority:"High"},
+  {name:"Supabase",web:"supabase.com",type:"SaaS",stage:"Series B+",fit:"Developer community favorite. Build-with-me content on YouTube featuring Supabase gets millions of views.",method:"Twitter/X DM",contact:"DevRel Team",priority:"High"},
+  {name:"Vercel",web:"vercel.com",type:"SaaS",stage:"Series B+",fit:"Next.js creator — developers already build tutorials around it. Sponsoring dev creators is in their DNA.",method:"Cold Email",contact:"DevRel / Sponsorships",priority:"High"},
+  {name:"Loom",web:"loom.com",type:"SaaS",stage:"Series B+",fit:"Remote work creators built Loom's initial growth. Still runs creator campaigns. Easy pitch for workflow-based creators.",method:"Affiliate Portal",contact:"Partnerships Team",priority:"High"},
+  {name:"Zapier",web:"zapier.com",type:"SaaS",stage:"Series B+",fit:"Automation creators are their #1 channel. They have an established affiliate/partner program with good payouts.",method:"Affiliate Portal",contact:"Partner Program",priority:"High"},
+  {name:"Make",web:"make.com",type:"SaaS",stage:"Series B+",fit:"Zapier rival — actively trying to win creator mindshare. Automation YouTubers are their highest-converting channel.",method:"Cold Email",contact:"Head of Partnerships",priority:"High"},
+  {name:"Bubble",web:"bubble.io",type:"SaaS",stage:"Series B+",fit:"No-code app builder with huge creator ecosystem. Build tutorials = their core acquisition. Partner program exists.",method:"Affiliate Portal",contact:"Creator Partner Program",priority:"High"},
+  {name:"Beehiiv",web:"beehiiv.com",type:"SaaS",stage:"Series A",fit:"Newsletter-first creators are their exact market. Creator economy influencers already use and recommend it.",method:"Cold Email",contact:"Founder / CMO",priority:"High"},
+  {name:"ConvertKit",web:"convertkit.com",type:"SaaS",stage:"Bootstrapped",fit:"Built for creators, by creators. Their affiliate program is one of the best — 30% lifetime recurring commission.",method:"Affiliate Portal",contact:"Affiliate Manager",priority:"High"},
+  {name:"Webflow",web:"webflow.com",type:"SaaS",stage:"Series B+",fit:"No-code web design platform. Massive creator program — tutorial creators are their #1 growth lever.",method:"Affiliate Portal",contact:"Affiliate / Partner Program",priority:"High"},
+  {name:"Replicate",web:"replicate.com",type:"AI Startup",stage:"Series A",fit:"Run any AI model via API — AI tinkerer creators use it constantly. Tutorial content drives developer signups.",method:"Twitter/X DM",contact:"Co-founder / Growth",priority:"High"},
+  {name:"Groq",web:"groq.com",type:"AI Startup",stage:"Series B+",fit:"Fastest AI inference available — speed benchmark videos go viral. Tech reviewers are the ideal channel.",method:"Cold Email",contact:"Developer Marketing",priority:"High"},
+  {name:"Mistral AI",web:"mistral.ai",type:"AI Startup",stage:"Series B+",fit:"Open-source LLM darling — AI researcher & developer creators love it. Partner program growing rapidly.",method:"LinkedIn DM",contact:"Developer Relations",priority:"High"},
+  {name:"Hugging Face",web:"huggingface.co",type:"AI Startup",stage:"Series B+",fit:"The GitHub of AI — ML creators already use it daily. Sponsoring ML tutorial creators is natural extension.",method:"Cold Email",contact:"Community / Partnerships",priority:"High"},
+  {name:"LangChain",web:"langchain.com",type:"AI Startup",stage:"Series A",fit:"Most popular LLM framework. AI dev creators do tutorials constantly. Actively building creator partnerships.",method:"Twitter/X DM",contact:"Founder / DevRel",priority:"High"},
+  {name:"Stability AI",web:"stability.ai",type:"AI Startup",stage:"Series B+",fit:"Stable Diffusion creators have millions of followers. AI art & image generation is viral content.",method:"Cold Email",contact:"Marketing / Partnerships",priority:"High"},
+  {name:"Leonardo.ai",web:"leonardo.ai",type:"AI Startup",stage:"Series A",fit:"Design & AI art creators do deep-dive tutorials. Growing fast and actively seeking creator partnerships.",method:"LinkedIn DM",contact:"Head of Growth",priority:"High"},
+  {name:"Midjourney",web:"midjourney.com",type:"AI Startup",stage:"Bootstrapped",fit:"Biggest AI image tool globally. No formal partner program yet — huge opportunity to be first mover.",method:"Twitter/X DM",contact:"Core team on Discord/Twitter",priority:"High"},
+  {name:"Krea AI",web:"krea.ai",type:"AI Startup",stage:"Seed",fit:"Real-time AI image generation — visual creators go crazy demoing it. Early stage = founder is easy to contact.",method:"Twitter/X DM",contact:"Co-founder directly",priority:"High"},
+  {name:"Magnific AI",web:"magnific.ai",type:"AI Startup",stage:"Seed",fit:"AI image upscaling blew up on Twitter. Photography creators love before/after demos. Viral content potential is huge.",method:"Twitter/X DM",contact:"Founder on Twitter",priority:"High"},
+  {name:"HeyGen",web:"heygen.com",type:"AI Startup",stage:"Series A",fit:"AI avatar video platform growing explosively. Marketing & business creators showcase it — perfect demo content.",method:"Cold Email",contact:"Head of Partnerships",priority:"High"},
+  {name:"InVideo AI",web:"invideo.io",type:"AI Startup",stage:"Series B+",fit:"Video content creators compare AI video tools constantly. InVideo has active influencer program.",method:"Affiliate Portal",contact:"Affiliate Program",priority:"High"},
+  {name:"Pictory AI",web:"pictory.ai",type:"AI Startup",stage:"Series A",fit:"Turn scripts into videos with AI. Content marketers & YouTubers are exact audience. Good commission program.",method:"Affiliate Portal",contact:"Affiliate Manager",priority:"High"},
+  {name:"Murf AI",web:"murf.ai",type:"AI Startup",stage:"Series A",fit:"AI voiceover — educators, explainer video creators & podcasters are core users. Affiliate program pays well.",method:"Affiliate Portal",contact:"Partner Program",priority:"High"},
+  {name:"Podcastle",web:"podcastle.ai",type:"AI Startup",stage:"Series A",fit:"AI podcast recording & editing. Podcasters & audio creators are direct users. Partnership-first growth model.",method:"Cold Email",contact:"Founder / Growth",priority:"High"},
+  {name:"Fireflies.ai",web:"fireflies.ai",type:"SaaS",stage:"Series A",fit:"AI meeting recorder — business & startup creators recommend productivity tools. Active creator program.",method:"Affiliate Portal",contact:"Affiliate Partner Program",priority:"High"},
+  {name:"Fathom",web:"fathom.video",type:"SaaS",stage:"Seed",fit:"Free AI meeting notes — word-of-mouth product beloved by startup community. Founder accessible on Twitter.",method:"Twitter/X DM",contact:"Founder on Twitter",priority:"High"},
+  {name:"Reclaim AI",web:"reclaim.ai",type:"SaaS",stage:"Series A",fit:"AI calendar scheduling — productivity YouTubers use it in their morning routine content. Growing creator program.",method:"Cold Email",contact:"Marketing Lead",priority:"High"},
+  {name:"Motion",web:"usemotion.com",type:"SaaS",stage:"Series A",fit:"AI task & calendar — promoted heavily by productivity influencers. High conversion through creator recommendation.",method:"Cold Email",contact:"Head of Growth",priority:"High"},
+  {name:"Obsidian",web:"obsidian.md",type:"SaaS",stage:"Bootstrapped",fit:"Has a massive creator community (PKM/second brain niche). YouTubers with 500k+ subs dedicated to Obsidian tutorials.",method:"Cold Email",contact:"Founder / Community Lead",priority:"High"},
+  {name:"Raycast",web:"raycast.com",type:"SaaS",stage:"Series A",fit:"Beloved by developer & Mac productivity creators. Extensions ecosystem = endless tutorial content.",method:"Twitter/X DM",contact:"Founder / Marketing",priority:"High"},
+  {name:"Arc Browser",web:"arc.net",type:"SaaS",stage:"Series B+",fit:"Tech reviewers drove Arc's explosive growth via YouTube. They actively partner with tech creators.",method:"Cold Email",contact:"Head of Creator Marketing",priority:"High"},
+  {name:"Relevance AI",web:"relevanceai.com",type:"AI Startup",stage:"Series A",fit:"No-code AI agent builder growing fast. AI automation creators on YouTube are primary growth lever.",method:"Cold Email",contact:"Head of Marketing",priority:"High"},
+  {name:"Flowise",web:"flowiseai.com",type:"AI Startup",stage:"Bootstrapped",fit:"Open-source LLM app builder — AI dev creators make tutorials. Founder is active in community.",method:"Twitter/X DM",contact:"Founder on GitHub/Twitter",priority:"High"},
+  {name:"Dify.ai",web:"dify.ai",type:"AI Startup",stage:"Series A",fit:"LLM app development platform — AI builders showcase workflows. Growing fast internationally.",method:"Cold Email",contact:"Growth / Marketing Lead",priority:"High"},
+  {name:"Voiceflow",web:"voiceflow.com",type:"AI Startup",stage:"Series A",fit:"AI agent & chatbot builder. Creator-built chatbot tutorials get massive views. Active partner program.",method:"Cold Email",contact:"Partner Program",priority:"High"},
+  {name:"Framework Laptop",web:"frame.work",type:"Hardware",stage:"Series B+",fit:"Modular laptop — tech reviewers drive most sales. Review & comparison videos are their primary channel.",method:"Cold Email",contact:"Marketing / PR Team",priority:"High"},
+  {name:"Rabbit R1",web:"rabbit.tech",type:"Hardware",stage:"Series A",fit:"AI gadget that went viral — tech reviewers are the entire go-to-market. Actively seeking review partnerships.",method:"Cold Email",contact:"Marketing / PR",priority:"High"},
+  {name:"Humane AI Pin",web:"humane.com",type:"Hardware",stage:"Series B+",fit:"Wearable AI — controversial product that drives views. Tech reviewers actively cover it. PR team is responsive.",method:"Cold Email",contact:"PR / Marketing",priority:"High"},
+  {name:"Brilliant Labs",web:"brilliant.xyz",type:"Hardware",stage:"Series A",fit:"AR smart glasses for developers — wearable tech creators and early adopter reviewers are the right audience.",method:"Cold Email",contact:"Co-founder / Marketing",priority:"High"},
+  {name:"Even Realities",web:"evenrealities.com",type:"Hardware",stage:"Seed",fit:"AI glasses — very new, needs early review coverage badly. Seed stage = founder is reachable directly.",method:"Twitter/X DM",contact:"Founder directly",priority:"High"},
+  {name:"Bambu Lab",web:"bambulab.com",type:"Hardware",stage:"Series B+",fit:"Exploded via maker creator reviews. 3D printing YouTubers are their entire community. Active PR partnerships.",method:"Cold Email",contact:"PR / Creator Relations",priority:"High"},
+  {name:"Elgato",web:"elgato.com",type:"Hardware",stage:"Series B+",fit:"Creator gear brand — streamers & content creators ARE their product users. Already runs influencer campaigns.",method:"Cold Email",contact:"Influencer Marketing Team",priority:"High"},
+  {name:"Rode",web:"rode.com",type:"Hardware",stage:"Series B+",fit:"Microphone brand loved by video & podcast creators. Creator endorsements are core to their marketing strategy.",method:"Cold Email",contact:"Artist Relations / Marketing",priority:"High"},
+  {name:"Typeform",web:"typeform.com",type:"SaaS",stage:"Series B+",fit:"Marketing creators use it for lead gen. Tutorial content showing Typeform integrations drives conversions.",method:"Cold Email",contact:"Marketing Partnerships",priority:"Medium"},
+  {name:"Airtable",web:"airtable.com",type:"SaaS",stage:"Series B+",fit:"Productivity creators showcase templates. Has an affiliate program. Business creator content converts well.",method:"Affiliate Portal",contact:"Affiliate Program",priority:"Medium"},
+  {name:"Monday.com",web:"monday.com",type:"SaaS",stage:"Series B+",fit:"Project management — business & startup creators recommend tools. Runs influencer campaigns regularly.",method:"Cold Email",contact:"Marketing / Influencer Team",priority:"Medium"},
+  {name:"Glide Apps",web:"glideapps.com",type:"SaaS",stage:"Series A",fit:"No-code mobile apps — tutorial creators show it in build-along content. Early-stage = easy to reach founder.",method:"Cold Email",contact:"Founder / Growth",priority:"Medium"},
+  {name:"Tally.so",web:"tally.so",type:"SaaS",stage:"Seed",fit:"Free Typeform alternative beloved by indie builders. Founder is accessible, startup community loves it.",method:"Twitter/X DM",contact:"Founder on Twitter",priority:"Medium"},
+  {name:"Gumroad",web:"gumroad.com",type:"SaaS",stage:"Bootstrapped",fit:"Creator monetization — indie creator influencers already use and recommend it. Word-of-mouth product.",method:"Cold Email",contact:"Founder",priority:"Medium"},
+  {name:"Podia",web:"podia.com",type:"SaaS",stage:"Bootstrapped",fit:"Online course & community platform. Education & creator economy influencers drive conversions.",method:"Cold Email",contact:"Founder / Marketing",priority:"Medium"},
+  {name:"Kajabi",web:"kajabi.com",type:"SaaS",stage:"Series B+",fit:"Online business platform — business & marketing creators are core evangelists. Strong affiliate program.",method:"Affiliate Portal",contact:"Affiliate Program",priority:"Medium"},
+  {name:"Coda.io",web:"coda.io",type:"SaaS",stage:"Series B+",fit:"Docs & data hybrid — productivity creators showcase powerful workflows. Has creator template gallery.",method:"Cold Email",contact:"Marketing Partnerships",priority:"Medium"},
+  {name:"Linear",web:"linear.app",type:"SaaS",stage:"Series B+",fit:"Developer & startup creators love it. Build-in-public and startup content features Linear naturally.",method:"Twitter/X DM",contact:"Founder / Marketing",priority:"Medium"},
+  {name:"Retool",web:"retool.com",type:"SaaS",stage:"Series B+",fit:"Developer creators build impressive internal tool demos. Enterprise-focused but developer creators influence buyers.",method:"Cold Email",contact:"Developer Marketing",priority:"Medium"},
+  {name:"Rows.com",web:"rows.com",type:"SaaS",stage:"Series A",fit:"AI spreadsheet — productivity & data creators comparing Excel alternatives. Growing fast, needs creators.",method:"Cold Email",contact:"Growth Lead",priority:"Medium"},
+  {name:"Daily.dev",web:"daily.dev",type:"SaaS",stage:"Seed",fit:"Developer news feed — dev creators use it daily. Sponsorship opportunities in dev content.",method:"Cold Email",contact:"Founder / Marketing",priority:"Medium"},
+  {name:"Hashnode",web:"hashnode.com",type:"SaaS",stage:"Series A",fit:"Blogging for developers — dev creators can showcase how they use it. Writing-focused tech creator content.",method:"LinkedIn DM",contact:"Marketing Team",priority:"Medium"},
+  {name:"Browserbase",web:"browserbase.com",type:"AI Startup",stage:"Seed",fit:"Headless browser for AI agents — AI automation creators showcase browser agents. Early-stage = easy to reach.",method:"Twitter/X DM",contact:"Founder on Twitter",priority:"Medium"},
+  {name:"E2B",web:"e2b.dev",type:"AI Startup",stage:"Seed",fit:"Code execution sandbox for AI — AI developer creators building agents. Niche but highly relevant audience.",method:"Twitter/X DM",contact:"Founder on Twitter",priority:"Medium"},
+  {name:"Modal",web:"modal.com",type:"AI Startup",stage:"Series A",fit:"Cloud functions for AI/ML — ML engineer creators on YouTube showcase serverless ML workflows.",method:"Cold Email",contact:"Developer Marketing",priority:"Medium"},
+  {name:"Together AI",web:"together.ai",type:"AI Startup",stage:"Series A",fit:"Open-source AI inference — creators showing LLM API alternatives to OpenAI. Dev creator tutorials ideal.",method:"Cold Email",contact:"Developer Relations",priority:"Medium"},
+  {name:"Cohere",web:"cohere.com",type:"AI Startup",stage:"Series B+",fit:"Enterprise AI APIs — B2B AI developer creators explain enterprise use cases. Needs awareness among devs.",method:"LinkedIn DM",contact:"Developer Marketing",priority:"Medium"},
+  {name:"Pinecone",web:"pinecone.io",type:"AI Startup",stage:"Series B+",fit:"Vector database — AI builders & LLM tutorial creators use it in RAG app tutorials. Growing creator program.",method:"Cold Email",contact:"Developer Relations",priority:"Medium"},
+  {name:"Weaviate",web:"weaviate.io",type:"AI Startup",stage:"Series B+",fit:"Open-source vector DB — AI dev creators comparing databases in tutorials. Community-led growth.",method:"Cold Email",contact:"Developer Relations",priority:"Medium"},
+  {name:"Chroma",web:"trychroma.com",type:"AI Startup",stage:"Seed",fit:"AI-native vector DB popular in open-source AI community. Creators building LangChain tutorials feature it.",method:"Twitter/X DM",contact:"Founder on GitHub/Twitter",priority:"Medium"},
+  {name:"Qdrant",web:"qdrant.tech",type:"AI Startup",stage:"Series A",fit:"Vector search engine — ML creators do side-by-side comparisons. Technical tutorials drive developer signups.",method:"Cold Email",contact:"Developer Marketing",priority:"Medium"},
+  {name:"Weights & Biases",web:"wandb.ai",type:"AI Startup",stage:"Series B+",fit:"ML experiment tracking — ML practitioner creators on YouTube showcase it in deep learning tutorials.",method:"Cold Email",contact:"Community / Developer Relations",priority:"Medium"},
+  {name:"Roboflow",web:"roboflow.com",type:"AI Startup",stage:"Series A",fit:"Computer vision tools — CV & robotics YouTubers do project tutorials. Active developer community.",method:"Cold Email",contact:"Developer Relations",priority:"Medium"},
+  {name:"D-ID",web:"d-id.com",type:"AI Startup",stage:"Series B+",fit:"AI talking avatars — business & HR creators showcase training video use case. B2B demo content.",method:"LinkedIn DM",contact:"Partner Marketing",priority:"Medium"},
+  {name:"Cleanvoice",web:"cleanvoice.ai",type:"AI Startup",stage:"Seed",fit:"AI podcast editing — podcasters & audio creators demo before/after clips. Founder is reachable.",method:"Twitter/X DM",contact:"Founder directly",priority:"Medium"},
+  {name:"Krisp",web:"krisp.ai",type:"SaaS",stage:"Series B+",fit:"AI noise cancellation — remote work & productivity creators. Easy to demo in work-from-home content.",method:"Cold Email",contact:"Marketing Team",priority:"Medium"},
+  {name:"Read.ai",web:"read.ai",type:"AI Startup",stage:"Series A",fit:"AI meeting intelligence — enterprise productivity creators target enterprise decision-makers.",method:"LinkedIn DM",contact:"Enterprise Marketing",priority:"Medium"},
+  {name:"Superhuman",web:"superhuman.com",type:"SaaS",stage:"Series B+",fit:"AI email client — productivity creators drive word-of-mouth. Invite-only model amplified by creator buzz.",method:"Cold Email",contact:"Growth Team",priority:"Medium"},
+  {name:"Shortwave",web:"shortwave.com",type:"SaaS",stage:"Seed",fit:"AI email alternative — startup creators looking for Gmail alternatives showcase it.",method:"Twitter/X DM",contact:"Founder",priority:"Medium"},
+  {name:"Craft",web:"craft.do",type:"SaaS",stage:"Series A",fit:"AI note-taking — note-taking & PKM creators are core audience. Tutorial content drives premium conversions.",method:"Cold Email",contact:"Marketing Team",priority:"Medium"},
+  {name:"Capacities",web:"capacities.io",type:"SaaS",stage:"Bootstrapped",fit:"Studio for networked notes — PKM & second brain creators love deep-dive reviews.",method:"Twitter/X DM",contact:"Founders on Twitter",priority:"Medium"},
+  {name:"Reflect",web:"reflect.app",type:"SaaS",stage:"Bootstrapped",fit:"AI note-taking — indie & PKM creator community favors it. Founder is active on Twitter.",method:"Twitter/X DM",contact:"Founder on Twitter",priority:"Medium"},
+  {name:"Phind",web:"phind.com",type:"AI Startup",stage:"Seed",fit:"AI search for developers — dev creators compare it vs GitHub Copilot & ChatGPT. Tutorial demos work well.",method:"Twitter/X DM",contact:"Founder",priority:"Medium"},
+  {name:"Botsonic",web:"writesonic.com",type:"AI Startup",stage:"Seed",fit:"AI chatbot builder — business & SaaS creators explain customer support automation to SMBs.",method:"Cold Email",contact:"Marketing Team",priority:"Medium"},
+  {name:"Inkeep",web:"inkeep.com",type:"AI Startup",stage:"Seed",fit:"AI support for developer tools — dev tool companies need creator advocates to explain their products.",method:"LinkedIn DM",contact:"Founder",priority:"Medium"},
+  {name:"Creality",web:"creality.com",type:"Hardware",stage:"Series B+",fit:"3D printer brand — maker & DIY tech creators review and compare models. Large review-hungry audience.",method:"Cold Email",contact:"Marketing / PR",priority:"Medium"},
+  {name:"System76",web:"system76.com",type:"Hardware",stage:"Bootstrapped",fit:"Linux laptops — Linux & open-source creators are passionate fans. Review + tutorial content ideal.",method:"Cold Email",contact:"Marketing Team",priority:"Medium"},
+  {name:"Scale AI",web:"scale.com",type:"AI Startup",stage:"Series B+",fit:"AI data labeling — enterprise AI creators explain the data pipeline. More B2B awareness play than conversion.",method:"LinkedIn DM",contact:"Marketing / Partnerships",priority:"Low"},
+  {name:"Labelbox",web:"labelbox.com",type:"AI Startup",stage:"Series B+",fit:"Training data platform — AI pipeline creators show data workflows. Technical, niche audience.",method:"LinkedIn DM",contact:"Marketing Team",priority:"Low"},
+  {name:"Clarifai",web:"clarifai.com",type:"AI Startup",stage:"Series B+",fit:"Computer vision AI — CV creators and robotics influencers ideal. Niche but high-value audience.",method:"LinkedIn DM",contact:"Developer Marketing",priority:"Low"},
+  {name:"Novu",web:"novu.co",type:"SaaS",stage:"Seed",fit:"Open-source notifications — dev creators in infra & backend space. Very niche, low broad appeal.",method:"Twitter/X DM",contact:"Founder",priority:"Low"},
+  {name:"Plasmo",web:"plasmo.com",type:"AI Startup",stage:"Seed",fit:"Browser extension builder — dev creators building side projects. Very niche audience.",method:"Twitter/X DM",contact:"Founder",priority:"Low"},
+];
+
+function badgeType(t) {
+  if(t==="AI Startup") return '<span class="badge b-ai">AI Startup</span>';
+  if(t==="SaaS") return '<span class="badge b-saas">SaaS</span>';
+  return '<span class="badge b-hw">Hardware</span>';
+}
+function badgeStage(s) {
+  if(s==="Bootstrapped") return '<span class="badge b-boot">Bootstrapped</span>';
+  if(s==="Seed") return '<span class="badge b-seed">Seed</span>';
+  if(s==="Series A") return '<span class="badge b-sa">Series A</span>';
+  return '<span class="badge b-sb">Series B+</span>';
+}
+function pClass(p) {
+  if(p==="High") return 'p-high';
+  if(p==="Medium") return 'p-med';
+  return 'p-low';
+}
+function methodColor(m) {
+  const colors = {
+    "Cold Email":"background:rgba(108,99,255,0.15);color:#9b94ff",
+    "LinkedIn DM":"background:rgba(56,189,248,0.15);color:#38bdf8",
+    "Twitter/X DM":"background:rgba(46,204,138,0.15);color:#2ecc8a",
+    "Affiliate Portal":"background:rgba(240,162,58,0.15);color:#f0a23a"
+  };
+  return colors[m] || "";
+}
+
+function render() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const tf = document.getElementById('type-f').value;
+  const sf = document.getElementById('stage-f').value;
+  const pf = document.getElementById('priority-f').value;
+  const mf = document.getElementById('method-f').value;
+
+  let filtered = data.filter(c => {
+    if(tf && c.type !== tf) return false;
+    if(sf && c.stage !== sf) return false;
+    if(pf && c.priority !== pf) return false;
+    if(mf && c.method !== mf) return false;
+    if(q && !c.name.toLowerCase().includes(q) && !c.fit.toLowerCase().includes(q) && !c.method.toLowerCase().includes(q) && !c.contact.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  document.getElementById('count').textContent = filtered.length;
+  const tbody = document.getElementById('tbody');
+  const noRes = document.getElementById('no-results');
+  const tw = document.getElementById('table-wrap');
+
+  if(!filtered.length) {
+    tbody.innerHTML = '';
+    noRes.style.display = 'block';
+    tw.style.display = 'none';
+    return;
+  }
+  noRes.style.display = 'none';
+  tw.style.display = 'block';
+
+  tbody.innerHTML = filtered.map((c, i) => `
+    <tr>
+      <td style="color:var(--text3);font-size:11px;">${i+1}</td>
+      <td>
+        <div class="company-name">${c.name}</div>
+        <a class="company-web" href="https://${c.web}" target="_blank">${c.web} ↗</a>
+      </td>
+      <td>${badgeType(c.type)}</td>
+      <td>${badgeStage(c.stage)}</td>
+      <td class="fit">${c.fit}</td>
+      <td>
+        <div><span class="badge" style="${methodColor(c.method)};margin-bottom:6px;display:inline-block;">${c.method}</span></div>
+        <div class="method" style="margin-top:4px;">📬 <strong style="color:var(--text);">${c.contact}</strong></div>
+      </td>
+      <td style="min-width:140px" class="method">👤 ${c.contact}</td>
+      <td class="${pClass(c.priority)}">${c.priority}</td>
+    </tr>
+  `).join('');
+}
+
+function copyTemplate(btn) {
+  const body = btn.previousElementSibling.innerText;
+  navigator.clipboard.writeText(body).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.style.background = 'var(--green)';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = 'Copy this email';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
