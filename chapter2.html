@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python, From Zero — Part 2: Lists &amp; Functions</title>
+<title>The Physical Layer — Explained Simply</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -19,9 +19,6 @@
     --teal-soft:#DDEFF1;
     --code-bg:#161D2E;
     --code-text:#DCE4F2;
-    --code-comment:#6FA98A;
-    --code-string:#E8B96B;
-    --code-key:#7FB2E5;
     --radius:16px;
     --shadow: 0 1px 2px rgba(22,35,61,0.04), 0 6px 20px rgba(22,35,61,0.06);
   }
@@ -60,9 +57,9 @@
     color:var(--gold); background:var(--gold-soft); padding:6px 14px; border-radius:999px;
     margin-bottom:22px;
   }
-  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.08; margin:0 0 18px; letter-spacing:-0.02em;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.2rem); line-height:1.1; margin:0 0 18px; letter-spacing:-0.02em;}
   .hero h1 span{color:var(--teal);}
-  .hero p{max-width:560px; margin:0 auto; color:var(--ink-soft); font-size:1.08rem;}
+  .hero p{max-width:600px; margin:0 auto; color:var(--ink-soft); font-size:1.08rem;}
   .hero .path-note{margin-top:28px; font-size:.9rem; color:var(--ink-soft); font-family:'JetBrains Mono',monospace;}
 
   .rail{
@@ -92,19 +89,8 @@
   .node.active{color:var(--ink); background:var(--surface); box-shadow:var(--shadow);}
   .node.active .dot{background:var(--teal); border-color:var(--teal); color:#fff; transform:scale(1.08);}
 
-  /* section divider chip inside trail */
-  .trail-group{
-    margin:6px 0 8px 44px; font-size:.7rem; text-transform:uppercase;
-    letter-spacing:.06em; color:var(--ink-soft); font-weight:700; opacity:.7;
-  }
-
   main{padding:48px 40px 100px;}
   @media (max-width:900px){main{padding:32px 20px 80px;}}
-
-  .part-label{
-    text-align:center; font-family:'JetBrains Mono',monospace; font-size:.8rem;
-    color:var(--teal); letter-spacing:.05em; margin:44px 0 -12px;
-  }
 
   .lesson{margin-bottom:64px; scroll-margin-top:24px;}
   .lesson-head{display:flex; align-items:center; gap:16px; margin-bottom:18px;}
@@ -114,7 +100,6 @@
     font-family:'JetBrains Mono',monospace; font-weight:700; font-size:1rem;
     display:flex; align-items:center; justify-content:center;
   }
-  .badge.fn{background:var(--teal-soft); color:#1D4D56;}
   .lesson h2{font-size:1.5rem; margin:0; letter-spacing:-0.01em;}
   .lesson-body{
     background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
@@ -125,16 +110,11 @@
   .lesson-body ul{margin:0 0 14px; padding-left:20px;}
   .lesson-body li{margin-bottom:6px;}
   .lesson-body strong{color:var(--ink);}
+  .lesson-body h4{margin:18px 0 8px; font-size:1rem; font-family:'Inter',sans-serif; font-weight:700;}
 
-  .code{
-    background:var(--code-bg); color:var(--code-text); border-radius:12px;
-    padding:18px 20px; margin:16px 0; font-size:.86rem; overflow-x:auto; line-height:1.7;
-  }
-  .code .dots{display:flex; gap:6px; margin-bottom:12px;}
-  .code .dots span{width:9px; height:9px; border-radius:50%; background:#3A4560; display:inline-block;}
-  .c{color:var(--code-comment);}
-  .s{color:var(--code-string);}
-  .k{color:var(--code-key);}
+  table.mini{width:100%; border-collapse:collapse; margin:12px 0 16px;}
+  table.mini th, table.mini td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); font-size:.92rem; vertical-align:top;}
+  table.mini th{color:var(--ink-soft); font-weight:600; font-size:.8rem; text-transform:uppercase; letter-spacing:.03em;}
 
   .analogy{
     display:flex; gap:14px; align-items:flex-start; background:var(--teal-soft);
@@ -146,9 +126,27 @@
   }
   .analogy p{margin:0; color:#1D4D56; font-size:.94rem;}
 
-  table.mini{width:100%; border-collapse:collapse; margin:12px 0 16px;}
-  table.mini th, table.mini td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); font-size:.92rem;}
-  table.mini th{color:var(--ink-soft); font-weight:600; font-size:.8rem; text-transform:uppercase; letter-spacing:.03em;}
+  .diagram{
+    background:var(--code-bg); color:var(--code-text); border-radius:12px;
+    padding:20px; margin:16px 0; font-family:'JetBrains Mono',monospace;
+    font-size:.83rem; overflow-x:auto; line-height:1.6; white-space:pre;
+    text-align:center;
+  }
+
+  /* pill grid for media / switching types */
+  .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px;}
+  .pill{
+    background:var(--gold-soft); color:#9A6A16; font-weight:600; font-size:.82rem;
+    padding:7px 14px; border-radius:999px; font-family:'JetBrains Mono',monospace;
+  }
+
+  /* step flow for switching techniques */
+  .flow{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:16px 0;}
+  .flow .step{
+    background:var(--teal-soft); border-radius:10px; padding:10px 14px;
+    font-size:.88rem; font-weight:600; color:#1D4D56;
+  }
+  .flow .arrow{color:var(--ink-soft); font-size:1.1rem;}
 
   .recap{margin-top:20px; padding:48px 40px; border-top:1px solid var(--line);}
   .recap h2{margin-top:0;}
@@ -168,228 +166,203 @@
 <div class="shell">
 
   <div class="hero">
-    <span class="eyebrow">● part 2 · lists &amp; functions</span>
-    <h1>Storing things &amp; <span>reusing code</span>.</h1>
-    <p>Eleven stops. First we learn to hold many pieces of data in one place — a list. Then we learn to package instructions so we don't repeat ourselves — a function.</p>
+    <span class="eyebrow">● physical layer · no experience needed</span>
+    <h1>How data actually <span>travels</span>.</h1>
+    <p>Nine stops. This is the bottom-most layer of networking — the one that turns your data into real signals (electricity, light, or radio waves) and physically pushes it from one place to another.</p>
     <div class="path-note">scroll down, or pick a stop on the left →</div>
   </div>
 
   <nav class="rail">
     <p class="rail-title">The path</p>
     <div class="trail" id="trail">
-      <a class="node" href="#s1"><span class="dot">01</span>Lists</a>
-      <a class="node" href="#s2"><span class="dot">02</span>Accessing elements</a>
-      <a class="node" href="#s3"><span class="dot">03</span>Negative indexing</a>
-      <a class="node" href="#s4"><span class="dot">04</span>Adding elements</a>
-      <a class="node" href="#s5"><span class="dot">05</span>Deleting elements</a>
-      <a class="node" href="#s6"><span class="dot">06</span>Basic operations</a>
-      <a class="node" href="#s7"><span class="dot">07</span>Built-in methods</a>
-      <a class="node" href="#s8"><span class="dot">08</span>List comprehension</a>
-      <a class="node" href="#s9"><span class="dot">09</span>Functions</a>
-      <a class="node" href="#s10"><span class="dot">10</span>Namespace</a>
-      <a class="node" href="#s11"><span class="dot">11</span>Multiple returns</a>
+      <a class="node" href="#s1"><span class="dot">01</span>Introduction</a>
+      <a class="node" href="#s2"><span class="dot">02</span>Digital transmission &amp; modes</a>
+      <a class="node" href="#s3"><span class="dot">03</span>Digital-to-digital</a>
+      <a class="node" href="#s4"><span class="dot">04</span>Analog-to-digital</a>
+      <a class="node" href="#s5"><span class="dot">05</span>Analog transmission</a>
+      <a class="node" href="#s6"><span class="dot">06</span>Digital-to-analog</a>
+      <a class="node" href="#s7"><span class="dot">07</span>Analog-to-analog</a>
+      <a class="node" href="#s8"><span class="dot">08</span>Transmission media</a>
+      <a class="node" href="#s9"><span class="dot">09</span>Wireless transmission</a>
+      <a class="node" href="#s10"><span class="dot">10</span>Switching techniques</a>
     </div>
   </nav>
 
   <main>
 
     <section class="lesson" id="s1">
-      <div class="lesson-head"><div class="badge">01</div><h2>Lists</h2></div>
+      <div class="lesson-head"><div class="badge">01</div><h2>Introduction to the Physical Layer</h2></div>
       <div class="lesson-body">
-        <p>A <strong>list</strong> is a single box that can hold <strong>many items in order</strong> — like a shopping list, but for your code.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>fruits = [<span class="s">"apple"</span>, <span class="s">"banana"</span>, <span class="s">"mango"</span>]
-numbers = [10, 20, 30, 40]</div>
+        <p>The <strong>Physical Layer</strong> is the very bottom layer of any network model (Layer 1 in OSI). Its only job is to move raw <strong>bits</strong> (0s and 1s) from one device to another as real physical signals — electrical pulses, light flashes, or radio waves.</p>
         <ul>
-          <li>Written with square brackets <code>[ ]</code>, items separated by commas</li>
-          <li>Can hold mixed types: <code>["Rahul", 20, True]</code></li>
-          <li><strong>Changeable</strong> — you can add, remove, or edit items anytime</li>
-          <li>Keeps the order you put things in</li>
+          <li>Doesn't understand meaning, addresses, or errors — it just moves raw signals</li>
+          <li>Deals with cables, connectors, voltage levels, and signal timing</li>
+          <li>Everything above it (Data Link, Network...) depends on this layer working correctly</li>
         </ul>
-        <div class="analogy"><div class="icon">i</div><p>Think of a list like a row of numbered lockers. Each locker holds one item, and the locker numbers never change — that's exactly how "indexing" works, coming up next.</p></div>
+        <div class="analogy"><div class="icon">i</div><p>Think of the Physical Layer as the road itself — it doesn't care what's inside the truck driving on it (the data), it just makes sure there's a solid surface for the truck to move on.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s2">
-      <div class="lesson-head"><div class="badge">02</div><h2>Accessing elements from a list</h2></div>
+      <div class="lesson-head"><div class="badge">02</div><h2>Digital Transmission &amp; Modes</h2></div>
       <div class="lesson-body">
-        <p>Every item in a list has a <strong>position number</strong>, called an <strong>index</strong> — and counting always starts from <strong>0</strong>, not 1.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>fruits = [<span class="s">"apple"</span>, <span class="s">"banana"</span>, <span class="s">"mango"</span>]
-
-print(fruits[0])   <span class="c"># apple  — first item</span>
-print(fruits[1])   <span class="c"># banana — second item</span>
-print(fruits[2])   <span class="c"># mango  — third item</span></div>
-        <div class="analogy"><div class="icon">i</div><p>It's like locker numbers starting from 0 instead of 1. Locker 0 is the first locker, locker 1 is the second — a bit unusual at first, but you'll get used to it fast.</p></div>
+        <p><strong>Digital transmission</strong> means sending data as a series of 0s and 1s. But there's a choice to make: how many bits travel at once, and how the sender and receiver stay in sync.</p>
+        <h4>Parallel vs Serial (how many bits travel together)</h4>
+        <ul>
+          <li><strong>Parallel transmission</strong> — multiple bits travel side-by-side at the same time, on separate wires. Fast, but only works well over short distances.</li>
+          <li><strong>Serial transmission</strong> — bits travel one after another, on a single wire. Slower per moment, but works reliably over long distances (used in most real networks, including the Internet).</li>
+        </ul>
+        <h4>Synchronous vs Asynchronous (how sender/receiver stay in sync)</h4>
+        <ul>
+          <li><strong>Synchronous</strong> — data sent in a continuous stream, with sender and receiver sharing a timing clock. Efficient for large amounts of data.</li>
+          <li><strong>Asynchronous</strong> — each small chunk of data (like one character) has a start bit and stop bit around it, so the receiver knows exactly where each piece begins and ends — no shared clock needed.</li>
+        </ul>
+        <div class="analogy"><div class="icon">i</div><p>Parallel is several people carrying one box each side-by-side through a wide doorway. Serial is one person carrying boxes one at a time through a narrow doorway. Synchronous is a marching band keeping the same beat; asynchronous is people walking individually but each one shouting "starting now!" and "done!" so others know when they begin and finish.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s3">
-      <div class="lesson-head"><div class="badge">03</div><h2>Negative indexing</h2></div>
+      <div class="lesson-head"><div class="badge">03</div><h2>Digital-to-Digital Conversion</h2></div>
       <div class="lesson-body">
-        <p>Python also lets you count <strong>backward from the end</strong> of the list, using negative numbers.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>fruits = [<span class="s">"apple"</span>, <span class="s">"banana"</span>, <span class="s">"mango"</span>]
-
-print(fruits[-1])   <span class="c"># mango  — last item</span>
-print(fruits[-2])   <span class="c"># banana — second-last item</span></div>
-        <div class="analogy"><div class="icon">i</div><p>Think of <code>-1</code> as "the last one," <code>-2</code> as "second from the end," and so on — like counting steps backward from the end of a queue instead of walking all the way from the front.</p></div>
+        <p>This is about turning digital data (0s and 1s in a computer) into a digital signal that can travel over a cable. This is done through <strong>line coding</strong> — deciding what voltage/pulse pattern represents a 0 and what represents a 1.</p>
+        <div class="pill-row">
+          <span class="pill">Unipolar</span>
+          <span class="pill">Polar (NRZ, RZ, Manchester)</span>
+          <span class="pill">Bipolar</span>
+        </div>
+        <ul>
+          <li><strong>Unipolar</strong> — only one voltage level used (e.g., 0V for 0, +5V for 1)</li>
+          <li><strong>Polar</strong> — uses both positive and negative voltages (e.g., +V for 1, −V for 0) — includes popular schemes like Manchester encoding</li>
+          <li><strong>Bipolar</strong> — represents 0 as no signal, but alternates the voltage (+ and −) for consecutive 1s, which helps detect errors</li>
+        </ul>
+        <div class="analogy"><div class="icon">i</div><p>Think of it like Morse code — you're deciding what pattern of "dots and dashes" (voltage pulses) will represent each bit, so the receiver can correctly read back the original 0s and 1s.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s4">
-      <div class="lesson-head"><div class="badge">04</div><h2>Adding elements to a list</h2></div>
+      <div class="lesson-head"><div class="badge">04</div><h2>Analog-to-Digital Conversion</h2></div>
       <div class="lesson-body">
-        <p>Lists are changeable, so you can add new items whenever you want.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>fruits = [<span class="s">"apple"</span>, <span class="s">"banana"</span>]
-
-fruits.append(<span class="s">"mango"</span>)          <span class="c"># adds to the end</span>
-<span class="c"># fruits is now: ["apple", "banana", "mango"]</span>
-
-fruits.insert(1, <span class="s">"grape"</span>)        <span class="c"># adds at a specific position</span>
-<span class="c"># fruits is now: ["apple", "grape", "banana", "mango"]</span>
-
-fruits.extend([<span class="s">"kiwi"</span>, <span class="s">"pear"</span>]) <span class="c"># adds multiple items at once</span></div>
-        <table class="mini">
-          <tr><th>Method</th><th>What it does</th></tr>
-          <tr><td><code>append(x)</code></td><td>Adds one item to the end</td></tr>
-          <tr><td><code>insert(i, x)</code></td><td>Adds one item at position <code>i</code></td></tr>
-          <tr><td><code>extend(list)</code></td><td>Adds every item from another list</td></tr>
-        </table>
+        <p>This converts an analog signal (like your voice, a continuous wave) into digital data (0s and 1s) — this is exactly what happens when you speak into a phone and it becomes digital data.</p>
+        <p>The most common method is <strong>PCM (Pulse Code Modulation)</strong>, done in three steps:</p>
+        <div class="flow">
+          <div class="step">1. Sampling</div><span class="arrow">→</span>
+          <div class="step">2. Quantization</div><span class="arrow">→</span>
+          <div class="step">3. Encoding</div>
+        </div>
+        <ul>
+          <li><strong>Sampling</strong> — measuring the analog wave's height at many points in time</li>
+          <li><strong>Quantization</strong> — rounding each sample to the nearest allowed value</li>
+          <li><strong>Encoding</strong> — converting each rounded value into binary (0s and 1s)</li>
+        </ul>
+        <div class="analogy"><div class="icon">i</div><p>Imagine photographing a smoothly moving car every second (sampling), then rounding its position to the nearest mark on a ruler (quantization), then writing that number down in binary (encoding). Enough snapshots, and you can recreate the motion closely enough.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s5">
-      <div class="lesson-head"><div class="badge">05</div><h2>Deleting elements from a list</h2></div>
+      <div class="lesson-head"><div class="badge">05</div><h2>Analog Transmission</h2></div>
       <div class="lesson-body">
-        <p>Just as easily as you add, you can remove items too.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>fruits = [<span class="s">"apple"</span>, <span class="s">"banana"</span>, <span class="s">"mango"</span>]
-
-fruits.remove(<span class="s">"banana"</span>)   <span class="c"># removes by NAME (first match)</span>
-fruits.pop()               <span class="c"># removes the LAST item, and returns it</span>
-fruits.pop(0)               <span class="c"># removes item at position 0</span>
-<span class="k">del</span> fruits[0]              <span class="c"># removes item at that position too</span>
-fruits.clear()              <span class="c"># empties the whole list</span></div>
-        <div class="analogy"><div class="icon">i</div><p><code>remove()</code> says "get rid of this item by name." <code>pop()</code> says "take out the item at this position (and hand it to me)." <code>clear()</code> says "empty the whole box."</p></div>
+        <p><strong>Analog transmission</strong> means sending data as a continuous wave (like a radio signal) instead of as clean digital pulses. It's needed when digital signals must travel long distances through the air or through mediums (like phone lines) that carry analog signals better.</p>
+        <p>To send data this way, we <strong>modulate</strong> a signal — meaning we take a steady "carrier wave" and change one of its properties (amplitude, frequency, or phase) to represent the data.</p>
+        <div class="analogy"><div class="icon">i</div><p>Think of a carrier wave like a steady humming note. To send a message, you subtly change its pitch, loudness, or timing — the listener on the other end can then decode those small changes back into the original message.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s6">
-      <div class="lesson-head"><div class="badge">06</div><h2>Basic list operations</h2></div>
+      <div class="lesson-head"><div class="badge">06</div><h2>Digital-to-Analog Conversion</h2></div>
       <div class="lesson-body">
-        <p>A few simple, everyday things you'll do with lists all the time.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>a = [1, 2, 3]
-b = [4, 5]
-
-print(a + b)        <span class="c"># [1, 2, 3, 4, 5] — joins two lists</span>
-print(a * 2)        <span class="c"># [1, 2, 3, 1, 2, 3] — repeats the list</span>
-print(len(a))       <span class="c"># 3 — how many items</span>
-print(2 in a)       <span class="c"># True — is 2 present in the list?</span>
-print(a[0:2])       <span class="c"># [1, 2] — slicing: items from index 0 up to (not including) 2</span></div>
-        <div class="analogy"><div class="icon">i</div><p>Slicing is like cutting a piece from a loaf of bread — <code>a[0:2]</code> means "cut from position 0 up to, but not including, position 2."</p></div>
+        <p>This converts digital data (0s and 1s) into an analog signal, so it can travel over analog-friendly mediums like radio or telephone lines. There are three basic techniques:</p>
+        <table class="mini">
+          <tr><th>Technique</th><th>What changes</th><th>Idea</th></tr>
+          <tr><td><strong>ASK</strong> (Amplitude Shift Keying)</td><td>Wave height</td><td>1 = strong wave, 0 = weak/no wave</td></tr>
+          <tr><td><strong>FSK</strong> (Frequency Shift Keying)</td><td>Wave frequency</td><td>1 = one frequency, 0 = another frequency</td></tr>
+          <tr><td><strong>PSK</strong> (Phase Shift Keying)</td><td>Wave phase (timing shift)</td><td>1 and 0 represented by shifting where the wave "starts"</td></tr>
+        </table>
+        <div class="analogy"><div class="icon">i</div><p>Imagine sending Morse code using a torch: ASK is flashing it bright vs dim, FSK is blinking fast vs slow, PSK is starting the blink slightly earlier or later than expected. Different tricks, same goal — encode 0s and 1s onto a wave.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s7">
-      <div class="lesson-head"><div class="badge">07</div><h2>Built-in list methods</h2></div>
+      <div class="lesson-head"><div class="badge">07</div><h2>Analog-to-Analog Conversion</h2></div>
       <div class="lesson-body">
-        <p>Python gives lists several ready-made tools ("methods") so you don't have to build these yourself.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>nums = [4, 1, 3, 1, 2]
-
-nums.sort()          <span class="c"># [1, 1, 2, 3, 4] — sorts in place</span>
-nums.reverse()       <span class="c"># flips the current order</span>
-nums.count(1)        <span class="c"># 2 — how many times 1 appears</span>
-nums.index(3)        <span class="c"># position where 3 first appears</span>
-new_list = nums.copy()  <span class="c"># makes a separate copy</span></div>
+        <p>This converts one analog signal into another analog signal, ready for transmission — this is exactly how radio broadcasting works.</p>
         <table class="mini">
-          <tr><th>Method</th><th>What it does</th></tr>
-          <tr><td><code>sort()</code></td><td>Arranges items in order (small → big)</td></tr>
-          <tr><td><code>reverse()</code></td><td>Flips the current order</td></tr>
-          <tr><td><code>count(x)</code></td><td>Counts how many times <code>x</code> appears</td></tr>
-          <tr><td><code>index(x)</code></td><td>Finds the position of <code>x</code></td></tr>
-          <tr><td><code>copy()</code></td><td>Makes an independent duplicate</td></tr>
+          <tr><th>Technique</th><th>What changes</th><th>Everyday example</th></tr>
+          <tr><td><strong>AM</strong> (Amplitude Modulation)</td><td>Wave height varies with the signal</td><td>AM radio</td></tr>
+          <tr><td><strong>FM</strong> (Frequency Modulation)</td><td>Wave frequency varies with the signal</td><td>FM radio (clearer sound)</td></tr>
+          <tr><td><strong>PM</strong> (Phase Modulation)</td><td>Wave phase shifts with the signal</td><td>Used in some digital radio systems</td></tr>
         </table>
+        <div class="analogy"><div class="icon">i</div><p>AM radio is like adjusting how loud your voice gets to carry meaning. FM radio is like changing your pitch instead — which is why FM usually sounds clearer, since background noise affects loudness more than pitch.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s8">
-      <div class="lesson-head"><div class="badge">08</div><h2>List comprehension</h2></div>
+      <div class="lesson-head"><div class="badge">08</div><h2>Transmission Media</h2></div>
       <div class="lesson-body">
-        <p>A short, elegant way to <strong>build a new list</strong> from an existing one, in a single line.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div><span class="c"># the long way</span>
-squares = []
-<span class="k">for</span> x <span class="k">in</span> range(5):
-    squares.append(x * x)
-
-<span class="c"># the short way — list comprehension</span>
-squares = [x * x <span class="k">for</span> x <span class="k">in</span> range(5)]
-<span class="c"># [0, 1, 4, 9, 16]</span>
-
-<span class="c"># with a condition</span>
-evens = [x <span class="k">for</span> x <span class="k">in</span> range(10) <span class="k">if</span> x % 2 == 0]
-<span class="c"># [0, 2, 4, 6, 8]</span></div>
-        <div class="analogy"><div class="icon">i</div><p>Read it like a sentence: "give me <code>x * x</code>, for every <code>x</code> in range(5)." Same result as the loop above, just packed into one clean line.</p></div>
+        <p><strong>Transmission media</strong> is the actual physical path data travels through — the "road" itself. These are called <strong>guided media</strong> because the signal is guided through a solid, physical path.</p>
+        <div class="pill-row">
+          <span class="pill">Twisted-Pair Cable</span>
+          <span class="pill">Coaxial Cable</span>
+          <span class="pill">Fiber Optic Cable</span>
+        </div>
+        <ul>
+          <li><strong>Twisted-pair cable</strong> — two insulated copper wires twisted together (twisting reduces interference); cheap, used in home/office LANs and telephone lines</li>
+          <li><strong>Coaxial cable</strong> — a central copper wire surrounded by insulation and a metal shield; used for cable TV and older networks, handles more data than twisted-pair</li>
+          <li><strong>Fiber optic cable</strong> — sends data as pulses of light through a thin glass/plastic strand; extremely fast, long-distance, and immune to electrical interference — used for the internet's backbone</li>
+        </ul>
+        <div class="analogy"><div class="icon">i</div><p>Twisted-pair is a small local street. Coaxial is a slightly wider avenue with a protective barrier. Fiber optic is a high-speed superhighway made entirely of light instead of cars.</p></div>
       </div>
     </section>
 
-    <div class="part-label">— part two: functions —</div>
-
     <section class="lesson" id="s9">
-      <div class="lesson-head"><div class="badge fn">09</div><h2>Functions</h2></div>
+      <div class="lesson-head"><div class="badge">09</div><h2>Wireless Transmission</h2></div>
       <div class="lesson-body">
-        <p>A <strong>function</strong> is a reusable, named block of instructions — write it once, use it as many times as you like.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div><span class="k">def</span> greet(name):
-    print(<span class="s">"Hello, "</span> + name)
-
-greet(<span class="s">"Rahul"</span>)     <span class="c"># Hello, Rahul</span>
-greet(<span class="s">"Priya"</span>)     <span class="c"># Hello, Priya</span></div>
+        <p>Unlike guided media, <strong>wireless transmission</strong> sends signals through open air — no physical cable needed. This is called <strong>unguided media</strong>.</p>
         <ul>
-          <li><code>def</code> starts a function definition</li>
-          <li><code>name</code> here is a <strong>parameter</strong> — a placeholder for whatever value you pass in</li>
-          <li>Calling <code>greet("Rahul")</code> actually runs the code inside</li>
+          <li><strong>Radio waves</strong> — travel long distances, pass through walls; used for Wi-Fi, FM radio, and mobile networks</li>
+          <li><strong>Microwaves</strong> — travel in a straight line and need line-of-sight (no obstacles); used for satellite communication and long-distance point-to-point links</li>
+          <li><strong>Infrared</strong> — short range, cannot pass through walls; used in TV remotes and short-range device communication</li>
         </ul>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div><span class="k">def</span> add(a, b):
-    <span class="k">return</span> a + b
-
-result = add(3, 5)
-print(result)   <span class="c"># 8</span></div>
-        <div class="analogy"><div class="icon">i</div><p>A function is like a recipe card: you write the steps once ("how to make tea"), and every time you want tea, you just follow the card again — no need to re-write the steps.</p></div>
+        <div class="analogy"><div class="icon">i</div><p>Radio waves are like shouting — they spread everywhere and pass through obstacles. Microwaves are like using a laser pointer — you need a clear, direct line of sight. Infrared is like a flashlight beam — very short range and blocked instantly by a wall.</p></div>
       </div>
     </section>
 
     <section class="lesson" id="s10">
-      <div class="lesson-head"><div class="badge fn">10</div><h2>Namespace</h2></div>
+      <div class="lesson-head"><div class="badge">10</div><h2>Switching Techniques</h2></div>
       <div class="lesson-body">
-        <p>A <strong>namespace</strong> is simply "where a name lives" — it decides which variables are visible from where.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div>x = <span class="s">"global"</span>          <span class="c"># lives OUTSIDE any function</span>
+        <p>When many devices share the same network, we need a way to decide how data actually finds its path from sender to receiver. That's what <strong>switching</strong> handles.</p>
 
-<span class="k">def</span> show():
-    y = <span class="s">"local"</span>       <span class="c"># only exists INSIDE this function</span>
-    print(x)          <span class="c"># can still read the global one</span>
-    print(y)
+        <h4>Circuit Switching</h4>
+        <p>A dedicated path is set up between sender and receiver <strong>before</strong> data transfer begins, and stays reserved for the entire conversation — like a traditional telephone call.</p>
+        <div class="flow">
+          <div class="step">Set up dedicated path</div><span class="arrow">→</span>
+          <div class="step">Transfer all data</div><span class="arrow">→</span>
+          <div class="step">Release the path</div>
+        </div>
 
-show()
-print(x)              <span class="c"># works — x is global</span>
-print(y)               <span class="c"># ❌ error — y doesn't exist out here</span></div>
+        <h4>Packet Switching</h4>
+        <p>Data is broken into small <strong>packets</strong>, and each packet can travel independently, possibly via different paths, then gets reassembled at the destination. This is how the internet actually works.</p>
+        <div class="flow">
+          <div class="step">Split into packets</div><span class="arrow">→</span>
+          <div class="step">Each finds its own route</div><span class="arrow">→</span>
+          <div class="step">Reassembled at destination</div>
+        </div>
+
+        <h4>Message Switching</h4>
+        <p>The entire message is sent as one whole block to an intermediate switch, which stores it completely before forwarding it to the next switch, and so on — sometimes called "store-and-forward."</p>
+        <div class="flow">
+          <div class="step">Whole message sent</div><span class="arrow">→</span>
+          <div class="step">Stored fully at each switch</div><span class="arrow">→</span>
+          <div class="step">Forwarded onward</div>
+        </div>
+
         <table class="mini">
-          <tr><th>Namespace</th><th>Where it lives</th></tr>
-          <tr><td>Local</td><td>Inside a function only — disappears once the function finishes</td></tr>
-          <tr><td>Global</td><td>Outside all functions — visible everywhere in the file</td></tr>
+          <tr><th>Technique</th><th>Path reserved?</th><th>Real-world example</th></tr>
+          <tr><td>Circuit Switching</td><td>Yes, for the whole call</td><td>Traditional phone calls</td></tr>
+          <tr><td>Packet Switching</td><td>No, shared dynamically</td><td>The Internet</td></tr>
+          <tr><td>Message Switching</td><td>No, stored fully at each hop</td><td>Old telegraph/email-relay systems</td></tr>
         </table>
-        <div class="analogy"><div class="icon">i</div><p>Think of a function like a private room. Things you create inside that room (local variables) stay in the room and vanish once you leave. Things from the main house (global variables) can still be seen from inside the room.</p></div>
-      </div>
-    </section>
 
-    <section class="lesson" id="s11">
-      <div class="lesson-head"><div class="badge fn">11</div><h2>Returning multiple values</h2></div>
-      <div class="lesson-body">
-        <p>A Python function isn't limited to sending back just one value — it can hand back <strong>several at once</strong>, separated by commas.</p>
-        <div class="code"><div class="dots"><span></span><span></span><span></span></div><span class="k">def</span> get_name_and_age():
-    name = <span class="s">"Rahul"</span>
-    age = 20
-    <span class="k">return</span> name, age
-
-n, a = get_name_and_age()   <span class="c"># unpacked into two variables</span>
-print(n)   <span class="c"># Rahul</span>
-print(a)   <span class="c"># 20</span></div>
-        <div class="analogy"><div class="icon">i</div><p>It's like a vending machine that hands you a snack AND a drink in one go — you just take both out of the bag separately when you get home. Behind the scenes, Python actually bundles them into a "tuple," then <code>n, a =</code> unpacks it back into two named boxes.</p></div>
+        <div class="analogy"><div class="icon">i</div><p>Circuit switching is booking a private taxi for the whole trip, exclusively yours. Packet switching is splitting your luggage into several parcels and letting each one find its own courier route, meeting you at the destination. Message switching is handing your entire suitcase to one post office, which fully stores it before sending it whole to the next post office down the line.</p></div>
       </div>
     </section>
 
@@ -399,21 +372,20 @@ print(a)   <span class="c"># 20</span></div>
 <div class="recap">
   <h2 class="display">Recap — one line each</h2>
   <div class="recap-grid">
-    <div class="recap-card"><span class="n">01</span><b>Lists</b><span class="d">A box holding many ordered items</span></div>
-    <div class="recap-card"><span class="n">02</span><b>Accessing</b><span class="d">Use index numbers, starting at 0</span></div>
-    <div class="recap-card"><span class="n">03</span><b>Negative index</b><span class="d">Count backward from the end</span></div>
-    <div class="recap-card"><span class="n">04</span><b>Adding</b><span class="d">append, insert, extend</span></div>
-    <div class="recap-card"><span class="n">05</span><b>Deleting</b><span class="d">remove, pop, del, clear</span></div>
-    <div class="recap-card"><span class="n">06</span><b>Basic ops</b><span class="d">+, *, len(), in, slicing</span></div>
-    <div class="recap-card"><span class="n">07</span><b>Built-in methods</b><span class="d">sort, reverse, count, index, copy</span></div>
-    <div class="recap-card"><span class="n">08</span><b>Comprehension</b><span class="d">Build a list in one line</span></div>
-    <div class="recap-card"><span class="n">09</span><b>Functions</b><span class="d">Reusable named blocks of code</span></div>
-    <div class="recap-card"><span class="n">10</span><b>Namespace</b><span class="d">Where a name is visible from</span></div>
-    <div class="recap-card"><span class="n">11</span><b>Multiple returns</b><span class="d">Send back more than one value</span></div>
+    <div class="recap-card"><span class="n">01</span><b>Introduction</b><span class="d">Moves raw bits as real signals</span></div>
+    <div class="recap-card"><span class="n">02</span><b>Digital transmission</b><span class="d">Parallel/serial, sync/async modes</span></div>
+    <div class="recap-card"><span class="n">03</span><b>Digital-to-digital</b><span class="d">Line coding — unipolar, polar, bipolar</span></div>
+    <div class="recap-card"><span class="n">04</span><b>Analog-to-digital</b><span class="d">PCM: sample, quantize, encode</span></div>
+    <div class="recap-card"><span class="n">05</span><b>Analog transmission</b><span class="d">Sending data as continuous waves</span></div>
+    <div class="recap-card"><span class="n">06</span><b>Digital-to-analog</b><span class="d">ASK, FSK, PSK modulation</span></div>
+    <div class="recap-card"><span class="n">07</span><b>Analog-to-analog</b><span class="d">AM, FM, PM — radio broadcasting</span></div>
+    <div class="recap-card"><span class="n">08</span><b>Transmission media</b><span class="d">Twisted-pair, coaxial, fiber optic</span></div>
+    <div class="recap-card"><span class="n">09</span><b>Wireless transmission</b><span class="d">Radio, microwave, infrared</span></div>
+    <div class="recap-card"><span class="n">10</span><b>Switching</b><span class="d">Circuit, packet, message switching</span></div>
   </div>
 </div>
 
-<footer>Same idea as before — don't memorize, just type these out and run them. It sticks through practice, not repetition.</footer>
+<footer>Focus on the "why" behind each technique — most of these exist to solve one simple trade-off: speed vs reliability vs distance.</footer>
 
 <script>
   const progress = document.getElementById('progress');
