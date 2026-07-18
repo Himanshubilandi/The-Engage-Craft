@@ -1,406 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Engage Craft | Meme & Influencer Marketing Agency</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Engage Craft — Meme, Influencer & Fan Page Marketing Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15121f;
+    --ink-soft:#241f33;
+    --paper:#f3effa;
+    --paper-dim:#e8e2f5;
+    --pink:#ff2e7e;
+    --yellow:#e8ff4d;
+    --blue:#4c5fff;
+    --line: rgba(21,18,31,0.14);
+    --line-on-dark: rgba(255,255,255,0.14);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'Space Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+
+  :focus-visible{
+    outline:3px solid var(--blue);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  section{position:relative;}
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:7px 14px;
+    border:1px solid currentColor;
+    border-radius:999px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(21,18,31,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-on-dark);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:74px;
+    color:#fff;
+  }
+  .brand{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.2rem;
+    display:flex; align-items:baseline; gap:6px;
+  }
+  .brand span{color:var(--yellow); font-size:1.2rem;}
+  .nav-links{display:flex; align-items:center; gap:30px;}
+  .nav-links a{
+    font-size:0.9rem; font-weight:500; color:rgba(255,255,255,0.75);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:#fff;}
+  .nav-cta{
+    background:var(--pink); color:#fff !important;
+    padding:10px 20px; border-radius:999px;
+    font-weight:600; font-size:0.88rem;
+    border:1px solid var(--pink);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{background:transparent; transform:translateY(-1px);}
+  .nav-toggle{display:none; background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer;}
+
+  @media (max-width:840px){
+    .nav-links{
+      position:absolute; top:74px; left:0; right:0;
+      background:var(--ink); flex-direction:column; align-items:flex-start;
+      padding:20px 24px 28px; gap:16px;
+      border-bottom:1px solid var(--line-on-dark);
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse at 18% 20%, rgba(255,46,126,0.28), transparent 55%),
+      radial-gradient(ellipse at 82% 78%, rgba(76,95,255,0.28), transparent 55%),
+      var(--ink);
+    color:#fff;
+    padding:96px 0 60px;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative;}
+  .hero-eyebrow{color:var(--yellow); margin-bottom:28px;}
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(2.6rem, 6.6vw, 5.4rem);
+    line-height:0.98;
+    letter-spacing:-0.02em;
+    max-width:16ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(100deg, var(--pink), var(--blue));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-sub{
+    margin-top:26px;
+    font-size:clamp(1.05rem,1.6vw,1.25rem);
+    color:rgba(255,255,255,0.72);
+    max-width:52ch;
+  }
+  .hero-sub b{color:var(--yellow); font-weight:600;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:38px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:15px 26px; border-radius:999px;
+    font-weight:600; font-size:0.98rem;
+    cursor:pointer; border:1px solid transparent;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--pink); color:#fff;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(255,46,126,0.35);}
+  .btn-ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,0.35);}
+  .btn-ghost:hover{border-color:#fff; transform:translateY(-2px);}
+
+  .stickers{
+    position:absolute; inset:0; pointer-events:none;
+  }
+  .sticker{
+    position:absolute;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    background:#fff; color:var(--ink);
+    padding:9px 14px; border-radius:10px;
+    display:flex; align-items:center; gap:7px;
+    box-shadow:0 12px 24px rgba(0,0,0,0.25);
+    font-weight:700;
+  }
+  .s1{top:6%;  right:2%;  transform:rotate(7deg);  background:var(--yellow);}
+  .s2{top:46%; right:10%; transform:rotate(-6deg); background:#fff;}
+  .s3{top:78%; right:1%;  transform:rotate(4deg);  background:var(--pink); color:#fff;}
+  @media (max-width:960px){ .stickers{display:none;} }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-strip{
+    background:var(--pink);
+    color:var(--ink);
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:14px 0;
+  }
+  .marquee-track{
+    display:inline-flex;
+    animation:scroll-left 26s linear infinite;
+  }
+  .marquee-track span{
+    font-family:var(--font-mono);
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.03em;
+    padding:0 22px;
+    display:inline-flex; align-items:center; gap:22px;
+  }
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{animation:none;}
+  }
+
+  /* ---------- TRUSTED BY ---------- */
+  .trusted{padding:56px 0 40px; text-align:center;}
+  .trusted-label{
+    font-family:var(--font-mono);
+    font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:rgba(21,18,31,0.55);
+    margin-bottom:24px;
+  }
+  .trusted-logos{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+  }
+  .trusted-logos span{
+    font-family:var(--font-display); font-weight:600;
+    font-size:1.02rem;
+    padding:10px 20px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:#fff;
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:18px; color:var(--pink); border-color:var(--pink);}
+  .section-head h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(2rem, 3.6vw, 2.9rem);
+    letter-spacing:-0.01em;
+  }
+  .section-head p{margin-top:16px; font-size:1.08rem; color:rgba(21,18,31,0.68); max-width:56ch;}
+  .on-dark .section-head p{color:rgba(255,255,255,0.68);}
+  .on-dark .section-head .eyebrow{color:var(--yellow); border-color:var(--yellow);}
+
+  /* ---------- SERVICES ---------- */
+  .services{
+    padding:100px 0;
+    background:
+      radial-gradient(circle, var(--line) 1px, transparent 1px) 0 0/26px 26px,
+      var(--paper);
+  }
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:26px;
+  }
+  @media (max-width:1000px){ .service-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:600px){ .service-grid{grid-template-columns:1fr;} }
+
+  .service-card{
+    background:#fff;
+    border:1.5px dashed var(--ink);
+    border-radius:18px;
+    padding:30px 26px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .service-card:nth-child(1){transform:rotate(-1.4deg);}
+  .service-card:nth-child(2){transform:rotate(1deg);}
+  .service-card:nth-child(3){transform:rotate(-0.8deg);}
+  .service-card:nth-child(4){transform:rotate(1.3deg);}
+  .service-card:hover{
+    transform:rotate(0deg) translateY(-6px);
+    box-shadow:0 18px 34px rgba(21,18,31,0.14);
+  }
+  .service-icon{font-size:1.9rem; margin-bottom:16px;}
+  .service-card h3{
+    font-family:var(--font-display); font-weight:700; font-size:1.24rem;
+    margin-bottom:10px;
+  }
+  .service-quote{
+    font-size:0.94rem; font-style:italic; color:rgba(21,18,31,0.55);
+    margin-bottom:12px;
+  }
+  .service-card p.desc{font-size:0.95rem; color:rgba(21,18,31,0.72); margin-bottom:18px;}
+  .service-tag{
+    display:inline-block;
+    font-family:var(--font-mono); font-size:0.7rem; font-weight:700;
+    letter-spacing:0.06em; text-transform:uppercase;
+    background:var(--yellow); color:var(--ink);
+    padding:6px 12px; border-radius:999px;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    background:var(--ink); color:#fff;
+    padding:96px 0;
+  }
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    margin-top:8px;
+  }
+  @media (max-width:900px){ .stats-grid{grid-template-columns:repeat(2,1fr);} }
+  .stat-card{
+    background:var(--ink-soft);
+    border:1px solid var(--line-on-dark);
+    border-radius:16px;
+    padding:30px 22px;
+    text-align:left;
+  }
+  .stat-num{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(2.1rem, 3.4vw, 2.8rem);
+    color:var(--yellow);
+    display:flex; align-items:baseline; gap:4px;
+  }
+  .stat-label{margin-top:8px; font-weight:600; font-size:0.98rem;}
+  .stat-note{margin-top:6px; font-size:0.83rem; color:rgba(255,255,255,0.5);}
+
+  /* ---------- WHY US ---------- */
+  .why{padding:100px 0;}
+  .why-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:36px 48px;
+  }
+  @media (max-width:760px){ .why-grid{grid-template-columns:1fr;} }
+  .why-item{border-top:2px solid var(--ink); padding-top:18px;}
+  .why-item h3{
+    font-family:var(--font-display); font-weight:700; font-size:1.2rem; margin-bottom:10px;
+  }
+  .why-item p{font-size:0.98rem; color:rgba(21,18,31,0.7);}
+
+  .credentials{
+    margin-top:60px;
+    background:var(--blue); color:#fff;
+    border-radius:20px;
+    padding:38px 34px;
+  }
+  .credentials h3{
+    font-family:var(--font-display); font-size:1.15rem; margin-bottom:20px;
+  }
+  .cred-list{display:grid; grid-template-columns:repeat(2,1fr); gap:12px 24px;}
+  @media (max-width:640px){ .cred-list{grid-template-columns:1fr;} }
+  .cred-list li{font-size:0.95rem; display:flex; gap:10px;}
+  .cred-list li::before{content:"✓"; font-weight:700; color:var(--yellow); flex-shrink:0;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--paper-dim);
+    padding:100px 0;
+  }
+  .contact-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-card{
+    background:#fff; border-radius:18px; padding:30px 26px;
+    border:1px solid var(--line);
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .contact-card .tag{
+    font-family:var(--font-mono); font-size:0.7rem; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--pink); font-weight:700; margin-bottom:6px;
+  }
+  .contact-card h3{font-family:var(--font-display); font-size:1.25rem; margin-bottom:6px;}
+  .contact-card p{font-size:0.92rem; color:rgba(21,18,31,0.65); margin-bottom:14px;}
+  .contact-value{font-family:var(--font-mono); font-size:0.92rem; margin-bottom:16px;}
+  .contact-card .btn{align-self:flex-start;}
+  .contact-card .btn-primary{background:var(--ink);}
+  .contact-card .btn-primary:hover{box-shadow:0 10px 26px rgba(21,18,31,0.28);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink); color:rgba(255,255,255,0.6);
+    padding:44px 0 30px;
+    text-align:center;
+    font-size:0.88rem;
+  }
+  footer .brand{justify-content:center; color:#fff; margin-bottom:10px;}
+  footer .foot-links{display:flex; justify-content:center; gap:20px; margin:16px 0; flex-wrap:wrap;}
+  footer .foot-links a{color:rgba(255,255,255,0.7); font-size:0.85rem;}
+  footer .foot-links a:hover{color:#fff;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="#hero" class="logo">
-                <span class="logo-text">The Engage Craft</span>
-                <span class="logo-subtitle">The craft behind the hype</span>
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="#services" class="nav-link"><span>Services</span></a></li>
-                <li><a href="#results" class="nav-link"><span>Results</span></a></li>
-                <li><a href="#about" class="nav-link"><span>About</span></a></li>
-                <li><a href="#contact" class="nav-link"><span>Contact</span></a></li>
-                <li><a href="#contact" class="btn-nav">Let's Meme →</a></li>
-            </ul>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge animate-on-scroll" data-animation="fade-in">
-                    <span>✨ Actually Knows How The Internet Works</span>
-                </div>
-                
-                <h1 class="hero-title animate-on-scroll" data-animation="slide-up">
-                    We Make Brands<br><span class="highlight">Meme-Worthy</span>
-                </h1>
-                
-                <p class="hero-subtext animate-on-scroll" data-animation="slide-up" data-delay="0.1">
-                    Memes, creators, and content that don't just go viral — they <span class="underline-hover">actually work</span>.
-                </p>
-                
-                <div class="hero-cta animate-on-scroll" data-animation="slide-up" data-delay="0.2">
-                    <a href="#contact" class="btn btn-primary wiggle-on-hover">
-                        <span class="btn-text">Let's Make It Viral</span>
-                        <span class="btn-icon">🚀</span>
-                    </a>
-                    <a href="#services" class="btn btn-outline">
-                        <span class="btn-text">See The Magic</span>
-                        <span class="btn-icon">✨</span>
-                    </a>
-                </div>
-                
-                <div class="hero-note animate-on-scroll" data-animation="fade-in" data-delay="0.3">
-                    <span class="note-icon">💡</span>
-                    <span class="note-text">We promise: No cringe marketing. Just internet-smart campaigns.</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Floating memey elements -->
-        <div class="floating-elements">
-            <div class="floating-emoji" style="top: 20%; left: 10%; animation-delay: 0s;">😂</div>
-            <div class="floating-emoji" style="top: 70%; left: 85%; animation-delay: 0.5s;">🔥</div>
-            <div class="floating-emoji" style="top: 40%; left: 90%; animation-delay: 1s;">📈</div>
-            <div class="floating-emoji" style="top: 80%; left: 15%; animation-delay: 1.5s;">🎯</div>
-        </div>
-    </section>
+<header>
+  <nav class="wrap">
+    <a href="#hero" class="brand">The Engage Craft<span>.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#results">Results</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Let's Meme →</a>
+    </div>
+  </nav>
+</header>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title animate-on-scroll" data-animation="fade-in">
-                    What We <span class="highlight">Actually</span> Do
-                </h2>
-                <p class="section-subtitle animate-on-scroll" data-animation="fade-in" data-delay="0.1">
-                    Marketing that speaks internet, not corporate.
-                </p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card animate-on-scroll" data-animation="slide-up">
-                    <div class="service-icon">
-                        <div class="emoji-circle">😂</div>
-                    </div>
-                    <h3>Meme Marketing</h3>
-                    <p>"Internet-approved humour that people actually share."</p>
-                    <div class="service-details">
-                        <p>We create memes that blend cultural relevance with your brand message. No forced jokes, just actual funny content that gets shared.</p>
-                    </div>
-                    <div class="service-tag">Trend-Proof Strategy</div>
-                </div>
-                
-                <div class="service-card animate-on-scroll" data-animation="slide-up" data-delay="0.1">
-                    <div class="service-icon">
-                        <div class="emoji-circle">👥</div>
-                    </div>
-                    <h3>Influencer Marketing</h3>
-                    <p>"Creators who feel real, not forced ads."</p>
-                    <div class="service-details">
-                        <p>We match you with creators whose audiences actually care. Authentic partnerships that drive real results, not just vanity metrics.</p>
-                    </div>
-                    <div class="service-tag">Authentic Collabs</div>
-                </div>
-                
-                <div class="service-card animate-on-scroll" data-animation="slide-up" data-delay="0.2">
-                    <div class="service-icon">
-                        <div class="emoji-circle">🎬</div>
-                    </div>
-                    <h3>Viral Video Editing</h3>
-                    <p>"Short-form edits built for scroll-stopping moments."</p>
-                    <div class="service-details">
-                        <p>Our edits are designed to make people stop scrolling. We understand platform algorithms and what actually holds attention.</p>
-                    </div>
-                    <div class="service-tag">Scroll-Stopper</div>
-                </div>
-                
-                <div class="service-card animate-on-scroll" data-animation="slide-up" data-delay="0.3">
-                    <div class="service-icon">
-                        <div class="emoji-circle">🚀</div>
-                    </div>
-                    <h3>Distribution & Promotion</h3>
-                    <p>"Right pages, right people, right timing."</p>
-                    <div class="service-details">
-                        <p>We don't just create content—we make sure it reaches the right eyeballs. Strategic distribution across platforms and pages.</p>
-                    </div>
-                    <div class="service-tag">Smart Amplification</div>
-                </div>
-            </div>
-            
-            <div class="services-note animate-on-scroll" data-animation="fade-in" data-delay="0.4">
-                <span class="note-icon">🤝</span>
-                <span class="note-text">No cookie-cutter strategies. Each campaign is as unique as your brand.</span>
-            </div>
-        </div>
-    </section>
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="eyebrow hero-eyebrow">✦ Actually knows how the internet works</div>
+    <h1>We turn brands into <em>things people actually share</em></h1>
+    <p class="hero-sub">
+      Meme marketing, influencer collabs, content editing and paid fan-page distribution —
+      one network, run by people who live on the internet. Our work has already
+      crossed <b>200M+</b> people who stopped the scroll for it.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Let's Make It Viral 🚀</a>
+      <a href="#services" class="btn btn-ghost">See What We Do ✨</a>
+    </div>
+  </div>
+  <div class="stickers" aria-hidden="true">
+    <div class="sticker s1">🔥 200M+ REACH</div>
+    <div class="sticker s2">🎯 1000+ PAGE NETWORK</div>
+    <div class="sticker s3">😂 ZERO CRINGE</div>
+  </div>
+</section>
 
-    <!-- Results Section (UPDATED) -->
-    <section class="results" id="results">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title animate-on-scroll" data-animation="fade-in">
-                    Numbers With <span class="highlight">Personality</span>
-                </h2>
-                <p class="section-subtitle animate-on-scroll" data-animation="fade-in" data-delay="0.1">
-                    Real results that actually mean something.
-                </p>
-            </div>
-            
-            <div class="results-grid">
-                <div class="result-card animate-on-scroll" data-animation="counter">
-                    <div class="result-number-comma" data-count="100">0</div>
-                    <div class="result-suffix">M+</div>
-                    <div class="result-title">Total Reach</div>
-                    <div class="result-note">Yes, we checked. Twice.</div>
-                    <div class="result-emoji">👀</div>
-                </div>
-                
-                <div class="result-card animate-on-scroll" data-animation="counter" data-delay="0.2">
-                    <div class="result-number" data-count="25">0</div>
-                    <div class="result-suffix">+</div>
-                    <div class="result-title">Infulencer Get Their Expected Hype </div>
-                    <div class="result-note">No bots, promise. Pinky swear.</div>
-                    <div class="result-emoji">🤞</div>
-                </div>
-                
-                <div class="result-card animate-on-scroll" data-animation="counter" data-delay="0.4">
-                    <div class="result-number" data-count="95">0</div>
-                    <div class="result-suffix">%</div>
-                    <div class="result-title">Engagement Rate</div>
-                    <div class="result-note">Screenshots available upon request.</div>
-                    <div class="result-emoji">📸</div>
-                </div>
-            </div>
-            
-            <div class="results-disclaimer animate-on-scroll" data-animation="fade-in" data-delay="0.6">
-                <p>*Results may vary, but they'll probably be pretty good. We're kind of experts at this.</p>
-            </div>
-        </div>
-    </section>
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>✦ 200M+ TOTAL REACH ✦ 1000+ PAGE NETWORK ✦ MEME MARKETING ✦ INFLUENCER MARKETING ✦ CONTENT EDITING ✦ PAID FAN PAGES ✦ ZERO BOT ENGAGEMENT ✦</span>
+    <span>✦ 200M+ TOTAL REACH ✦ 1000+ PAGE NETWORK ✦ MEME MARKETING ✦ INFLUENCER MARKETING ✦ CONTENT EDITING ✦ PAID FAN PAGES ✦ ZERO BOT ENGAGEMENT ✦</span>
+  </div>
+</div>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="section-header">
-                        <h2 class="section-title animate-on-scroll" data-animation="slide-right">
-                            We Live On The <span class="highlight">Internet</span>
-                        </h2>
-                        <p class="section-subtitle animate-on-scroll" data-animation="fade-in" data-delay="0.1" style="font-size: 15px;">
-                            (Seriously, our screen time stats are concerning.)
-                        </p>
-                    </div>
-                    
-                    <div class="about-text">
-                        <div class="about-paragraph animate-on-scroll" data-animation="fade-in">
-                            <h3>We Get It Before It's Mainstream</h3>
-                            <p>While other agencies are still figuring out what "based" means, we're already predicting the next viral trend. We live and breathe internet culture—not as observers, but as active participants.</p>
-                        </div>
-                        
-                        <div class="about-paragraph animate-on-scroll" data-animation="fade-in" data-delay="0.1">
-                            <h3>Humour With Strategy</h3>
-                            <p>We're funny, but we're not just here for laughs. Every meme, every creator collab, every piece of content has a strategic purpose. We balance "this is hilarious" with "this actually converts."</p>
-                        </div>
-                        
-                        <div class="about-paragraph animate-on-scroll" data-animation="fade-in" data-delay="0.2">
-                            <h3>Transparent & Fair Pricing</h3>
-                            <p>No hidden fees, no confusing agency jargon. We give you clear pricing for real results. Think of us as your internet-smart friend who actually knows what they're doing.</p>
-                        </div>
-                        
-                        <div class="about-paragraph animate-on-scroll" data-animation="fade-in" data-delay="0.3">
-                            <h3>We Actually Deliver</h3>
-                            <p>We don't just promise results—we show you the receipts. Real screenshots, real analytics, real growth. Because in the end, what matters is what actually works.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-sidebar animate-on-scroll" data-animation="slide-left" data-delay="0.2">
-                    <div class="sidebar-card">
-                        <h3>Our Internet Credentials</h3>
-                        <ul class="credentials-list">
-                            <li>✅ Actually understands meme formats</li>
-                            <li>✅ Knows which trends to ride (and which to avoid)</li>
-                            <li>✅ Speaks fluent Gen Z/Millennial</li>
-                            <li>✅ Never uses "fellow kids" energy</li>
-                            <li>✅ Posts with confidence, not cringe</li>
-                            <li>✅ Understands platform algorithms</li>
-                        </ul>
-                        <div class="sidebar-note">
-                            <span class="note-icon">💯</span>
-                            <span>Certified Internet People™</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="trusted" id="about">
+  <div class="wrap">
+    <div class="trusted-label">We've made noise for</div>
+    <div class="trusted-logos">
+      <span>Samsung</span>
+      <span>Jio</span>
+      <span>Lava</span>
+      <span>Tecno</span>
+      <span>Bigg Boss</span>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title animate-on-scroll" data-animation="fade-in">
-                    Pick Your <span class="highlight">Contact Poison</span>
-                </h2>
-                <p class="section-subtitle animate-on-scroll" data-animation="fade-in" data-delay="0.1">
-                    Three ways to reach us. All equally awesome.
-                </p>
-            </div>
-            
-            <div class="contact-options-grid">
-                <!-- WhatsApp Option -->
-                <div class="contact-option-card animate-on-scroll" data-animation="slide-up">
-                    <div class="contact-icon-wrapper">
-                        <div class="contact-icon pulse-animation">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-badge">Fastest Response</div>
-                    </div>
-                    <h3>WhatsApp</h3>
-                    <p class="contact-description">For quick questions, urgent meme emergencies, or if you just prefer chat.</p>
-                    <div class="contact-details">
-                        <div class="detail-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91 98280 22182</span>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/919828022182" class="btn btn-primary" target="_blank">
-                        <span class="btn-text">Message on WhatsApp</span>
-                        <span class="btn-icon">💬</span>
-                    </a>
-                    <div class="contact-note">
-                        <i class="fas fa-bolt"></i>
-                        <span>Typically respond within minutes</span>
-                    </div>
-                </div>
-                
-                <!-- Email Option -->
-                <div class="contact-option-card animate-on-scroll" data-animation="slide-up" data-delay="0.1">
-                    <div class="contact-icon-wrapper">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-badge">Detailed Proposals</div>
-                    </div>
-                    <h3>Email</h3>
-                    <p class="contact-description">For project briefs, detailed inquiries, or if you're feeling formal.</p>
-                    <div class="contact-details">
-                        <div class="detail-item">
-                            <i class="fas fa-at"></i>
-                            <span>biing@theengagecraft.com</span>
-                        </div>
-                    </div>
-                    <a href="mailto:biing@theengagecraft.com" class="btn btn-outline">
-                        <span class="btn-text">Send Email</span>
-                        <span class="btn-icon">✉️</span>
-                    </a>
-                    <div class="contact-note">
-                        <i class="fas fa-clock"></i>
-                        <span>Response within 24 hours</span>
-                    </div>
-                </div>
-                
-                <!-- Instagram Option -->
-                <div class="contact-option-card animate-on-scroll" data-animation="slide-up" data-delay="0.2">
-                    <div class="contact-icon-wrapper">
-                        <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="contact-badge">See Our Work</div>
-                    </div>
-                    <h3>Instagram</h3>
-                    <p class="contact-description">Check out our latest work, memes, and judge us by our internet skills.</p>
-                    <div class="contact-details">
-                        <div class="detail-item">
-                            <i class="fas fa-user"></i>
-                            <span>@theengagecraft</span>
-                        </div>
-                    </div>
-                    <a href="https://www.instagram.com/theengagecraft/" class="btn btn-outline" target="_blank">
-                        <span class="btn-text">View Instagram</span>
-                        <span class="btn-icon">📱</span>
-                    </a>
-                    <div class="contact-note">
-                        <i class="fas fa-eye"></i>
-                        <span>We post daily internet gold</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-advice animate-on-scroll" data-animation="fade-in" data-delay="0.4">
-                <div class="advice-content">
-                    <h3>Which Should You Choose?</h3>
-                    <div class="advice-grid">
-                        <div class="advice-item">
-                            <div class="advice-icon">💬</div>
-                            <div class="advice-text">
-                                <strong>WhatsApp:</strong> Quick questions, urgent needs, or if you're chatty
-                            </div>
-                        </div>
-                        <div class="advice-item">
-                            <div class="advice-icon">📧</div>
-                            <div class="advice-text">
-                                <strong>Email:</strong> Detailed projects, proposals, or attaching files
-                            </div>
-                        </div>
-                        <div class="advice-item">
-                            <div class="advice-icon">🤳</div>
-                            <div class="advice-text">
-                                <strong>Instagram:</strong> See our work first, or slide into DMs
-                            </div>
-                        </div>
-                    </div>
-                    <p class="advice-footer">(Honestly, we're cool with any of them. We're online a lot.)</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What we actually do</div>
+      <h2>Four ways we get you seen</h2>
+      <p>No cookie-cutter packages. Every brand or creator gets a mix built for their audience, run across our own network of 1000+ pages.</p>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>The Engage Craft</h3>
-                    <p class="footer-tagline">The craft behind the hype</p>
-                    <p class="footer-motto">Powered by memes & caffeine</p>
-                </div>
-                
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/theengagecraft/" class="social-icon" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/919828022182" class="social-icon" target="_blank" aria-label="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:biing@theengagecraft.com" class="social-icon" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> The Engage Craft. All rights reserved.</p>
-                <p class="footer-note">Making the internet more interesting, one meme at a time.</p>
-            </div>
-        </div>
-    </footer>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">😂</div>
+        <h3>Meme Marketing</h3>
+        <p class="service-quote">"Internet-approved humour that people actually share."</p>
+        <p class="desc">We build memes that blend cultural relevance with your brand message — funny enough to share, on-brand enough to matter.</p>
+        <span class="service-tag">Trend-Proof Strategy</span>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="service-card reveal">
+        <div class="service-icon">👥</div>
+        <h3>Influencer Marketing</h3>
+        <p class="service-quote">"Creators who feel real, not forced ads."</p>
+        <p class="desc">We match brands with creators whose audiences genuinely care, from emerging talent to established digital personalities.</p>
+        <span class="service-tag">Authentic Collabs</span>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">🎬</div>
+        <h3>Content Editing</h3>
+        <p class="service-quote">"Edits built for the first three seconds."</p>
+        <p class="desc">Short-form reels, trailers and cutdowns edited for how people actually watch — fast hooks, platform-native pacing, no fluff.</p>
+        <span class="service-tag">Scroll-Stopper</span>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">🚀</div>
+        <h3>Paid Fan Page Promotion</h3>
+        <p class="service-quote">"Right pages, right people, right timing."</p>
+        <p class="desc">Paid placement across our network of meme pages, fan pages and creator communities — the fastest way to real, non-bot reach.</p>
+        <span class="service-tag">Smart Amplification</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" id="results">
+  <div class="wrap">
+    <div class="section-head on-dark reveal">
+      <div class="eyebrow">Numbers with receipts</div>
+      <h2>Real results, actually checked</h2>
+      <p>We track everything we run, so these aren't vanity numbers — they're what our campaigns have delivered for brands and creators.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-num"><span class="counter" data-target="200">0</span>M+</div>
+        <div class="stat-label">Total Reach</div>
+        <div class="stat-note">Across every campaign, checked twice.</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-num"><span class="counter" data-target="1000">0</span>+</div>
+        <div class="stat-label">Page Network</div>
+        <div class="stat-note">Meme pages, fan pages, creator communities.</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-num"><span class="counter" data-target="50">0+</span>+</div>
+        <div class="stat-label">Influencers Delivered Hype</div>
+        <div class="stat-note">No bots, promise. Pinky swear.</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-num"><span class="counter" data-target="18">0</span>%</div>
+        <div class="stat-label">Avg. Engagement Rate</div>
+        <div class="stat-note">Screenshots available upon request.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">We live on the internet</div>
+      <h2>Here's why brands come back</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <h3>We get it before it's mainstream</h3>
+        <p>While other agencies are still figuring out the trend, we're already testing it. We're active participants in internet culture, not observers reading a report.</p>
+      </div>
+      <div class="why-item reveal">
+        <h3>Humour with strategy</h3>
+        <p>Every meme, every collab, every edit has a job to do. We balance "this is funny" with "this actually converts" — always.</p>
+      </div>
+      <div class="why-item reveal">
+        <h3>Transparent, fair pricing</h3>
+        <p>No hidden fees, no agency jargon. Clear pricing for real reach, explained like you'd explain it to a friend.</p>
+      </div>
+      <div class="why-item reveal">
+        <h3>We actually deliver</h3>
+        <p>Real screenshots, real analytics, real growth. What matters at the end of a campaign is what actually worked.</p>
+      </div>
+    </div>
+
+    <div class="credentials reveal">
+      <h3>💯 Our internet credentials</h3>
+      <ul class="cred-list">
+        <li>Actually understands meme formats</li>
+        <li>Knows which trends to ride, and which to skip</li>
+        <li>Runs a 1000+ page distribution network</li>
+        <li>Books influencers people already trust</li>
+        <li>Edits for the platform, not just the brief</li>
+        <li>Understands the algorithm, not just the audience</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Pick your contact poison</div>
+      <h2>Let's get your brand to 200M+</h2>
+      <p>Three ways to reach us. All equally fast.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <span class="tag">Fastest response</span>
+        <h3>WhatsApp</h3>
+        <p>For quick questions, urgent briefs, or if you just prefer chat.</p>
+        <div class="contact-value">+91 98280 22182</div>
+        <a href="https://wa.me/919828022182" class="btn btn-primary">Message on WhatsApp 💬</a>
+      </div>
+      <div class="contact-card reveal">
+        <span class="tag">Detailed proposals</span>
+        <h3>Email</h3>
+        <p>For campaign briefs, budgets, or if you're feeling formal.</p>
+        <div class="contact-value">biing@theengagecraft.com</div>
+        <a href="mailto:biing@theengagecraft.com" class="btn btn-primary">Send Email ✉️</a>
+      </div>
+      <div class="contact-card reveal">
+        <span class="tag">See our work</span>
+        <h3>Instagram</h3>
+        <p>Check our latest campaigns and judge us by our internet skills.</p>
+        <div class="contact-value">@theengagecraft</div>
+        <a href="https://www.instagram.com/theengagecraft/" class="btn btn-primary">View Instagram 📱</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#hero" class="brand">The Engage Craft<span style="color:var(--yellow)">.</span></a>
+    <div>The craft behind the hype — powered by memes &amp; caffeine</div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/theengagecraft/">Instagram</a>
+      <a href="https://wa.me/919828022182">WhatsApp</a>
+      <a href="mailto:biing@theengagecraft.com">Email</a>
+    </div>
+    <div>© 2026 The Engage Craft. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // scroll reveal
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion) {
+    revealEls.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  // animated counters
+  const counters = document.querySelectorAll('.counter');
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.target, 10);
+    if (reduceMotion) { el.textContent = target; return; }
+    const duration = 1400;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterIO.observe(c));
+</script>
+
 </body>
 </html>
-
