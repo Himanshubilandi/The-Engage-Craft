@@ -253,8 +253,20 @@
         <input type="date" id="dateInput">
       </div>
       <div class="field-group">
-        <label for="timeInput">Time</label>
-        <input type="time" id="timeInput">
+        <label>Time</label>
+        <div style="display:flex; gap:8px;">
+          <select id="hourInput" style="flex:1; padding:13px 10px; border-radius:14px; border:1.5px solid #e6d3d6; background:#fff; font-family:'Nunito',sans-serif; font-size:15px; color:var(--plum);">
+            <option value="">HH</option>
+          </select>
+          <select id="minuteInput" style="flex:1; padding:13px 10px; border-radius:14px; border:1.5px solid #e6d3d6; background:#fff; font-family:'Nunito',sans-serif; font-size:15px; color:var(--plum);">
+            <option value="">MM</option>
+          </select>
+          <select id="ampmInput" style="flex:1; padding:13px 10px; border-radius:14px; border:1.5px solid #e6d3d6; background:#fff; font-family:'Nunito',sans-serif; font-size:15px; color:var(--plum);">
+            <option value="">AM/PM</option>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
       </div>
 
       <div class="btn-row">
@@ -281,9 +293,26 @@
   const noBtn = document.getElementById('noBtn');
   const stage = document.getElementById('stage');
   const dateInput = document.getElementById('dateInput');
-  const timeInput = document.getElementById('timeInput');
+  const hourInput = document.getElementById('hourInput');
+  const minuteInput = document.getElementById('minuteInput');
+  const ampmInput = document.getElementById('ampmInput');
   const confirmBtn = document.getElementById('confirmBtn');
   let dodges = 0;
+
+  // populate hour (1-12) and minute (00,05,...,55) dropdowns
+  for (let h = 1; h <= 12; h++) {
+    const opt = document.createElement('option');
+    opt.value = h;
+    opt.textContent = h;
+    hourInput.appendChild(opt);
+  }
+  for (let m = 0; m < 60; m += 5) {
+    const opt = document.createElement('option');
+    const mm = m.toString().padStart(2, '0');
+    opt.value = mm;
+    opt.textContent = mm;
+    minuteInput.appendChild(opt);
+  }
 
   const lines = [
     "not that one",
@@ -332,29 +361,28 @@
   }
 
   function checkReady() {
-    confirmBtn.disabled = !(dateInput.value && timeInput.value);
+    confirmBtn.disabled = !(dateInput.value && hourInput.value && minuteInput.value && ampmInput.value);
   }
   dateInput.addEventListener('change', checkReady);
-  timeInput.addEventListener('change', checkReady);
+  hourInput.addEventListener('change', checkReady);
+  minuteInput.addEventListener('change', checkReady);
+  ampmInput.addEventListener('change', checkReady);
 
   function formatDate(d) {
     const [y, m, day] = d.split('-');
     const dt = new Date(y, m - 1, day);
     return dt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   }
-  function formatTime(t) {
-    const [h, min] = t.split(':');
-    const dt = new Date();
-    dt.setHours(h, min);
-    return dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  function formatTime() {
+    return `${hourInput.value}:${minuteInput.value} ${ampmInput.value}`;
   }
 
   let chosenDateText = '', chosenTimeText = '';
 
   function goToStep3() {
-    if (!dateInput.value || !timeInput.value) return;
+    if (!dateInput.value || !hourInput.value || !minuteInput.value || !ampmInput.value) return;
     chosenDateText = formatDate(dateInput.value);
-    chosenTimeText = formatTime(timeInput.value);
+    chosenTimeText = formatTime();
     document.getElementById('summaryPill').textContent = chosenDateText + ' · ' + chosenTimeText;
     document.getElementById('step2').classList.add('hidden');
     document.getElementById('step3').classList.remove('hidden');
