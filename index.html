@@ -8,16 +8,20 @@
 <meta name="keywords" content="content distribution network, personal fan page growth, clipping agency, streamer clipping service, influencer marketing agency India, creator campaigns, fan page network India, short form clipping agency">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#060913">
-<link rel="canonical" href="https://www.theengagecraft.com/services">
+<link rel="canonical" href="https://www.theengagecraft.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Engage Craft | The craft behind the hype">
 <meta property="og:description" content="Clipping, personal fan pages, a 1000+ page distribution network and influencer marketing. Real reach, zero bots.">
-<meta property="og:url" content="https://www.theengagecraft.com/services">
-<meta property="og:image" content="https://www.theengagecraft.com/logo.png">
+<meta property="og:url" content="https://www.theengagecraft.com/">
+<meta property="og:image" content="https://www.theengagecraft.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.theengagecraft.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Engage Craft | The craft behind the hype">
 <meta name="twitter:description" content="Clipping, personal fan pages, a 1000+ page distribution network and influencer marketing. Real reach, zero bots.">
-<link rel="icon" href="logo.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -174,6 +178,7 @@
   .nav-links{display:flex;gap:2px;}
   .nav-links a{padding:9px 14px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:500;color:#c3cbe0;transition:background .2s,color .2s;}
   .nav-links a:hover{background:rgba(255,255,255,0.08);color:#fff;}
+  .nav-links a.active{background:rgba(255,255,255,0.10);color:#fff;}
   .nav-right{display:flex;align-items:center;gap:6px;}
   .menu-btn{
     display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);
@@ -333,9 +338,11 @@
     padding:72px 0;border-top:1px solid var(--line);scroll-margin-top:90px;
   }
   .svc.flip .svc-visual{order:-1;}
-  .svc-label{display:flex;align-items:center;gap:12px;color:var(--ink-3);}
-  .svc-label b{color:var(--blue);font-weight:500;}
-  .badge-new{background:var(--yellow);color:#3d2f00;border-radius:999px;padding:3px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.06em;}
+  .svc-label{
+    display:inline-flex;align-items:center;gap:10px;color:var(--blue);font-size:13px;
+    background:#e6edfd;border:1px solid rgba(22,86,214,0.18);border-radius:999px;padding:5px 14px 5px 5px;
+  }
+  .svc-label b{background:var(--blue);color:#fff;border-radius:999px;padding:4px 10px;font-weight:500;}
   .svc h3{font-size:clamp(1.8rem,3.2vw,2.6rem);margin:18px 0 18px;}
   .svc-copy > p{color:var(--ink-2);font-size:1.04rem;max-width:50ch;}
   .ticks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px;}
@@ -509,7 +516,7 @@
   }
 
   /* ---------- Work / gallery ---------- */
-  .gallery-sec{background:var(--warm);}
+  .gallery-sec{background:var(--warm);overflow:hidden;}
   .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;}
   .exhibit{position:relative;padding-top:24px;}
   .exhibit::before{
@@ -603,7 +610,7 @@
   @media (max-width:900px){ .faq-grid{grid-template-columns:1fr;gap:28px;} .faq-grid .sec-head{position:static;} .faq-item p{padding-right:0;} }
 
   /* ---------- Contact ---------- */
-  .contact-sec{padding-top:0;}
+  .contact-sec{padding-top:0;scroll-margin-top:100px;}
   .contact-card{
     position:relative;overflow:hidden;background:var(--night);color:#fff;border-radius:36px;padding:72px;
     display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;
@@ -831,7 +838,7 @@
       <!-- 04 Influencer -->
       <article class="svc flip" id="influencer">
         <div class="svc-copy reveal">
-          <div class="svc-label mono"><b>04</b> Influencer marketing <span class="badge-new">NEW</span></div>
+          <div class="svc-label mono"><b>04</b> Influencer marketing</div>
           <h3>The right creators, not just the biggest ones.</h3>
           <p>We match your brand with creators whose audience actually fits, from nano to macro. Selection, rate negotiation, briefs, content review and reporting are all on us. Your team approves; we execute.</p>
           <ul class="ticks">
@@ -1002,12 +1009,12 @@
           <p>Tell us what you're working on, who it's for and your budget. We'll come back with how we'd get it seen.</p>
         </div>
         <div class="channels">
-          <a class="channel" href="https://wa.me/919828022182" target="_blank" rel="noopener">
+          <a class="channel" href="https://wa.me/919828022182?text=Hi%20Engage%20Craft%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">
             <span class="ch-icon ch-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.13c-.24.68-1.42 1.31-1.95 1.36-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.56.79 1.92.86 2.06.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg></span>
             <span class="ch-text"><small>Fastest reply · WhatsApp</small><b>+91 98280 22182</b></span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
           </a>
-          <a class="channel" href="mailto:biing@theengagecraft.com">
+          <a class="channel" href="mailto:biing@theengagecraft.com?subject=Project%20enquiry">
             <span class="ch-icon ch-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
             <span class="ch-text"><small>Briefs and proposals · Email</small><b>biing@theengagecraft.com</b></span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
@@ -1059,9 +1066,23 @@
     menuBtn.setAttribute('aria-expanded', open);
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
-  $$('.nav-links a').forEach(function(a){
-    a.addEventListener('click', function(){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
-  });
+  var closeMenu = function(){
+    nav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
+  };
+  $$('.nav-links a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+  document.addEventListener('click', function(e){ if (!nav.contains(e.target)) closeMenu(); });
+
+  var navLinks = $$('.nav-links a');
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  ['.hero', '#services', '#work', '#process', '#network', '#faq', '#contact'].forEach(function(id){ var el = $(id); if (el) spy.observe(el); });
 
   // Scroll progress
   var bar = $('.progress'), toTop = $('.to-top');
