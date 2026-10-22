@@ -517,48 +517,36 @@
 
   /* ---------- Work / gallery ---------- */
   .gallery-sec{background:var(--warm);overflow:hidden;}
-  .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;}
-  .exhibit{position:relative;padding-top:24px;}
-  .exhibit::before{
-    content:"";position:absolute;left:-20%;right:-20%;top:-40px;height:300px;pointer-events:none;
-    background:radial-gradient(ellipse at 50% 0%,rgba(255,252,240,0.95),transparent 68%);
+  .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;}
+  .work-card{
+    margin:0;background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;
+    border:1px solid rgba(40,30,15,0.08);box-shadow:0 1px 0 rgba(40,30,15,0.04);
+    transition:transform .45s var(--ease),box-shadow .45s;
   }
-  .frame{
-    position:relative;background:#fff;border:9px solid #16130f;padding:10px;
-    box-shadow:0 22px 40px rgba(50,35,10,0.18);transition:transform .5s var(--ease),box-shadow .5s;
+  .work-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(50,35,10,0.14);}
+  .work-art{aspect-ratio:5/4;overflow:hidden;}
+  .work-art svg{display:block;width:100%;height:100%;}
+  .work-art text{font-family:var(--f-mono);font-weight:500;letter-spacing:0.02em;}
+  .work-art text.disp{font-family:var(--f-display);letter-spacing:0;}
+  .work-art .lift{transition:transform .5s var(--ease);}
+  .work-card:hover .work-art .lift{transform:translateY(-5px);}
+  .work-body{flex:1;padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px;}
+  .uses{display:flex;flex-wrap:wrap;gap:6px;}
+  .uses span{font-family:var(--f-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);background:#eef3ff;border-radius:999px;padding:4px 9px;}
+  .work-body h3{font-family:var(--f-serif);font-weight:400;font-style:italic;font-size:1.8rem;letter-spacing:-0.01em;line-height:1.05;margin-top:4px;}
+  .work-body p{font-size:14.5px;color:var(--ink-2);line-height:1.55;}
+  @media (max-width:1100px){ .gallery{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:640px){
+    .gallery{
+      display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+      margin:0 -24px;padding:4px 24px 20px;scroll-padding:0 24px;scrollbar-width:none;
+    }
+    .gallery::-webkit-scrollbar{display:none;}
+    .work-card{flex:0 0 84%;scroll-snap-align:start;}
+    .work-card:hover{transform:none;}
   }
-  .exhibit:hover .frame{transform:translateY(-8px);box-shadow:0 34px 50px rgba(50,35,10,0.22);}
-  .art{aspect-ratio:4/5;position:relative;overflow:hidden;}
-  .placard{position:relative;margin-top:22px;background:#fff;padding:14px 16px;box-shadow:0 2px 0 rgba(0,0,0,0.04);}
-  .placard .uses{display:flex;flex-wrap:wrap;gap:5px;}
-  .placard .uses span{font-family:var(--f-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);background:#eef3ff;border-radius:999px;padding:3px 8px;}
-  .placard h3{font-family:var(--f-serif);font-weight:400;font-style:italic;font-size:1.7rem;letter-spacing:-0.01em;margin:4px 0 6px;}
-  .placard p{font-size:14px;color:var(--ink-2);line-height:1.5;}
-  .art-film{background:#141414;}
-  .art-film::before,.art-film::after{content:"";position:absolute;top:0;bottom:0;width:14%;background:repeating-linear-gradient(180deg,#141414 0 8px,#f3efe6 8px 16px,#141414 16px 24px);background-size:46% 24px;background-position:center;background-repeat:repeat-y;}
-  .art-film::before{left:0;} .art-film::after{right:0;}
-  .art-film .scene{position:absolute;left:20%;right:20%;top:12%;bottom:12%;background:linear-gradient(160deg,var(--pink),#7c3aed);display:flex;align-items:center;justify-content:center;}
-  .art-film .scene::after{content:"";border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px;}
-  .art-pod{background:var(--blue);display:flex;align-items:center;justify-content:center;gap:5px;padding:0 14%;}
-  .art-pod i{flex:1;background:#fff;border-radius:3px;animation:eq 1.6s ease-in-out infinite alternate;}
-  @keyframes eq{from{transform:scaleY(.45);}to{transform:scaleY(1);}}
-  .art-creator{background:#fbe3eb;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
-  .art-creator .big{width:46%;aspect-ratio:1;border-radius:50%;padding:5px;background:var(--story);}
-  .art-creator .big span{display:block;width:100%;height:100%;border-radius:50%;border:5px solid #fbe3eb;background:var(--night);}
-  .art-creator .lines{width:56%;display:grid;gap:7px;}
-  .art-creator .lines i{height:7px;border-radius:4px;background:rgba(11,16,32,0.18);}
-  .art-brand{background:var(--yellow);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16%;}
-  .art-brand .bars{display:flex;align-items:flex-end;gap:9%;width:62%;height:62%;}
-  .art-brand .bars i{flex:1;background:var(--night);border-radius:6px 6px 0 0;}
-  .art-brand .arrow{position:absolute;top:14%;right:16%;width:28%;aspect-ratio:1;border-top:4px solid var(--night);border-right:4px solid var(--night);}
-  @media (max-width:980px){ .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px;} }
-  @media (max-width:520px){
-    .gallery{gap:32px 14px;}
-    .frame{border-width:6px;padding:6px;}
-    .placard{padding:10px 11px;margin-top:16px;}
-    .placard h3{font-size:1.3rem;}
-    .placard p{font-size:13px;}
-  }
+  .swipe-hint{display:none;color:var(--ink-3);margin-top:-6px;}
+  @media (max-width:640px){ .swipe-hint{display:block;} }
 
   /* ---------- Process ---------- */
   .process-sec{background:#fff;}
@@ -889,42 +877,87 @@
         <h2 id="work-title">Internet culture, <em>curated.</em></h2>
         <p>Different industries, one playbook: find the moments worth sharing, then put them in front of the people who'll share them.</p>
       </div>
-      <div class="gallery">
-        <figure class="exhibit reveal" style="margin:0">
-          <div class="frame"><div class="art art-film"><div class="scene"></div></div></div>
-          <figcaption class="placard">
+      <div class="gallery reveal">
+        <article class="work-card">
+          <div class="work-art"><svg viewBox="0 0 320 256" aria-hidden="true">
+<defs>
+<linearGradient id="f-p" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d79"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+<linearGradient id="f-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb23c"/><stop offset="1" stop-color="#ff4d79"/></linearGradient>
+<linearGradient id="f-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fc0ea"/><stop offset="1" stop-color="#1656d6"/></linearGradient>
+</defs>
+<rect width="320" height="256" fill="#0c1224"/>
+<path d="M114 104 L100 108 M206 104 L220 108" stroke="#2fc0ea" stroke-width="1.5" stroke-dasharray="3 4" opacity=".7"/>
+<g class="lift"><g transform="rotate(-10 68 110)"><rect x="40" y="62" width="56" height="96" rx="9" fill="url(#f-a)"/><rect x="46" y="68" width="44" height="18" rx="9.0" fill="rgba(0,0,0,0.28)"/><text x="68.0" y="80.6" text-anchor="middle" font-size="10" fill="#fff">memes</text><circle cx="68" cy="108" r="9" fill="#fff" opacity=".85"/><path d="M65 103 L73 108 L65 113 Z" fill="#ff4d79"/><rect x="46" y="138" width="36" height="4" rx="2" fill="#fff" opacity=".85"/><rect x="46" y="146" width="24" height="4" rx="2" fill="#fff" opacity=".6"/></g><g transform="rotate(10 252 110)"><rect x="224" y="62" width="56" height="96" rx="9" fill="url(#f-b)"/><rect x="230" y="68" width="44" height="18" rx="9.0" fill="rgba(0,0,0,0.28)"/><text x="252.0" y="80.6" text-anchor="middle" font-size="10" fill="#fff">fan edit</text><circle cx="252" cy="108" r="9" fill="#fff" opacity=".85"/><path d="M249 103 L257 108 L249 113 Z" fill="#1656d6"/><rect x="230" y="138" width="36" height="4" rx="2" fill="#fff" opacity=".85"/><rect x="230" y="146" width="24" height="4" rx="2" fill="#fff" opacity=".6"/></g></g>
+<rect x="114" y="26" width="92" height="142" rx="12" fill="url(#f-p)"/>
+<rect x="122" y="34" width="60" height="18" rx="9.0" fill="rgba(0,0,0,0.28)"/><text x="152.0" y="46.6" text-anchor="middle" font-size="10" fill="#fff">TRAILER</text>
+<circle cx="160" cy="92" r="18" fill="#fff" opacity=".95"/>
+<path d="M155 83 L169 92 L155 101 Z" fill="#7c3aed"/>
+<rect x="124" y="142" width="58" height="6" rx="3" fill="#fff" opacity=".9"/>
+<rect x="124" y="153" width="38" height="6" rx="3" fill="#fff" opacity=".6"/>
+<line x1="44" y1="208" x2="276" y2="208" stroke="#26304a" stroke-width="2"/><line x1="44" y1="208" x2="198" y2="208" stroke="#2fc0ea" stroke-width="2"/><circle cx="44" cy="208" r="5" fill="#2fc0ea"/><text x="44" y="234" text-anchor="middle" font-size="11" fill="#7e89a6">Teaser</text><circle cx="121" cy="208" r="5" fill="#2fc0ea"/><text x="121" y="234" text-anchor="middle" font-size="11" fill="#7e89a6">Trailer</text><circle cx="198" cy="208" r="5" fill="#2fc0ea"/><circle cx="198" cy="208" r="10" fill="none" stroke="#2fc0ea" stroke-opacity=".45" stroke-width="2"/><text x="198" y="234" text-anchor="middle" font-size="11" fill="#fff">Release</text><circle cx="276" cy="208" r="5" fill="#26304a"/><text x="276" y="234" text-anchor="middle" font-size="11" fill="#7e89a6">OTT</text>
+</svg></div>
+          <div class="work-body">
             <div class="uses"><span>Distribution</span><span>Clipping</span></div>
             <h3>Film and OTT</h3>
-            <p>Trailers, BTS and promo interviews seeded across niche pages before and after release.</p>
-          </figcaption>
-        </figure>
-        <figure class="exhibit reveal" style="margin:0">
-          <div class="frame"><div class="art art-pod">
-            <i style="height:30%;animation-delay:-.2s"></i><i style="height:55%;animation-delay:-.9s"></i><i style="height:80%;animation-delay:-.4s"></i><i style="height:45%;animation-delay:-1.2s"></i><i style="height:70%;animation-delay:-.6s"></i><i style="height:35%;animation-delay:-1s"></i><i style="height:60%;animation-delay:-.3s"></i>
-          </div></div>
-          <figcaption class="placard">
+            <p>Trailers, BTS and promo interviews seeded across niche pages, from teaser week to the OTT drop.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-art"><svg viewBox="0 0 320 256" aria-hidden="true">
+<rect width="320" height="256" fill="#1656d6"/>
+<rect x="20" y="18" width="280" height="76" rx="14" fill="#fff" fill-opacity=".12"/>
+<text x="34" y="40" font-size="11" fill="#fff">EP 42 · 1h 48m</text>
+<text x="286" y="40" text-anchor="end" font-size="10" fill="#bcd0ff">FULL EPISODE</text>
+<rect x="34.0" y="56.0" width="3.4" height="28" rx="1.7" fill="#fff" opacity="0.5"/><rect x="40.3" y="62.0" width="3.4" height="16" rx="1.7" fill="#fff" opacity="0.5"/><rect x="46.6" y="55.0" width="3.4" height="30" rx="1.7" fill="#fff" opacity="0.5"/><rect x="52.9" y="66.0" width="3.4" height="8" rx="1.7" fill="#fff" opacity="0.5"/><rect x="59.2" y="64.0" width="3.4" height="12" rx="1.7" fill="#fff" opacity="0.5"/><rect x="65.5" y="63.0" width="3.4" height="14" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="71.8" y="64.0" width="3.4" height="12" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="78.1" y="56.0" width="3.4" height="28" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="84.4" y="59.0" width="3.4" height="22" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="90.7" y="66.0" width="3.4" height="8" rx="1.7" fill="#fff" opacity="0.5"/><rect x="97.0" y="63.0" width="3.4" height="14" rx="1.7" fill="#fff" opacity="0.5"/><rect x="103.3" y="60.0" width="3.4" height="20" rx="1.7" fill="#fff" opacity="0.5"/><rect x="109.6" y="66.0" width="3.4" height="8" rx="1.7" fill="#fff" opacity="0.5"/><rect x="115.9" y="64.0" width="3.4" height="12" rx="1.7" fill="#fff" opacity="0.5"/><rect x="122.2" y="55.0" width="3.4" height="30" rx="1.7" fill="#fff" opacity="0.5"/><rect x="128.5" y="55.0" width="3.4" height="30" rx="1.7" fill="#fff" opacity="0.5"/><rect x="134.8" y="64.0" width="3.4" height="12" rx="1.7" fill="#fff" opacity="0.5"/><rect x="141.1" y="60.0" width="3.4" height="20" rx="1.7" fill="#fff" opacity="0.5"/><rect x="147.4" y="64.0" width="3.4" height="12" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="153.7" y="63.0" width="3.4" height="14" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="160.0" y="55.0" width="3.4" height="30" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="166.3" y="66.0" width="3.4" height="8" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="172.6" y="59.0" width="3.4" height="22" rx="1.7" fill="#fff" opacity="0.5"/><rect x="178.9" y="64.0" width="3.4" height="12" rx="1.7" fill="#fff" opacity="0.5"/><rect x="185.2" y="60.0" width="3.4" height="20" rx="1.7" fill="#fff" opacity="0.5"/><rect x="191.5" y="59.0" width="3.4" height="22" rx="1.7" fill="#fff" opacity="0.5"/><rect x="197.8" y="66.0" width="3.4" height="8" rx="1.7" fill="#fff" opacity="0.5"/><rect x="204.1" y="59.0" width="3.4" height="22" rx="1.7" fill="#fff" opacity="0.5"/><rect x="210.4" y="59.0" width="3.4" height="22" rx="1.7" fill="#fff" opacity="0.5"/><rect x="216.7" y="55.0" width="3.4" height="30" rx="1.7" fill="#fff" opacity="0.5"/><rect x="223.0" y="66.0" width="3.4" height="8" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="229.3" y="60.0" width="3.4" height="20" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="235.6" y="66.0" width="3.4" height="8" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="241.9" y="63.0" width="3.4" height="14" rx="1.7" fill="#ffd23f" opacity="1"/><rect x="248.2" y="62.0" width="3.4" height="16" rx="1.7" fill="#fff" opacity="0.5"/><rect x="254.5" y="58.0" width="3.4" height="24" rx="1.7" fill="#fff" opacity="0.5"/><rect x="260.8" y="55.0" width="3.4" height="30" rx="1.7" fill="#fff" opacity="0.5"/><rect x="267.1" y="62.0" width="3.4" height="16" rx="1.7" fill="#fff" opacity="0.5"/><rect x="273.4" y="63.0" width="3.4" height="14" rx="1.7" fill="#fff" opacity="0.5"/><rect x="279.7" y="64.0" width="3.4" height="12" rx="1.7" fill="#fff" opacity="0.5"/><path d="M76.6 90 C76.6 108 72 106 72 124" fill="none" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="3 4"/><path d="M158.5 90 C158.5 108 160 106 160 124" fill="none" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="3 4"/><path d="M234.1 90 C234.1 108 248 106 248 124" fill="none" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="3 4"/><g class="lift" style="transition-delay:0ms"><rect x="42" y="124" width="60" height="110" rx="11" fill="#fff"/><rect x="47" y="129" width="50" height="66" rx="7" fill="#0c1224"/><path d="M68 155 L78 162 L68 169 Z" fill="#fff"/><text x="72" y="211" text-anchor="middle" font-size="10" fill="#1656d6">08:12</text><rect x="52" y="218" width="40" height="4" rx="2" fill="#0c1224" opacity=".25"/></g><g class="lift" style="transition-delay:60ms"><rect x="130" y="124" width="60" height="110" rx="11" fill="#fff"/><rect x="135" y="129" width="50" height="66" rx="7" fill="#0c1224"/><path d="M156 155 L166 162 L156 169 Z" fill="#fff"/><text x="160" y="211" text-anchor="middle" font-size="10" fill="#1656d6">41:05</text><rect x="140" y="218" width="40" height="4" rx="2" fill="#0c1224" opacity=".25"/></g><g class="lift" style="transition-delay:120ms"><rect x="218" y="124" width="60" height="110" rx="11" fill="#fff"/><rect x="223" y="129" width="50" height="66" rx="7" fill="#0c1224"/><path d="M244 155 L254 162 L244 169 Z" fill="#fff"/><text x="248" y="211" text-anchor="middle" font-size="10" fill="#1656d6">1:22:40</text><rect x="228" y="218" width="40" height="4" rx="2" fill="#0c1224" opacity=".25"/></g>
+</svg></div>
+          <div class="work-body">
             <div class="uses"><span>Clipping</span><span>Distribution</span></div>
             <h3>Podcasts</h3>
-            <p>Long episodes turned into a daily stream of shareable, hook-first shorts.</p>
-          </figcaption>
-        </figure>
-        <figure class="exhibit reveal" style="margin:0">
-          <div class="frame"><div class="art art-creator"><div class="big"><span></span></div><div class="lines"><i></i><i style="width:70%;margin:0 auto"></i></div></div></div>
-          <figcaption class="placard">
+            <p>We find the best moments in every episode and turn them into a daily stream of shorts.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-art"><svg viewBox="0 0 320 256" aria-hidden="true">
+<defs><linearGradient id="c-r" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ffd23f"/><stop offset=".5" stop-color="#ff4d79"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+<rect width="320" height="256" fill="#fbe3eb"/>
+<line x1="160" y1="112" x2="64" y2="62" stroke="#ff4d79" stroke-width="1.5" stroke-dasharray="3 4" opacity=".6"/><line x1="160" y1="112" x2="256" y2="62" stroke="#ff4d79" stroke-width="1.5" stroke-dasharray="3 4" opacity=".6"/><line x1="160" y1="112" x2="64" y2="172" stroke="#ff4d79" stroke-width="1.5" stroke-dasharray="3 4" opacity=".6"/><line x1="160" y1="112" x2="256" y2="172" stroke="#ff4d79" stroke-width="1.5" stroke-dasharray="3 4" opacity=".6"/>
+<circle cx="160" cy="112" r="46" fill="#fbe3eb" stroke="url(#c-r)" stroke-width="5"/>
+<circle cx="160" cy="112" r="38" fill="#0c1224"/>
+<text x="160" y="124" text-anchor="middle" font-size="32" font-weight="700" fill="#fff" class="disp">R</text>
+<rect x="138" y="150" width="44" height="18" rx="9" fill="#ff3b5c"/>
+<text x="160" y="162.5" text-anchor="middle" font-size="10" fill="#fff">LIVE</text>
+<g class="lift" style="transition-delay:0ms"><circle cx="64" cy="62" r="22" fill="#fff" stroke="url(#c-r)" stroke-width="3.5"/><path d="M59 55 L72 62 L59 69 Z" fill="#0c1224"/><text x="64" y="30" text-anchor="middle" font-size="10.5" fill="#72243e">@rahul_world</text></g><g class="lift" style="transition-delay:50ms"><circle cx="256" cy="62" r="22" fill="#fff" stroke="url(#c-r)" stroke-width="3.5"/><path d="M251 55 L264 62 L251 69 Z" fill="#0c1224"/><text x="256" y="30" text-anchor="middle" font-size="10.5" fill="#72243e">@rahul.clips</text></g><g class="lift" style="transition-delay:100ms"><circle cx="64" cy="172" r="22" fill="#fff" stroke="url(#c-r)" stroke-width="3.5"/><path d="M59 165 L72 172 L59 179 Z" fill="#0c1224"/><text x="64" y="212" text-anchor="middle" font-size="10.5" fill="#72243e">@rahulverse</text></g><g class="lift" style="transition-delay:150ms"><circle cx="256" cy="172" r="22" fill="#fff" stroke="url(#c-r)" stroke-width="3.5"/><path d="M251 165 L264 172 L251 179 Z" fill="#0c1224"/><text x="256" y="212" text-anchor="middle" font-size="10.5" fill="#72243e">@best.of.rahul</text></g>
+</svg></div>
+          <div class="work-body">
             <div class="uses"><span>Clipping</span><span>Fan pages</span></div>
             <h3>Creators and streamers</h3>
-            <p>Clips, fan pages and distribution that turn one channel into many.</p>
-          </figcaption>
-        </figure>
-        <figure class="exhibit reveal" style="margin:0">
-          <div class="frame"><div class="art art-brand"><div class="bars"><i style="height:35%"></i><i style="height:60%"></i><i style="height:100%"></i></div><span class="arrow"></span></div></div>
-          <figcaption class="placard">
+            <p>Your streams and vlogs, clipped and pushed through fan pages, so one channel becomes many.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-art"><svg viewBox="0 0 320 256" aria-hidden="true">
+<rect width="320" height="256" fill="#ffd23f"/>
+<rect x="22" y="26" width="138" height="142" rx="16" fill="#fff"/>
+<rect x="34" y="38" width="78" height="18" rx="9.0" fill="#0c1224"/><text x="73.0" y="50.6" text-anchor="middle" font-size="10" fill="#fff">NEW LAUNCH</text>
+<rect x="58" y="68" width="66" height="70" rx="12" fill="#1656d6"/>
+<rect x="70" y="80" width="42" height="8" rx="4" fill="#fff" opacity=".85"/>
+<circle cx="91" cy="114" r="11" fill="#2fc0ea"/>
+<path d="M140 64 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#ff4d79"/>
+<rect x="36" y="148" width="74" height="6" rx="3" fill="#0c1224" opacity=".85"/>
+<g class="lift" style="transition-delay:0ms"><rect x="176" y="26" width="122" height="42" rx="21" fill="#fff"/><circle cx="197" cy="47" r="13" fill="#8b5cf6" stroke="#ff4d79" stroke-width="2.5"/><rect x="218" y="39" width="58" height="5" rx="2.5" fill="#0c1224" opacity=".8"/><rect x="218" y="50" width="40" height="5" rx="2.5" fill="#0c1224" opacity=".3"/><path d="M286 44 c-2-3-6-1-4 2 l4 4 4-4 c2-3-2-5-4-2z" fill="#ff4d79"/></g><g class="lift" style="transition-delay:60ms"><rect x="176" y="76" width="122" height="42" rx="21" fill="#fff"/><circle cx="197" cy="97" r="13" fill="#ff8a3c" stroke="#ff4d79" stroke-width="2.5"/><rect x="218" y="89" width="58" height="5" rx="2.5" fill="#0c1224" opacity=".8"/><rect x="218" y="100" width="40" height="5" rx="2.5" fill="#0c1224" opacity=".3"/><path d="M286 94 c-2-3-6-1-4 2 l4 4 4-4 c2-3-2-5-4-2z" fill="#ff4d79"/></g><g class="lift" style="transition-delay:120ms"><rect x="176" y="126" width="122" height="42" rx="21" fill="#fff"/><circle cx="197" cy="147" r="13" fill="#1656d6" stroke="#ff4d79" stroke-width="2.5"/><rect x="218" y="139" width="58" height="5" rx="2.5" fill="#0c1224" opacity=".8"/><rect x="218" y="150" width="40" height="5" rx="2.5" fill="#0c1224" opacity=".3"/><path d="M286 144 c-2-3-6-1-4 2 l4 4 4-4 c2-3-2-5-4-2z" fill="#ff4d79"/></g>
+<path d="M22 238 L76 230 L124 222 L172 210 L226 204 L298 188 L298 244 L22 244 Z" fill="#0c1224" opacity=".08"/>
+<polyline points="22,238 76,230 124,222 172,210 226,204 298,188" fill="none" stroke="#0c1224" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="298" cy="188" r="5.5" fill="#0c1224"/>
+<text x="22" y="200" font-size="10" fill="#5c4a00">REACH</text>
+</svg></div>
+          <div class="work-body">
             <div class="uses"><span>Influencers</span><span>Distribution</span></div>
             <h3>Brands and launches</h3>
-            <p>Creator campaigns and network pushes for products people should know about.</p>
-          </figcaption>
-        </figure>
+            <p>Creators who fit your audience, plus our page network, so a launch is seen everywhere at once.</p>
+          </div>
+        </article>
       </div>
+      <p class="swipe-hint mono">Swipe for more →</p>
     </div>
   </section>
 
